@@ -4,20 +4,24 @@ header {
     align-items: center;
     height: 70px;
     padding: 0 16px;
-    position: sticky;
-    top: 0;
-    display: flex;
+
+    
     }
     .left_section{
         display: flex;
         align-items: center;
         cursor: pointer;
+        
     
     }
-    .left_section img {
-        width: 46%;
-        padding-left: 16px;
+    .sizeleft{
+        font-size: 30px;
     }
+    .sizeright{
+        font-size: 30px;
+    }
+
+    
      .right_section a {
          padding-right: 18px;
          text-decoration: none;
