@@ -41,3 +41,73 @@ header {
 .center_section{
     align-items: center;
 }
+.customfont1{
+    font-family: 'Anek Telugu', sans-serif;
+
+
+}
+.lablesize{
+    font-size: 20px;
+}
+.registerInput {
+    width: 300px;
+    height: 25px;
+    padding: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+  }
+.registerButton {
+    margin-top: 30px;
+    cursor: pointer;
+    background-color: teal;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+  }
+.loginButton {
+	margin-top: 30px;
+	cursor: pointer;
+	background-color: lightcoral;
+	color: white;
+	padding: 15px;
+	border: none;
+	border-radius: 10px;
+	text-align: center;
+    font-size: 20px;
+  }  
+  
+.registerLoginButton {
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    background-color: lightcoral;
+    cursor: pointer;
+    padding: 15px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+  }
+.loginRegisterButton {
+	position: absolute;
+	top: 90px;
+	right: 20px;
+	background-color: teal;
+	cursor: pointer;
+	padding: 15px;
+	border: none;
+	color: white;
+	border-radius: 10px;
+  }  
+.registerInput {
+    outline: none;
+    font-size: 15px;
+  }
+.registerInput:focus {
+    outline: none;
+    font-size: 18px;
+  }  
+    
