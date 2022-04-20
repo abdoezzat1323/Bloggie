@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
                 type: DataTypes.STRING(45),
                 allowNull: true,
             },
-            publishDate: {
+            timeCreated: {
                 type: DataTypes.DATE,
                 allowNull: true,
             },

@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false,
                 primaryKey: true,
             },
+            displayName: {
+                type: DataTypes.STRING(45),
+                allowNull: true,
+            },
             firstName: {
                 type: DataTypes.STRING(45),
                 allowNull: true,
