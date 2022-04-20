@@ -1,52 +1,20 @@
+import "./Login.css";
 import TopBar from "../../src/topbar/TopBar";
-import React, { Component } from 'react';
-import "./Login.css"
-
-
-class Login  extends Component {
-
-  render() { 
-    return (
-           <>
-           <TopBar/>
-            <div className="container">
-              <div className="screen">
-                <div className="screen__content">
-                  <form className="login">
-                    <div className="login__field">
-                      <i className="login__icon fas fa-user" />
-                      <input type="text" className="login__input" placeholder="User name / Email" />
-                    </div>
-                    <div className="login__field">
-                      <i className="login__icon fas fa-lock" />
-                      <input type="password" className="login__input" placeholder="Password" />
-                    </div>
-                    <button className="button login__submit">
-                      <span className="button__text">Log In Now</span>
-                      <i className="button__icon fas fa-chevron-right" />
-                    </button>				
-                  </form>
-                  <div className="social-login">
-                    <h3>log in via</h3>
-                    <div className="social-icons">
-                      <a href="#" className="social-login__icon fab fa-instagram" />
-                      <a href="#" className="social-login__icon fab fa-facebook" />
-                      <a href="#" className="social-login__icon fab fa-twitter" />
-                    </div>
-                  </div>
-                </div>
-                <div className="screen__background">
-                  <span className="screen__background__shape screen__background__shape4" />
-                  <span className="screen__background__shape screen__background__shape3" />		
-                  <span className="screen__background__shape screen__background__shape2" />
-                  <span className="screen__background__shape screen__background__shape1" />
-                </div>		
-              </div>
-            </div>
-            </>
-
-    );
-  }
+export default function Login() {
+  return (
+    <>
+    <TopBar/>
+    <div className="login">
+      <span className="loginTitle">Login</span>
+      <form className="loginForm">
+        <label>Email</label>
+        <input className="loginInput" type="text" placeholder="Enter your email..." />
+        <label>Password</label>
+        <input className="loginInput" type="password" placeholder="Enter your password..." />
+        <button className="loginButton">Login</button>
+      </form>
+        <button className="loginRegisterButton">Register</button>
+    </div>
+    </>
+  );
 }
- 
-export default Login ;
