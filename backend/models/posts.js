@@ -1,62 +1,55 @@
 const Sequelize = require("sequelize");
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define(
-        "users", {
+        "posts", {
             id: {
                 autoIncrement: true,
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 primaryKey: true,
             },
-            firstName: {
+            title: {
                 type: DataTypes.STRING(45),
                 allowNull: true,
             },
-            lastName: {
+            category: {
                 type: DataTypes.STRING(45),
                 allowNull: true,
             },
-            DOB: {
-                type: DataTypes.DATEONLY,
+            publishDate: {
+                type: DataTypes.DATE,
                 allowNull: true,
             },
-            email: {
-                type: DataTypes.STRING(100),
-                allowNull: true,
-            },
-            password: {
-                type: DataTypes.STRING(1024),
-                allowNull: true,
-            },
-            gender: {
+            isPrivate: {
                 type: DataTypes.CHAR(1),
                 allowNull: true,
             },
-            isAdmin: {
-                type: DataTypes.CHAR(1),
-                allowNull: true,
-            },
-            avatar: {
+            body: {
                 type: DataTypes.TEXT,
                 allowNull: true,
             },
-            github: {
-                type: DataTypes.TEXT,
-                allowNull: true,
-            },
-            bio: {
-                type: DataTypes.TEXT,
-                allowNull: true,
+            userId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: "users",
+                    key: "id",
+                },
             },
         }, {
             sequelize,
-            tableName: "users",
+            tableName: "posts",
             timestamps: false,
             indexes: [{
                 name: "PRIMARY",
                 unique: true,
                 using: "BTREE",
                 fields: [{ name: "id" }],
+            },
+            {
+                name: "posts_users_fk_idx",
+                using: "BTREE",
+                fields: [{ name: "userId" }],
             }, ],
         }
     );
