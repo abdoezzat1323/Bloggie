@@ -1,55 +1,23 @@
 import TopBar from "../../src/topbar/TopBar";
-import React, { Component } from 'react';
 import "./signup.css"
 
-
-class Register  extends Component {
-
-  render() { 
+export default function Register() {
     return (
-           <>
-           <TopBar/>
-            <div className="container">
-              <div className="screen">
-                <div className="screen__content">
-                  <form className="login">
-                  <div className="login__field">
-                      <i className="login__icon fas fa-user" />
-                      <input type="text" className="login__input" placeholder=" First_Name" />
-                    </div>
-                    <div className="login__field">
-                      <i className="login__icon fas fa-user" />
-                      <input type="text" className="login__input" placeholder=" Last_Name" />
-                    </div>
-                    <div className="login__field">
-                      <i className="login__icon fas fa-user" />
-                      <input type="text" className="login__input" placeholder="Email" />
-                    </div>
-                    <div className="login__field">
-                      <i className="login__icon fas fa-lock" />
-                      <input type="password" className="login__input" placeholder="Password" />
-                    </div>
-                    <button className="button login__submit">
-                      <span className="button__text">SignUP Now</span>
-                      <i className="button__icon fas fa-chevron-right" />
-                    </button>				
-                  </form>
-                  <div className="social-login">
-                    
-                  </div>
-                </div>
-                <div className="screen__background">
-                  <span className="screen__background__shape screen__background__shape4" />
-                  <span className="screen__background__shape screen__background__shape3" />		
-                  <span className="screen__background__shape screen__background__shape2" />
-                  <span className="screen__background__shape screen__background__shape1" />
-                </div>		
-              </div>
-            </div>
-            </>
-
-    );
-  }
+      <>
+      <TopBar/>
+      <div className="register">
+      <span className="registerTitle">Register</span>
+      <form className="registerForm">
+        <label>Username</label>
+        <input className="registerInput" type="text" placeholder="Enter your username..." />
+        <label>Email</label>
+        <input className="registerInput" type="text" placeholder="Enter your email..." />
+        <label>Password</label>
+        <input className="registerInput" type="password" placeholder="Enter your password..." />
+        <button className="registerButton">Register</button>
+      </form>
+       <a href="/login" > <button className="registerLoginButton">Login</button></a>
+    </div>
+    </>
+    )
 }
- 
-export default Register ;

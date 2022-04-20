@@ -15,7 +15,7 @@ export default function topBar() {
     
       <div className="right_section  sizeright ">
         <a href><i className="material-icons">notifications</i></a>
-        <a href><i className="material-icons">account_circle</i></a>
+        <a href="/"><i className="material-icons">account_circle</i></a>
         
       </div>
     </header>
