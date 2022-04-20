@@ -1,9 +1,9 @@
 import TopBar from "../../src/topbar/TopBar";
 import React, { Component } from 'react';
-import "./Login.css"
+import "./signup.css"
 
 
-class Login  extends Component {
+class Register  extends Component {
 
   render() { 
     return (
@@ -13,26 +13,29 @@ class Login  extends Component {
               <div className="screen">
                 <div className="screen__content">
                   <form className="login">
+                  <div className="login__field">
+                      <i className="login__icon fas fa-user" />
+                      <input type="text" className="login__input" placeholder=" First_Name" />
+                    </div>
                     <div className="login__field">
                       <i className="login__icon fas fa-user" />
-                      <input type="text" className="login__input" placeholder="User name / Email" />
+                      <input type="text" className="login__input" placeholder=" Last_Name" />
+                    </div>
+                    <div className="login__field">
+                      <i className="login__icon fas fa-user" />
+                      <input type="text" className="login__input" placeholder="Email" />
                     </div>
                     <div className="login__field">
                       <i className="login__icon fas fa-lock" />
                       <input type="password" className="login__input" placeholder="Password" />
                     </div>
                     <button className="button login__submit">
-                      <span className="button__text">Log In Now</span>
+                      <span className="button__text">SignUP Now</span>
                       <i className="button__icon fas fa-chevron-right" />
                     </button>				
                   </form>
                   <div className="social-login">
-                    <h3>log in via</h3>
-                    <div className="social-icons">
-                      <a href="#" className="social-login__icon fab fa-instagram" />
-                      <a href="#" className="social-login__icon fab fa-facebook" />
-                      <a href="#" className="social-login__icon fab fa-twitter" />
-                    </div>
+                    
                   </div>
                 </div>
                 <div className="screen__background">
@@ -49,4 +52,4 @@ class Login  extends Component {
   }
 }
  
-export default Login ;
+export default Register ;

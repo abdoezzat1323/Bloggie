@@ -2,6 +2,7 @@ import "./topbar.css"
 
 export default function topBar() {
   return (
+   
     <div className='top'>
         <div className="topLeft">
         <a href="https://twitter.com/login" ><i className="topIcon fa-brands fa-twitter-square"  ></i></a>
@@ -10,11 +11,11 @@ export default function topBar() {
         </div>
         <div className="topCenter">
             <ul className="topList">
-                <li className="topListItem">HOME</li>
-                <li className="topListItem">ABOUT</li>
-                <li className="topListItem">CONTACT</li>
-                <li className="topListItem">WRITE</li>
-                <li className="topListItem">LOGOUT</li>
+               <a href = "/login" style={{textDecoration:"none" , color:"inherit"}}> <li  className="topListItem">HOME</li></a>
+               <a href = "/about" style={{textDecoration:"none" , color:"inherit"}}><li className="topListItem">ABOUT</li></a>
+               <a href = "/contact" style={{textDecoration:"none" , color:"inherit"}}> <li className="topListItem">CONTACT</li></a>
+               <a href = "/write" style={{textDecoration:"none" , color:"inherit"}}> <li className="topListItem">WRITE</li></a>
+               <a href = "#" style={{textDecoration:"none" , color:"inherit"}}> <li className="topListItem">LOGOUT</li></a>
             </ul>
         </div>
         <div className="topRight">
