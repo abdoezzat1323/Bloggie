@@ -1,5 +1,5 @@
-import Login from "./login/Login"
-import Register from "./signup/signup"
+import Login from "./pages/login/Login"
+import Register from "./pages/signup/signup"
 import Home from "./pages/home/Home";
 import Test from "./test/Test.jsx";
 import {

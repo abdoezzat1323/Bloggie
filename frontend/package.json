@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.19.5",
     "axios": "^0.26.1",
+    "notification-component": "^0.0.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-js-switch": "^1.1.6",

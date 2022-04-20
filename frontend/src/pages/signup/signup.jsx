@@ -1,4 +1,4 @@
-import TopBar from "../../src/topbar/TopBar";
+import TopBar from "../../component/topbar/TopBar";
 import "./signup.css"
 
 export default function Register() {

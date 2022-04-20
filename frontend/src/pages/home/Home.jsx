@@ -1,8 +1,8 @@
-import Header from '../../header/Header'
-import Postes from '../../posts/Postes'
-import Sidebar from '../../sidebar/Sidebar'
+import Header from '../../component/header/Header'
+import Postes from '../../component/posts/Postes'
+import Sidebar from '../../component/sidebar/Sidebar'
 import './home.css'
-import TopBar from "../../topbar/TopBar";
+import TopBar from "../../component/topbar/TopBar";
 
 export default function Home() {
   return (
