@@ -1,7 +1,7 @@
 import Login from "./login/Login"
 import Register from "./signup/signup"
 import Home from "./pages/home/Home";
-import TopBar from "./topbar/TopBar";
+import Test from "./test/Test.jsx";
 import {
   BrowserRouter,
   Routes,
@@ -21,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={user ? <Home/> :<Login />} />
         <Route path="/Register" element={ user ? <Home/> :<Register />} />
+        <Route path="/Test" element={<Test />} />
       </Routes>
     </BrowserRouter>
   );

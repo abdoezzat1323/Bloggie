@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "mdbreact": "^5.2.0",
+    "react-dropdown": "^1.9.2",
+    "react-notifications-menu": "^1.0.6"
+  }
+}
