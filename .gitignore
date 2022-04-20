@@ -1,2 +1,4 @@
 
 backend/config/check_db.js
+backend/config/db.config.js
+backend/controller/index.js
