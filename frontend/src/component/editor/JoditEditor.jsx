@@ -58,7 +58,13 @@ const JoditEditor = forwardRef(
 			};
 		}, [config]);
 
-		
+		useEffect(() => {
+			if (textArea?.current?.value !== value) {
+				textArea.current.value = value;
+			}
+			console.log(useEffect.value)
+
+		}, [value]);
 
 		return (
 			<div className={'jodit-react-container'}>
