@@ -2,6 +2,7 @@ import "./write.css";
 import TopBar from "../../component/topbar/TopBar";
 import React, { useRef, useState } from "react";
 import ImageUploading from 'react-images-uploading';
+// import JoditEditor from "../../component/editor/JoditEditor";
 
 
 export default function Write() {
@@ -66,7 +67,7 @@ async function postData() {
 
   return (
     <>
-      <TopBar/>
+    <TopBar/>
     <div className="write">
      <div className="App">
      <ImageUploading
@@ -84,12 +85,12 @@ async function postData() {
         }) => (
           <div className="upload__image-wrapper">
             <button
-            
+            className="button-28"
               onClick={onImageUpload}
             >
               Chose Image
             </button>
-            <button  onClick={onImageRemoveAll}>Remove Image</button>
+            <button className="button-28"  onClick={onImageRemoveAll}>Remove Image</button>
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
                 <img className="writeImg" src={image['data_url']} alt=""  />
@@ -100,6 +101,7 @@ async function postData() {
         )}
         </ImageUploading>
         </div>
+        {/* <JoditEditor/> */}
         <input
             className="writeInput"
             ref={post_title}

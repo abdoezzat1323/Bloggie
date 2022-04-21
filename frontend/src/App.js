@@ -11,7 +11,8 @@ import {
   Outlet
 } from 'react-router-dom';
 import Write from "./pages/write_post/write_post";
-import Writen from "./pages/test";
+import JoditEditor from "./component/editor/JoditEditor";
+
 
 
 
@@ -26,7 +27,7 @@ function App() {
         <Route path="/Register" element={ user ? <Home/> :<Register />} />
         <Route path="/Test" element={<Test />} />
         <Route path="/write_post" element={<Write />} />
-        <Route path="/write" element={<Writen />} />
+        <Route path="/write" element={< JoditEditor />} />
       </Routes>
     </BrowserRouter>
   );
