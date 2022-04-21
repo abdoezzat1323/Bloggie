@@ -27,6 +27,7 @@ module.exports = function(sequelize, DataTypes) {
             postId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
+                primaryKey: true,
                 references: {
                     model: "posts",
                     key: "id",
@@ -34,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
             },
             parentId: {
                 type: DataTypes.INTEGER,
-                allowNull: false,
+                allowNull: true,
                 references: {
                     model: "comments",
                     key: "id",
