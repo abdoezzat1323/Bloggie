@@ -2,6 +2,7 @@ import "./Login.css";
 import TopBar from "../../component/topbar/TopBar";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { NotificationManager } from "react-notifications";
 import axios from "axios";
 
 export default function Login() {
@@ -9,7 +10,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const errors = {
-    email: "invalid Email",
+    409: "Email already exist!",
     pass: "invalid password",
   };
 
@@ -30,23 +31,14 @@ export default function Login() {
         "http://127.0.0.1:5000/api/auth/login",
         userData
       );
-      console.log(response);
+      navigate("/");
+      NotificationManager.success(response.data.data, "Success", 3000);
     } catch (err) {
-      console.log(err);
-      return;
-    }
-
-    // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
+      if (err.response) {
+        NotificationManager.error(err.response.data.data, "Error", 3000);
       } else {
-        navigate("/");
+        NotificationManager.error("Server is down!", "Error", 3000);
       }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "email", message: errors.email });
     }
   };
 
@@ -68,7 +60,6 @@ export default function Login() {
             type="email"
             placeholder="Enter your email..."
           />
-          {renderErrorMessage("email")}
           <label className="lablesize customfont1">Password</label>
           <input
             className="registerInput"
@@ -76,7 +67,6 @@ export default function Login() {
             type="password"
             placeholder="Enter your password..."
           />
-          {renderErrorMessage("pass")}
           <button className="loginButton">Login</button>
         </form>
         <a href="/register">

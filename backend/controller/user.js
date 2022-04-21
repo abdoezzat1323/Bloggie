@@ -59,12 +59,11 @@ exports.createUser = async(req, res) => {
                 .json({ success: false, data: "wrong email address." });
 
         //checking name
-        userData.displayName = req.body.displayName;
-        if (!userData.displayName)
+        userData.firstName = req.body.firstName;
+        if (!userData.firstName)
             return res.status(400).json({ success: false, data: "missing Name!" });
 
         userData.lastName = req.body.lastName;
-        userData.firstName = req.body.firstName;
 
         userData.password = req.body.password;
         if (!userData.password)
@@ -214,14 +213,26 @@ exports.isOnline = async(req, res) => {
 // login user by email (POST)
 exports.login = async(req, res) => {
     try {
+        if (!req.body.email)
+            return res
+                .status(401)
+                .json({ success: false, data: "Please enter your email!" });
+
+        if (!req.body.password)
+            return res
+                .status(401)
+                .json({ success: false, data: "Please enter password!" });
+
         let user = await User.findOne({ where: { email: req.body.email } });
         if (!user)
             return res
                 .status(404)
-                .json({ success: false, data: "user does not exist." });
+                .json({ success: false, data: "User does not exist." });
+
         let passMatches = await bcrypt.compare(req.body.password, user.password);
+
         if (!passMatches)
-            return res.status(401).json({ success: false, data: "worng password!" });
+            return res.status(401).json({ success: false, data: "Worng password!" });
         res.status(200).json({ success: true, data: user });
     } catch (err) {
         res.status(500).json({ success: false, data: err });

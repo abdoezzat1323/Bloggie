@@ -1,29 +1,23 @@
-import "./topbar.css"
-
-
-
+import "./topbar.css";
+import { NotificationContainer } from "react-notifications";
+import "react-notifications/lib/notifications.css";
 
 export default function topBar() {
-  
-
   return (
-
     <header>
+      <NotificationContainer />
       <div className="left_section">
         <i className="material-icons logo sizeleft ">menu</i>
         {/* <img className="image1" src="../../img/logo.jpg"  /> */}
-        
       </div>
       <div className="center_section">
-      <label className="logolable" >Blog</label>
+        <label className="logolable">Blog</label>
       </div>
       <div className="right_section  sizeright ">
-
-        <a href="/"><i className="material-icons">account_circle</i></a>
-        
+        <a href="/">
+          <i className="material-icons">account_circle</i>
+        </a>
       </div>
     </header>
-
-  )
+  );
 }
-
