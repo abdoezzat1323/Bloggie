@@ -3,18 +3,18 @@ module.exports = function(sequelize, DataTypes) {
     return sequelize.define(
         "comments", {
             id: {
-                autoIncrement: true,
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 primaryKey: true,
             },
-            comment: {      
-                type: DataTypes.TEXT,
-                allowNull: true,
-            },
-            timeCreated: {
-                type: DataTypes.DATE,
-                allowNull: true,
+            postId: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                allowNull: false,
+                references: {
+                    model: "posts",
+                    key: "id",
+                },
             },
             userId: {
                 type: DataTypes.INTEGER,
@@ -24,14 +24,13 @@ module.exports = function(sequelize, DataTypes) {
                     key: "id",
                 },
             },
-            postId: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-                primaryKey: true,
-                references: {
-                    model: "posts",
-                    key: "id",
-                },
+            comment: {
+                type: DataTypes.TEXT,
+                allowNull: true,
+            },
+            timeCreated: {
+                type: DataTypes.DATE,
+                allowNull: true,
             },
             parentId: {
                 type: DataTypes.INTEGER,
@@ -46,26 +45,27 @@ module.exports = function(sequelize, DataTypes) {
             tableName: "comments",
             timestamps: false,
             indexes: [{
-                name: "PRIMARY",
-                unique: true,
-                using: "BTREE",
-                fields: [{ name: "id" }],
-            },
-            {
-                name: "reacts_users_fk_idx",
-                using: "BTREE",
-                fields: [{ name: "userId" }],
-            },
-            {
-                name: "reacts_posts_fk_idx",
-                using: "BTREE",
-                fields: [{ name: "postId" }],
-            },
-            {
-                name: "coments_comments_fk_idx",
-                using: "BTREE",
-                fields: [{ name: "parentId" }],
-            }, ],
+                    name: "PRIMARY",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [{ name: "id" }],
+                },
+                {
+                    name: "reacts_users_fk_idx",
+                    using: "BTREE",
+                    fields: [{ name: "userId" }],
+                },
+                {
+                    name: "reacts_posts_fk_idx",
+                    using: "BTREE",
+                    fields: [{ name: "postId" }],
+                },
+                {
+                    name: "coments_comments_fk_idx",
+                    using: "BTREE",
+                    fields: [{ name: "parentId" }],
+                },
+            ],
         }
     );
 };
