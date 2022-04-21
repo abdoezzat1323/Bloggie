@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const { isString } = require("./utils");
 
 const db = require(dirname(require.main.filename) + "/models");
-const User = db.user;
+const User = db.users;
 
 // try{}catch(err){return res.status(500).json({"success": false ,data: err);}
 // get all users
@@ -59,13 +59,12 @@ exports.createUser = async(req, res) => {
                 .json({ success: false, data: "wrong email address." });
 
         //checking name
-        userData.firstName = req.body.firstName;
-        if (!userData.firstName)
-            return res
-                .status(400)
-                .json({ success: false, data: "missing first Name" });
+        userData.displayName = req.body.displayName;
+        if (!userData.displayName)
+            return res.status(400).json({ success: false, data: "missing Name!" });
 
         userData.lastName = req.body.lastName;
+        userData.firstName = req.body.firstName;
 
         userData.password = req.body.password;
         if (!userData.password)
