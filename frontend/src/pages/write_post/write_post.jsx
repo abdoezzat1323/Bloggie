@@ -126,7 +126,7 @@ async function postData() {
             autoFocus={true}
           />
         </div>
-        <button className="writeSubmit" onClick={postData} >
+        <button className="writeSubmit"  onClick={postData} >
           Publish
         </button>
   
