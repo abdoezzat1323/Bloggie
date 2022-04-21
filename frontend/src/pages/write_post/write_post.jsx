@@ -1,8 +1,20 @@
 import "./write.css";
 import TopBar from "../../component/topbar/TopBar";
 import React, { useRef, useState } from "react";
+import ImageUploading from 'react-images-uploading';
+
 
 export default function Write() {
+    
+  const [images, setImages] = React.useState([]);
+  const maxNumber = 69;
+
+  const onChange = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+  };
+
 
     const post_title = useRef(null);
     const post_description = useRef(null);
@@ -52,28 +64,43 @@ async function postData() {
       
     }
 
-
-        
-            
-          
-
-
-
   return (
-      <>
+    <>
       <TopBar/>
     <div className="write">
-      <img
-        className="writeImg"
-        src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-        alt=""
-      />
-        <div className="writeFormGroup">
-          <label htmlFor="fileInput">
-            <i className="writeIcon fas fa-plus"></i>
-          </label>
-          <input id="fileInput" type="file" style={{ display: "none" }} />
-          <input
+     <div className="App">
+     <ImageUploading
+      className= "writeImg"
+        multiple
+        value={images}
+        onChange={onChange}
+        maxNumber={maxNumber}
+        dataURLKey="data_url"
+      >
+        {({
+          imageList,
+          onImageUpload,
+          onImageRemoveAll,
+        }) => (
+          <div className="upload__image-wrapper">
+            <button
+            
+              onClick={onImageUpload}
+            >
+              Chose Image
+            </button>
+            <button  onClick={onImageRemoveAll}>Remove Image</button>
+            {imageList.map((image, index) => (
+              <div key={index} className="image-item">
+                <img className="writeImg" src={image['data_url']} alt=""  />
+
+              </div>
+            ))}
+          </div>
+        )}
+        </ImageUploading>
+        </div>
+        <input
             className="writeInput"
             ref={post_title}
             placeholder="write your Title"
@@ -95,7 +122,7 @@ async function postData() {
         <button className="writeSubmit" onClick={postData} >
           Publish
         </button>
-    </div>
-    </>
+  
+  </>
   );
 }
