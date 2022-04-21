@@ -2,37 +2,33 @@ import "./Login.css";
 import TopBar from "../../component/topbar/TopBar";
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+
 
 export default function Login() {
 
   const [errorMessages, setErrorMessages] = useState({});
   const navigate = useNavigate();
  
-
-
-
-  const database = [
-    {
-      email: "abdo.ezzat2345@gmail.com",
-      password: "pass1"
-    },
-    {
-      email: "user2",
-      password: "pass2"
-    }
-  ];
   const errors = {
     email: "invalid Email",
     pass: "invalid password"
   };
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     //Prevent page reload
     event.preventDefault();
 
     let { email, pass } = document.forms[0];
-     
 
-    const userData = database.find((user) => user.email === email.value);
+  // get user data 
+      try {
+        const response = await axios.get("http://127.0.0.1:5000/api/user");
+        console.log(response);
+      } catch (err){
+        console.log(err);
+        return
+    }
 
     // Compare user info
     if (userData) {
