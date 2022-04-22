@@ -32,7 +32,7 @@ export default function Login() {
         userData
       );
       navigate("/");
-      NotificationManager.success(response.data.data, "Success", 3000);
+      // NotificationManager.success(response.data.data, "Success", 3000);
     } catch (err) {
       if (err.response) {
         NotificationManager.error(err.response.data.data, "Error", 3000);
