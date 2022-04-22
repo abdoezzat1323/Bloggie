@@ -11,7 +11,8 @@ const JoditEditor = () => {
   return (
     <>
       <Editor
-        onInit={(evt, editor) => editorRef.current = editor}
+        onInit={(_evt , editor) => editorRef.current = editor}
+
       />
       <button onClick={log}>Log editor content</button>
     </>
