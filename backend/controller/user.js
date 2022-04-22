@@ -108,9 +108,9 @@ exports.createUser = async(req, res) => {
         // ====================================================================
         const tokenEmail = userData.email;
         const token = createToken(tokenEmail)
-        res.cookie('jwt', token, {httpOnly: true, maxAge: maxAge * 1000});
+        res.cookie('token', token, {httpOnly: false, maxAge: maxAge * 1000});
         // ====================================================================
-        res.status(200).json({ success: true, data: user });
+        res.status(200).json({ success: true, data: user , token: token });
 
     } catch (err) {
         console.log(err);

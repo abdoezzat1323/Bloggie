@@ -1,23 +1,14 @@
 import "./write.css";
 import TopBar from "../../component/topbar/TopBar";
 import React, { useRef, useState } from "react";
-import ImageUploading from 'react-images-uploading';
 import JoditEditor from "../../component/editor/JoditEditor";
 
 
 export default function Write() {
     
-  const [images, setImages] = React.useState([]);
   const [postContent, setPostContent] = React.useState();
 
   const maxNumber = 69;
-
-  const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-  };
-
 
     const post_title = useRef(null);
     const post_description = useRef(null);
@@ -75,36 +66,6 @@ async function postData() {
     <TopBar/>
     <div className="write">
      <div className="App">
-     <ImageUploading
-      className= "writeImg"
-        multiple
-        value={images}
-        onChange={onChange}
-        maxNumber={maxNumber}
-        dataURLKey="data_url"
-      >
-        {({
-          imageList,
-          onImageUpload,
-          onImageRemoveAll,
-        }) => (
-          <div className="upload__image-wrapper">
-            <button
-            className="button-28"
-              onClick={onImageUpload}
-            >
-              Chose Image
-            </button>
-            <button className="button-28"  onClick={onImageRemoveAll}>Remove Image</button>
-            {imageList.map((image, index) => (
-              <div key={index} className="image-item">
-                <img className="writeImg" src={image['data_url']} alt=""  />
-
-              </div>
-            ))}
-          </div>
-        )}
-        </ImageUploading>
         </div>
         <JoditEditor onChange={setPostContent} />
         <input

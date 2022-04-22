@@ -4,8 +4,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
+import Cookies from 'universal-cookie';
 
 function Register() {
+  const cookies = new Cookies();
   const [errorMessages, setErrorMessages] = useState({});
   const navigate = useNavigate();
 
@@ -13,6 +15,7 @@ function Register() {
     //Prevent page reload
     event.preventDefault();
 
+    
     let { email, firstName, lastName, password } = document.forms[0];
 
     // verify user
@@ -28,8 +31,9 @@ function Register() {
         "http://127.0.0.1:5000/api/user/",
         userData
       );
+      cookies.set('token', response.data.token, { path: '/' });
       navigate("/");
-      // NotificationManager.success(response.data.data, "Success", 3000);
+      NotificationManager.success(response.data.data, "Success", 3000);
     } catch (err) {
       if (err.response) {
         NotificationManager.error(err.response.data.data, "Error", 3000);
