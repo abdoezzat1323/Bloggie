@@ -30,12 +30,14 @@ class JoditEditor extends React.Component {
           value={this.state.content}
           onEditorChange={this.handleChange}
           init={{ 
-            plugins: 'charmap| anchor | visualchars | lists | table |emoticons | wordcount | link image code |  media | searchreplace | code tinymcespellchecker link',
-            toolbar: ' numlist bullist |emoticons | wordcount | spellchecker language spellcheckdialog | undo redo | bold italic | alignleft aligncenter alignright |fontsizeselect',
+            plugins: ' styleselect |fontsize |table wordcount |charmap| anchor | visualchars | lists | table |emoticons | wordcount | link image code |  media | searchreplace | code tinymcespellchecker link',
+            toolbar: 'styleselect |fontsize |table wordcount | numlist bullist |emoticons  | spellchecker language spellcheckdialog | undo redo | bold italic | alignleft aligncenter alignright |fontsizeselect',
             selector: 'textarea',  
             images_upload_url: 'postAcceptor.php',
             automatic_uploads: false,
             spellchecker_language: 'en',
+            font_size_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt 46pt 56pt 66pt 76pt',
+            
             content_langs: [
               { title: 'English (US)', code: 'en_US' },
               { title: 'English (US Medical)', code: 'en_US', customCode: 'en_US-medical' },
@@ -47,7 +49,8 @@ class JoditEditor extends React.Component {
               { title: 'Portuguese', code: 'pt' },
               { title: 'Chinese', code: 'zh' }
             ],
-            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+            
 
           }}
           
