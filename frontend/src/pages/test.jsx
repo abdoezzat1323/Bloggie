@@ -1,24 +1,31 @@
-// import React, { useRef } from 'react';
-// import { Editor } from '@tinymce/tinymce-react';
+// import React, { Component } from 'react';
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-// const JoditEditor = () => {
-//   const editorRef = useRef(null);
-//   const log = () => {
-//     if (editorRef.current) {
-//       console.log(editorRef.current.getContent());
+// function Ass(){
+//         return (
+//             <div className="App">
+//                 <CKEditor
+//                     editor={ ClassicEditor }
+//                     data="<p>Hello from CKEditor 5!</p>"
+//                     onReady={ editor => {
+//                         // You can store the "editor" and use when it is needed.
+//                         console.log( 'Editor is ready to use!', editor );
+//                     } }
+//                     onChange={ ( event, editor ) => {
+//                         const data = editor.getData();
+//                         console.log( { event, editor, data } );
+//                     } }
+//                     onBlur={ ( event, editor ) => {
+//                         console.log( 'Blur.', editor );
+//                     } }
+//                     onFocus={ ( event, editor ) => {
+//                         console.log( 'Focus.', editor );
+//                     } }
+//                 />
+//             </div>
+//         );
 //     }
-//   };
-//   return (
-//     <>
-//       <Editor
-//       apiKey="k2eqrahlxsate8u0hwfgncg5r8c9hag4xvkpw37dyz6mrdzb"
-//       onInit={(_evt , editor) => editorRef.current = editor}
 
-//       />
-      
-//       <button onClick={log}>Log editor content</button>
-//     </>
-//   );
-// }
 
 // export default Ass;
