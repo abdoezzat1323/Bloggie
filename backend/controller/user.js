@@ -1,10 +1,21 @@
 const { dirname } = require("path");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken")
 const { isString } = require("./utils");
 
 const db = require(dirname(require.main.filename) + "/models");
 const User = db.users;
+// ========================= for token =============================
+const jwtsecret = "When you're bored, go to the bathroom and the trtr water";
+const maxAge = 7 * 24 * 60 * 60;
+
+const createToken = (email) => {
+    return jwt.sign({email}, jwtsecret, {expiresIn: maxAge});
+}
+
+// ====================================================================
+
 
 // try{}catch(err){return res.status(500).json({"success": false ,data: err);}
 // get all users
@@ -93,7 +104,14 @@ exports.createUser = async(req, res) => {
             return res
                 .status(500)
                 .json({ success: false, data: "could not create user" });
+
+        // ====================================================================
+        const tokenEmail = userData.email;
+        const token = createToken(tokenEmail)
+        res.cookie('jwt', token, {httpOnly: true, maxAge: maxAge * 1000});
+        // ====================================================================
         res.status(200).json({ success: true, data: user });
+
     } catch (err) {
         console.log(err);
         res.status(500).json({ success: false, data: err });
@@ -125,7 +143,7 @@ exports.updateUser = async(req, res) => {
         }
 
         if (req.body.password) {
-            req.body.password = ureq.body.password.toString();
+            req.body.password = req.body.password.toString();
             // check password
             if (req.body.password.length < 8)
                 return res
