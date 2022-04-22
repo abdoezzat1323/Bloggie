@@ -2,12 +2,14 @@ import "./write.css";
 import TopBar from "../../component/topbar/TopBar";
 import React, { useRef, useState } from "react";
 import ImageUploading from 'react-images-uploading';
-// import JoditEditor from "../../component/editor/JoditEditor";
+import JoditEditor from "../../component/editor/JoditEditor";
 
 
 export default function Write() {
     
   const [images, setImages] = React.useState([]);
+  const [postContent, setPostContent] = React.useState();
+
   const maxNumber = 69;
 
   const onChange = (imageList, addUpdateIndex) => {
@@ -24,6 +26,8 @@ export default function Write() {
         return JSON.stringify(res, null, 2);
     }
 async function postData() {
+  console.log(postContent)
+
     const postData = {
     title: post_title.current.value,
     post: post_description.current.value,
@@ -65,6 +69,7 @@ async function postData() {
       
     }
 
+
   return (
     <>
     <TopBar/>
@@ -101,7 +106,7 @@ async function postData() {
         )}
         </ImageUploading>
         </div>
-        {/* <JoditEditor/> */}
+        <JoditEditor onChange={setPostContent} />
         <input
             className="writeInput"
             ref={post_title}
@@ -121,7 +126,7 @@ async function postData() {
             autoFocus={true}
           />
         </div>
-        <button className="writeSubmit" onClick={postData} >
+        <button className="writeSubmit"  onClick={postData} >
           Publish
         </button>
   

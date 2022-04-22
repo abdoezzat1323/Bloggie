@@ -1,71 +1,24 @@
-import React, { useRef, useState } from "react";
-function Writen() {
-  const baseURL = "http://localhost:8080/api";
-  const post_title = useRef(null);
-  const post_description = useRef(null);
-  const [postResult, setPostResult] = useState(null);
-  const fortmatResponse = (res) => {
-    return JSON.stringify(res, null, 2);
-  }
-  
-  async function postData() {
-    const postData = {
-      title: post_title.current.value,
-      description: post_description.current.value,
-    };
-    console.log(postData)
-    try {
-      const res = await fetch(`${baseURL}/tutorials`, {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": "token-value",
-        },
-        body: JSON.stringify(postData),
-      });
-      if (!res.ok) {
-        const message = `An error has occured: ${res.status} - ${res.statusText}`;
-        throw new Error(message);
-      }
-      const data = await res.json();
-      const result = {
-        status: res.status + "-" + res.statusText,
-        headers: {
-          "Content-Type": res.headers.get("Content-Type"),
-          "Content-Length": res.headers.get("Content-Length"),
-        },
-        data: data,
-        
-      };
-      setPostResult(fortmatResponse(result));
-    } catch (err) {
-      setPostResult(err.message);
-    }
-    
-   
-  }
-  
-  const clearPostOutput = () => {
-    setPostResult(null);
-    
-  }
- 
-  
-  return (
-    <div className="card">
-      <div className="card-header">React Fetch POST - BezKoder.com</div>
-      <div className="card-body">
-        <div className="form-group">
-          <input type="text" className="form-control" ref={post_title} placeholder="Title" />
-        </div>
-        <div className="form-group">
-          <input type="text" className="form-control" ref={post_description} placeholder="Description" />
-        </div>
-        <button className="btn btn-sm btn-primary" onClick={postData}>Post Data</button>
-        <button className="btn btn-sm btn-warning ml-2" onClick={clearPostOutput}>Clear</button>
-        { postResult && <div className="alert alert-secondary mt-2" role="alert"><pre>{postResult}</pre></div> }
-      </div>
-    </div>
-  );
-}
-export default Writen;
+// import React, { useRef } from 'react';
+// import { Editor } from '@tinymce/tinymce-react';
+
+// export default function App() {
+//   const editorRef = useRef(null);
+//   const log = () => {
+//     if (editorRef.current) {
+//       console.log(editorRef.current.getContent());
+//     }
+//   };
+//   return (
+//     <>
+//     <Editor
+//          onInit={(evt, editor) => editorRef.current = editor}
+//          initialValue="<p>This is the initial content of the editor.</p>"
+
+//        />
+//     <script src="/path/to/tinymce.min.js"></script>
+
+
+//       <button onClick={log}>Log editor content</button>
+//     </>
+//   );
+// }
