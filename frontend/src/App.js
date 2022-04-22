@@ -12,6 +12,7 @@ import {
 } from 'react-router-dom';
 import Write from "./pages/write_post/write_post";
 import Writen from "./pages/test";
+import Admin from "./pages/admin/Admin";
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/Test" element={<Test />} />
         <Route path="/write_post" element={<Write />} />
         <Route path="/write" element={<Writen />} />
+        <Route path="/admin" element={<Admin/>} />
       </Routes>
     </BrowserRouter>
   );
