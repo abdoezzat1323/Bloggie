@@ -5,8 +5,7 @@ import {BiPaintRoll,BiCommentDetail} from 'react-icons/bi';
 import {BsFiles} from 'react-icons/bs';
 import {MdSettings} from 'react-icons/md';
 import {FiLink} from 'react-icons/fi';
-import {
-    NavLink,useNavigate} from 'react-router-dom';
+import {NavLink,useNavigate} from 'react-router-dom';
 
 
 
