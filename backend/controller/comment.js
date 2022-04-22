@@ -111,41 +111,26 @@ exports.deleteComment = async(req, res) => {
         if (!comment)
             return res.status(404).json({
                 success: false,
-                data: "The comment you're trying to edit doesn't exist!",
+                data: "The comment you're trying to delete doesn't exist!",
             });
 
         if (comment.userId !== req.body.userId)
             return res.status(402).json({
                 success: false,
-                data: "You aren't allowed to edit this comment!",
+                data: "You aren't allowed to delete this comment!",
             });
 
-        if (!req.body.comment)
-            return res
-                .status(409)
-                .json({ success: false, data: "Comment is not included!" });
-
-        if (req.body.comment.length < 1)
-            return res
-                .status(409)
-                .json({ success: false, data: "Comment can't be empty!." });
-
-        let postExist = await Post.update({ comment: req.body.comment }, {
+        let deleteComment = await Comment.distroy({
             where: {
-                id: req.body.postId,
+                id: req.params.id,
             },
         });
 
-        if (!postExist)
+        if (!deleteComment[0])
             return res
                 .status(404)
-                .json({ success: false, data: "Post does not exist!" });
+                .json({ success: false, data: "Comment does not exist!" });
 
-        if (!comment)
-            return res
-                .status(500)
-                .json({ success: false, data: "Could not create comment!" });
-        console.log(comment);
         res.status(200).json({ success: true, data: "Comment is deleted!" });
     } catch (err) {
         console.log(err);
