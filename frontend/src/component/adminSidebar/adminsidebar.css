@@ -1,0 +1,50 @@
+.adminsidebar{
+    flex: 2;
+    margin: 20px;
+    padding-bottom: 30px;
+    background-color: rgb(244, 244, 244);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.adminsidebar header{
+    background-color: rgb(244, 244, 244);
+    font-size:x-large;
+    padding:0;
+    
+}
+
+.adminsidebar ul{
+    width: 80%;
+    padding: 15px 10px;
+    list-style: none;
+    align-items: center;
+}
+.ASideItem{ 
+    width: 80%;
+    padding: 15px 15px;
+    border-bottom: 1px solid gray;
+    cursor: pointer;
+    font-size: 26px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.ASideItem:hover{
+    color: orange;
+}
+
+.ADIcon{
+    margin-right: 10Px;
+    padding-top: 5px;
+}
+
+.goblog{
+    color:teal;
+    width: 80%;
+    padding: 15px 15px;
+    cursor: pointer;
+    font-size: 26px;
+    font-family: 'Oswald', sans-serif;
+}
+

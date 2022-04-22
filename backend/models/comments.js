@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     return sequelize.define(
         "comments", {
             id: {
+                autoIncrement: true,
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 primaryKey: true,
@@ -30,11 +31,12 @@ module.exports = function(sequelize, DataTypes) {
             },
             timeCreated: {
                 type: DataTypes.DATE,
-                allowNull: true,
+                defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
             },
             parentId: {
                 type: DataTypes.INTEGER,
                 allowNull: true,
+                default: null,
                 references: {
                     model: "comments",
                     key: "id",
@@ -51,12 +53,12 @@ module.exports = function(sequelize, DataTypes) {
                     fields: [{ name: "id" }],
                 },
                 {
-                    name: "reacts_users_fk_idx",
+                    name: "comments_users_fk_idx",
                     using: "BTREE",
                     fields: [{ name: "userId" }],
                 },
                 {
-                    name: "reacts_posts_fk_idx",
+                    name: "comments_posts_fk_idx",
                     using: "BTREE",
                     fields: [{ name: "postId" }],
                 },

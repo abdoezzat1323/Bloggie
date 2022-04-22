@@ -13,6 +13,7 @@ module.exports = function(sequelize, DataTypes) {
             userId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
+                primaryKey: true,
                 references: {
                     model: "users",
                     key: "id",
@@ -21,6 +22,7 @@ module.exports = function(sequelize, DataTypes) {
             postId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
+                primaryKey: true,
                 references: {
                     model: "posts",
                     key: "id",
