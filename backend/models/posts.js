@@ -8,8 +8,16 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false,
                 primaryKey: true,
             },
+            userId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: "users",
+                    key: "id",
+                },
+            },
             title: {
-                type: DataTypes.STRING(45),
+                type: DataTypes.STRING(2048),
                 allowNull: true,
             },
             category: {
@@ -18,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
             },
             timeCreated: {
                 type: DataTypes.DATE,
-                allowNull: true,
+                defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
             },
             isPrivate: {
                 type: DataTypes.CHAR(1),
@@ -28,29 +36,22 @@ module.exports = function(sequelize, DataTypes) {
                 type: DataTypes.TEXT,
                 allowNull: true,
             },
-            userId: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-                references: {
-                    model: "users",
-                    key: "id",
-                },
-            },
         }, {
             sequelize,
             tableName: "posts",
             timestamps: false,
             indexes: [{
-                name: "PRIMARY",
-                unique: true,
-                using: "BTREE",
-                fields: [{ name: "id" }],
-            },
-            {
-                name: "posts_users_fk_idx",
-                using: "BTREE",
-                fields: [{ name: "userId" }],
-            }, ],
+                    name: "PRIMARY",
+                    unique: true,
+                    using: "BTREE",
+                    fields: [{ name: "id" }],
+                },
+                {
+                    name: "posts_users_fk_idx",
+                    using: "BTREE",
+                    fields: [{ name: "userId" }],
+                },
+            ],
         }
     );
 };
