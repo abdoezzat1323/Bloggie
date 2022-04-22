@@ -9,12 +9,20 @@ const env = process.env.NODE_ENV || "development";
 const db = {};
 const mysql = require("mysql2");
 
+const connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: "",
+});
+
 const sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PASSWORD, {
         host: process.env.DB_HOST,
         dialect: "mysql",
+        engine: "MYISAM ",
         pool: {
             max: 5,
             min: 0,
@@ -24,12 +32,6 @@ const sequelize = new Sequelize(
     }
 );
 
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: "",
-});
 connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`);
 fs.readdirSync(__dirname)
     .filter((file) => {

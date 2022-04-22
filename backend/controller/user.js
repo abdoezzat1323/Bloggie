@@ -143,7 +143,7 @@ exports.updateUser = async(req, res) => {
         }
 
         if (req.body.password) {
-            req.body.password = ureq.body.password.toString();
+            req.body.password = req.body.password.toString();
             // check password
             if (req.body.password.length < 8)
                 return res
