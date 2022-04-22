@@ -20,10 +20,6 @@ module.exports = function(sequelize, DataTypes) {
                 type: DataTypes.STRING(2048),
                 allowNull: true,
             },
-            category: {
-                type: DataTypes.STRING(45),
-                allowNull: true,
-            },
             timeCreated: {
                 type: DataTypes.DATE,
                 defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),

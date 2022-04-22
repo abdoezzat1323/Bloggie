@@ -45,3 +45,109 @@ exports.createPost = async(req, res) => {
         res.status(500).json({ success: false, data: err });
     }
 };
+
+// edit post (PATCH)
+exports.editPost = async(req , res) => {
+    try {
+        // check if post exist
+        let post = await Post.count({ where: { id: parseInt(req.params.id) } });
+        if (!post)
+            return res
+                .status(404)
+                .json({ success: false, data: "post does not exist." });
+        
+        if (req.body.userId)
+            {
+            let user = await User.count({
+                where: {
+                    id: req.body.userId,
+                },
+            });
+            
+            let isAdmin = User.count({
+                where: {
+                    id: req.body.userId,
+                    isAdmin: true,
+                },
+            });
+            
+            console.log(user);
+            if (!user)
+                return res
+                    .status(404)
+                    .json({ success: false, data: "user does not exist." });
+                    
+                // checking if not admin .
+            if (!isAdmin)
+                return res
+                    .status(400)
+                    .json({ success: false, data: "You are not allowed to edit posts." });
+        }
+        
+        let result = await Post.update(req.body, {
+            where: { id: parseInt(req.params.id) },
+        });
+        
+        if (!result[0])
+            return res
+                .status(400)
+                .json({ success: false, data: "could not update question data" });
+        res.status(200).json({ success: true, data: "question updated!" });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ success: false, data: err });
+    }
+};
+
+
+// delete post (POST)
+exports.deletePost = async(req , res) => {
+    try {
+        // check if post exist
+        let post = await Post.count({ where: { id: parseInt(req.params.id) } });
+        if (!post)
+            return res
+                .status(404)
+                .json({ success: false, data: "post does not exist." });
+        
+        let result = await Post.destroy({ where: { id: parseInt(req.params.id) }
+        });
+        
+        if (!result)
+            return res
+                .status(400)
+                .json({ success: false, data: "could not delete post data" });
+        res.status(200).json({ success: true, data: "delete updated!" });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ success: false, data: err });
+    }
+};
+
+// get post by id (GET)
+exports.getPost = async(req, res) => {
+    try {
+        let post = await Post.findOne({ where: { id: parseInt(req.params.id) } });
+        if (!post)
+            return res
+                .status(404)
+                .json({ success: false, data: "post does not exist." });
+        res.status(200).json({ success: true, data: post });
+    } catch (err) {
+        res.status(500).json({ success: false, data: err });
+    }
+};
+
+// get all posts
+exports.getPosts = async(req, res) => {
+    try {
+        let posts = await Post.findAll();
+        if (!posts)
+            return res
+                .status(404)
+                .json({ success: false, data: "could not get data." });
+        res.status(200).json({ success: true, data: posts });
+    } catch (err) {
+        res.status(500).json({ success: false, data: { success: false, data: err } });
+    }
+};
