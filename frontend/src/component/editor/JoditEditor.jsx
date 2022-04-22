@@ -26,6 +26,7 @@ class JoditEditor extends React.Component {
     return (
       <form className="body11" onSubmit={this.handleSubmit}>
         <Editor
+        
           apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
           value={this.state.content}
           onEditorChange={this.handleChange}
@@ -56,7 +57,7 @@ class JoditEditor extends React.Component {
           
         />
         <br />
-        <input className="input11" type="submit" value="Submit" />
+        <button className="input11"  type="submit" value="Submit" > Post </button>
       </form>
     );
   }

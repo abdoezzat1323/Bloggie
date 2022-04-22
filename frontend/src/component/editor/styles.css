@@ -1,14 +1,25 @@
 
-  .input11 {
-    background-color: #0c74db;
-    border: none;
-    color: white;
-    padding: 12px 28px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 4px;
-    margin: 0rem 0rem 0rem 0rem;
-  }
-  
+.input11 {
+  background-color: #0c74db;
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  margin: 0rem 0rem 0rem 0rem;
+}
+
+.editable p {
+  color: #0C74DB;
+}
+
+table {
+  width: 100%; max-width: 600px; padding: 20px;
+}
+
+td {
+  background-color: #eeeeee; font-size: 14px; padding: 16px; font-family: Verdana, Geneva, sans-serif; border-radius: 25px;
+}

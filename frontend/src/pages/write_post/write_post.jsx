@@ -1,5 +1,6 @@
 import "./write.css";
 import TopBar from "../../component/topbar/TopBar";
+import Write_PostSideBar from "../../component/write_postSidebar/write_postSideBar"
 import React, { useRef, useState } from "react";
 import JoditEditor from "../../component/editor/JoditEditor";
 
@@ -64,32 +65,12 @@ async function postData() {
   return (
     <>
     <TopBar/>
-    <div className="write">
-     <div className="App">
-        </div>
-        <JoditEditor onChange={setPostContent} />
-        <input
-            className="writeInput"
-            ref={post_title}
-            placeholder="write your Title"
-            type="text"
-
-            autoFocus={true}
-          />
-        </div>
-        <div className="writeFormGroup">
-          <textarea
-            className="writeInput writeText"
-            placeholder="Tell your story..."
-            type="text"
-            ref={post_description}
-
-            autoFocus={true}
-          />
-        </div>
-        <button className="writeSubmit"  onClick={postData} >
-          Publish
-        </button>
+    <div className="writeWar" >
+            <Write_PostSideBar/>
+     <div className="writeontent" >
+        <JoditEditor  />
+      </div> 
+    </div> 
   
   </>
   );
