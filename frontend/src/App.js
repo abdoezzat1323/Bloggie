@@ -31,7 +31,7 @@ function App() {
         {/* <Route path="/Test" element={<Test />} /> */}
         <Route path="/write_post" element={<Write />} />
         <Route path="/write" element={<Writen />} />
-        <Route path="/admin" element={<Admin/>} />
+        <Route path="/admin/*" element={<Admin/>} />
         {/* <Route path="/write" element={< JoditEditor />} /> */}
         {/* <Route path="/test" element={< Ass />} /> */}
       </Routes>

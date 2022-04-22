@@ -30,9 +30,7 @@
     font-family: 'Oswald', sans-serif;
 }
 
-.ASideItem:hover{
-    color: orange;
-}
+
 
 .ADIcon{
     margin-right: 10Px;
@@ -47,4 +45,19 @@
     font-size: 26px;
     font-family: 'Oswald', sans-serif;
 }
+
+a{
+    color: #000;
+}
+.adminsidebar a:hover{
+    color: orange;
+}
+.active{
+    color: orange;
+}
+.adminsidebar a{
+    text-decoration: none;
+    
+}
+
 
