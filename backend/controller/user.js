@@ -1,24 +1,11 @@
 const { dirname } = require("path");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const { isString } = require("./utils");
-require("dotenv").config();
+const { isString, createToken } = require("./utils");
 
 const db = require(dirname(require.main.filename) + "/models");
 const User = db.users;
-// ========================= for token =============================
-const jwtsecret = process.env.SECRET;
-// const maxAge = 7 * 24 * 60 * 60;
 
-const createToken = (id) => {
-    // return jwt.sign({ id }, jwtsecret, { expiresIn: maxAge });
-    return jwt.sign({ id }, jwtsecret);
-};
-
-// ====================================================================
-
-// try{}catch(err){return res.status(500).json({"success": false ,data: err);}
 // get all users
 exports.getUsers = async(req, res) => {
     try {
@@ -128,12 +115,9 @@ exports.createUser = async(req, res) => {
                 .status(500)
                 .json({ success: false, data: "could not create user" });
 
-        // ====================================================================
-        const tokenId = user.id;
-        const token = createToken(tokenId);
-        res.cookie("token", token, { httpOnly: true, maxAge: 900000 });
-        // ====================================================================
-        res.status(200).json({ success: true, data: user, token: token });
+        const token = createToken(user.id);
+
+        res.status(200).json({ success: true, data: { token: token } });
     } catch (err) {
         console.log(err);
         res.status(500).json({ success: false, data: err });
