@@ -11,7 +11,7 @@ router.get("/testing", (req, res) => {});
 router.get("/", userContoller.getUsers);
 router.post("/", userContoller.createUser);
 router.get("/:id", requireAuth, userContoller.getUser);
-router.patch("/:id", userContoller.updateUser);
+router.patch("/:id", requireAuth, userContoller.updateUser);
 router.get("/:id/online", userContoller.isOnline);
 router.post("/:id/online", userContoller.setOnline);
 router.get("/:id/activated", userContoller.isActivated);
