@@ -248,6 +248,7 @@ exports.login = async(req, res) => {
                 .json({ success: false, data: "Please enter password!" });
 
         let user = await User.findOne({ where: { email: req.body.email } });
+
         if (!user)
             return res
                 .status(404)
@@ -257,11 +258,24 @@ exports.login = async(req, res) => {
 
         if (!passMatches)
             return res.status(401).json({ success: false, data: "Worng password!" });
+        // ========================== for login ==========================================
+        const tokenId = user.id;
+        const token = createToken(tokenId);
+        res.cookie("token", token, { httpOnly: true, maxAge: 900000 });
+        // ====================================================================
         res.status(200).json({ success: true, data: user });
     } catch (err) {
         res.status(500).json({ success: false, data: err });
     }
 };
+
+// ======================== logout =====================================
+exports.logout = async(req, res) => {
+    res.clearCookie("token");
+    res.redirect("/api/");
+};
+
+// =====================================================================
 
 // set user activated (SET by id)
 exports.activate = async(req, res) => {
