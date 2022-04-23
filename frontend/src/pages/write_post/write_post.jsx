@@ -66,7 +66,7 @@ async function postData() {
     <>
     <TopBar/>
     <div className="writeWar" >
-            <Write_PostSideBar/>
+        <Write_PostSideBar/>
      <div className="writeontent" >
         <JoditEditor  />
       </div> 

@@ -1,21 +1,21 @@
 import React from 'react';
 import {FaComments} from 'react-icons/fa';
-import {AiFillHome,AiFillLayout,} from 'react-icons/ai';
+import {AiFillLayout,} from 'react-icons/ai';
 import {IoIosAddCircleOutline} from 'react-icons/io';
-import {RiAdminLine,RiSettings4Line} from "react-icons/ri";
+import {RiAdminLine,RiSettings4Line,RiFilePaperLine} from "react-icons/ri";
 
 
 
 
 export const SidebarData = [
   {
-    title: 'Home',
+    title: 'Posts',
     path: '/',
-    icon: <AiFillHome />,
+    icon: <RiFilePaperLine />,
     cName: 'nav-text'
   },
   {
-    title: '+ Write Post',
+    title: 'Write Post',
     path: '/write_post',
     icon: <IoIosAddCircleOutline />,
     cName: 'nav-text'
