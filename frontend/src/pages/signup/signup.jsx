@@ -71,7 +71,7 @@ function Register() {
         </form>
         <a href="/login">
           {" "}
-          <button className="registerLoginButton ">Login</button>
+          <button className="secondAuthButton ">Login</button>
         </a>
       </div>
     </>

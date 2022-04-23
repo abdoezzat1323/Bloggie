@@ -1,6 +1,11 @@
 import config from "../config.json";
 import axios from "axios";
-import { showError, setTokenCookie, getTokenCookie } from "./helperService";
+import {
+    showError,
+    setTokenCookie,
+    getTokenCookie,
+    removeTokenCookie,
+} from "./helperService";
 
 const endPoint = config.API_URL + "/auth/login";
 
@@ -20,11 +25,11 @@ export async function login(loginData) {
     }
 }
 
-export async function logout() {
-    setTokenCookie(null);
+export function logout() {
+    removeTokenCookie();
 }
 
-export async function isLoggedIn() {
+export function isLoggedIn() {
     console.log(getTokenCookie());
     return getTokenCookie();
 }
