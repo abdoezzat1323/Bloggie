@@ -10,7 +10,6 @@ module.exports = function(sequelize, DataTypes) {
             },
             postId: {
                 type: DataTypes.INTEGER,
-                primaryKey: true,
                 allowNull: false,
                 references: {
                     model: "posts",
