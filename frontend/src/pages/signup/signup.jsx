@@ -8,9 +8,8 @@ import Cookies from "universal-cookie";
 
 function Register() {
   const cookies = new Cookies();
-  const [errorMessages, setErrorMessages] = useState({});
   const navigate = useNavigate();
-
+  console.log(cookies.get("token"));
   const handleSubmit = async (event) => {
     //Prevent page reload
     event.preventDefault();
@@ -30,10 +29,9 @@ function Register() {
         "http://127.0.0.1:5000/api/user/",
         userData
       );
-
+      NotificationManager.success(response.data.data, "Success", 3000);
       cookies.set("token", response.data.token, { path: "/" });
       navigate("/");
-      NotificationManager.success(response.data.data, "Success", 3000);
     } catch (err) {
       if (err.response) {
         NotificationManager.error(err.response.data.data, "Error", 3000);
