@@ -1,18 +1,18 @@
-import Header from '../../component/header/Header'
-import Postes from '../../component/posts/Postes'
+import Header from "../../component/header/Header";
+import Postes from "../../component/posts/Postes";
+import Grid from "../../component/grid/Grid";
 
-import './home.css'
+import "./home.css";
 import TopBar from "../../component/topbar/TopBar";
 
 export default function Home() {
   return (
     <>
-    <TopBar/>
-    <Header />
-    <div className='home'>
-      <Postes />
- 
-    </div>
+      <TopBar />
+      {/* <Header /> */}
+      <div className="homePostsDiv">
+        <Grid />
+      </div>
     </>
-  )
+  );
 }

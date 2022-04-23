@@ -1,3 +1,7 @@
-.home{
+.home {
     display: flex;
+}
+
+.homePostsDiv {
+    margin: 20px;
 }

@@ -6,9 +6,7 @@ import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 import Write from "./pages/write_post/write_post";
 import Writen from "./pages/test";
 import Admin from "./pages/admin/Admin";
-import Grid from "./pages/grid/grid";
-// import JoditEditor from "./component/editor/JoditEditor";
-// import Ass from "./pages/test";
+import Grid from "./component/grid/Grid";
 
 function App() {
   const user = false;
