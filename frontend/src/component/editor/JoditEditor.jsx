@@ -5,7 +5,7 @@ import { Editor } from "@tinymce/tinymce-react";
 class JoditEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { content: "" };
+    this.state = { content:""};
     
 
     this.handleChange = this.handleChange.bind(this);

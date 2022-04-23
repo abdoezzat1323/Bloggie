@@ -1,0 +1,18 @@
+.imageeddit{
+    width: 250px;
+}
+.dowenfromline{
+    margin-top: 30px;
+    align-items: center;
+    
+}
+.inputimage {
+    background-color: #0c74db;
+    transition: background-color 0.2s;
+    color: white;
+
+  }
+  
+  .inputimage:hover{
+    background-color: #4188ce;
+  }

@@ -11280,18 +11280,19 @@ kendo-sortable {
 
 }
 ::-webkit-input-placeholder {
-    font-family: 'Lobster', cursive;
-    font-size: 25px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
   }
 .lable1{ 
     margin-top: 60px;
     
 }  
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap');
 .label2{
     margin-left: 40px;
     font-size: 20px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Oswald', sans-serif;
    
 }
 
