@@ -10,6 +10,7 @@ module.exports = function(sequelize, DataTypes) {
             },
             postId: {
                 type: DataTypes.INTEGER,
+                onDelete: 'CASCADE',
                 allowNull: false,
                 references: {
                     model: "posts",
@@ -18,6 +19,7 @@ module.exports = function(sequelize, DataTypes) {
             },
             userId: {
                 type: DataTypes.INTEGER,
+                onDelete: 'CASCADE',
                 allowNull: false,
                 references: {
                     model: "users",
@@ -34,6 +36,7 @@ module.exports = function(sequelize, DataTypes) {
             },
             parentId: {
                 type: DataTypes.INTEGER,
+                onDelete: 'CASCADE',
                 allowNull: true,
                 default: null,
                 references: {
