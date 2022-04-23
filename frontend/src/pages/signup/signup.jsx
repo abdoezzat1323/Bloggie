@@ -1,11 +1,13 @@
 import TopBar from "../../component/topbar/TopBar";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { signup } from "../../services/userService";
+import { isLoggedIn } from "../../services/authService";
 import "./signup.css";
 
 function Register() {
   const navigate = useNavigate();
+  if (isLoggedIn()) navigate("/");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,7 +27,9 @@ function Register() {
     }
   };
 
-  return (
+  return isLoggedIn() ? (
+    <Navigate to="/" />
+  ) : (
     <>
       <TopBar />
       <div className="register">

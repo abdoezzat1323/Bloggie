@@ -1,11 +1,12 @@
 import TopBar from "../../component/topbar/TopBar";
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { login } from "../../services/authService";
+import { useNavigate, Navigate } from "react-router-dom";
+import { login, isLoggedIn } from "../../services/authService";
 import "./Login.css";
 
 export default function Login() {
   const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -20,7 +21,9 @@ export default function Login() {
     if (res) navigate("/");
   };
 
-  return (
+  return isLoggedIn() ? (
+    <Navigate to="/" />
+  ) : (
     <>
       <TopBar />
       <div className="login">

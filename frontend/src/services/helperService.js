@@ -9,3 +9,8 @@ export function setTokenCookie(token) {
     const cookies = new Cookies();
     cookies.set("token", token, { path: "/" });
 }
+
+export function getTokenCookie() {
+    const cookies = new Cookies();
+    return cookies.get("token");
+}

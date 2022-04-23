@@ -1,14 +1,13 @@
 import config from "../config.json";
 import axios from "axios";
-import { showError, setTokenCookie } from "./helperService";
+import { showError, setTokenCookie, getTokenCookie } from "./helperService";
 
 const endPoint = config.API_URL + "/auth/login";
 
 export async function login(loginData) {
     try {
         const response = await axios.post(endPoint, loginData);
-        console.log(response.data);
-        setTokenCookie(response.data.token);
+        setTokenCookie(response.data.data.token);
         return true;
     } catch (err) {
         if (err.response) {
@@ -23,4 +22,9 @@ export async function login(loginData) {
 
 export async function logout() {
     setTokenCookie(null);
+}
+
+export async function isLoggedIn() {
+    console.log(getTokenCookie());
+    return getTokenCookie();
 }

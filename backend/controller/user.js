@@ -236,46 +236,32 @@ exports.isOnline = async(req, res) => {
 
 // login user by email (POST)
 exports.login = async(req, res) => {
-    try {
-        if (!req.body.email)
-            return res
-                .status(401)
-                .json({ success: false, data: "Please enter your email!" });
+    if (!req.body.email)
+        return res
+            .status(401)
+            .json({ success: false, data: "Please enter your email!" });
 
-        if (!req.body.password)
-            return res
-                .status(401)
-                .json({ success: false, data: "Please enter password!" });
+    if (!req.body.password)
+        return res
+            .status(401)
+            .json({ success: false, data: "Please enter password!" });
 
-        let user = await User.findOne({ where: { email: req.body.email } });
+    let user = await User.findOne({ where: { email: req.body.email } });
 
-        if (!user)
-            return res
-                .status(404)
-                .json({ success: false, data: "User does not exist." });
+    if (!user)
+        return res
+            .status(404)
+            .json({ success: false, data: "User does not exist." });
 
-        let passMatches = await bcrypt.compare(req.body.password, user.password);
+    let passMatches = await bcrypt.compare(req.body.password, user.password);
 
-        if (!passMatches)
-            return res.status(401).json({ success: false, data: "Worng password!" });
-        // ========================== for login ==========================================
-        const tokenId = user.id;
-        const token = createToken(tokenId);
-        res.cookie("token", token, { httpOnly: true, maxAge: 900000 });
-        // ====================================================================
-        res.status(200).json({ success: true, data: user });
-    } catch (err) {
-        res.status(500).json({ success: false, data: err });
-    }
+    if (!passMatches)
+        return res.status(401).json({ success: false, data: "Worng password!" });
+
+    const token = createToken(user.id);
+
+    res.status(200).json({ success: true, data: { token: token } });
 };
-
-// ======================== logout =====================================
-exports.logout = async(req, res) => {
-    res.clearCookie("token");
-    res.redirect("/api/");
-};
-
-// =====================================================================
 
 // set user activated (SET by id)
 exports.activate = async(req, res) => {
@@ -286,12 +272,12 @@ exports.activate = async(req, res) => {
             if (!user)
                 return res
                     .status(404)
-                    .json({ success: false, data: "user does not exist." });
+                    .json({ success: false, data: "User does not exist." });
             return res
                 .status(409)
                 .json({ success: false, data: "Already activated." });
         }
-        res.status(200).json({ success: false, data: "activated" });
+        res.status(200).json({ success: false, data: "Activated" });
     } catch (err) {
         res.status(500).json({ success: false, data: err });
     }
@@ -304,7 +290,7 @@ exports.isActivated = async(req, res) => {
         if (!user)
             return res
                 .status(404)
-                .json({ success: false, data: "user does not exist." });
+                .json({ success: false, data: "User does not exist." });
         res.status(200).json({ success: true, data: user.activated });
     } catch (err) {
         res.status(500).json({ success: false, data: err });
