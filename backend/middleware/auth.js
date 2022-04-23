@@ -1,22 +1,22 @@
 const JWT = require("jsonwebtoken");
+require("dotenv").config();
 
 const requireAuth = (req, res, next) => {
-  const TOKEN = req.cookies.token;
-  const jwtsecret = "When you're bored, go to the bathroom and the trtr water";
-
-  // check exists (verified)
-  if (TOKEN) {
-    JWT.verify(TOKEN, jwtsecret, (err, decodedTOken) => {
-      if (err) {
-        console.log(err.message);
-        res.redirect("/auth/login");
-      } else {
-        console.log(decodedTOken);
-        next();
-      }
-    });
-  } else {
-    res.redirect("/auth/login");
-  }
+    req.body.userId = null;
+    const TOKEN = req.cookies.token;
+    if (TOKEN) {
+        JWT.verify(TOKEN, process.env.SECRET, (err, decodedToken) => {
+            if (err) {
+                console.log(err.message);
+                return res
+                    .status(401)
+                    .json({ success: false, data: "Please login first" });
+            }
+            req.body.userId = decodedToken.id;
+            next();
+        });
+    } else {
+        return res.status(401).json({ success: false, data: "Please login first" });
+    }
 };
-module.exports = { requireAuth };
+module.exports = requireAuth;
