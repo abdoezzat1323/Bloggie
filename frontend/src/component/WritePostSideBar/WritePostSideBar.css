@@ -1,11 +1,4 @@
 .write_postsidebar {
-    flex: 2;
-    margin: 20px;
-    padding-bottom: 30px;
-    background-color: rgb(244, 244, 244);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
     text-align: center;
 }
 
@@ -17,9 +10,14 @@
 
 .write_postsidebar ul {
     width: 80%;
-    padding: 15px 10px;
     list-style: none;
     align-items: center;
+}
+
+.MainWriteSideBar {
+    text-align: center;
+    padding-top: 30px;
+    padding-left: 35px;
 }
 
 .WSideItem {
@@ -64,4 +62,8 @@
     background-color: rgb(8, 163, 163);
     color: white;
     transition: background-color 0.2s;
+}
+
+.sideDiv {
+    margin-bottom: 30px;
 }

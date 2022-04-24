@@ -1,6 +1,7 @@
 import "./WritePostSideBar.css";
 import React, { useState } from "react";
-import UploadImage from "../image_upload/ImagUpload";
+import UploadImage from "../imageUpload/ImageUpload";
+import TagSelector from "../tagSelector/TagSelector";
 
 export default function WritePostSideBar() {
   const sports = [
@@ -15,21 +16,23 @@ export default function WritePostSideBar() {
   ];
 
   const [title, setTitle] = useState("");
-  const [images, setImages] = React.useState(null);
+  const [featuredImage, setFeaturedImage] = React.useState(null);
 
   return (
-    <div className="write_postsidebar ">
-      <div>
+    <div className="MainWriteSideBar">
+      <div className="sideDiv">
         {" "}
         <button className="publishButton" type="button">
           Publish
         </button>
       </div>
+      <div className="sideDiv">
+        <UploadImage title={"Featured Image"} getImage={setFeaturedImage} />
+      </div>
 
-      <UploadImage title={"Featured Image"} getImage={setImages} />
-
-      <div className="lable1 write_postsidebar">
+      <div className="sideDiv">
         <label className="sidebarTitle ">Categories</label>
+        <TagSelector />
       </div>
       <button type="button" onClick={() => alert(title)} className="input11">
         Save

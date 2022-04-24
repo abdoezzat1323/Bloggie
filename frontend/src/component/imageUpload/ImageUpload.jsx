@@ -1,6 +1,7 @@
-import "./ImagUpload.css";
+import "./ImageUpload.css";
 import React, { useRef, useState } from "react";
 import { uploadImage } from "../../services/uploadService";
+import { FaUpload } from "react-icons/fa";
 
 export default function UploadImage(props) {
   const [img, setImg] = useState();
@@ -34,7 +35,7 @@ export default function UploadImage(props) {
           className="inputImageButton"
           onClick={() => image.current.click()}
         >
-          Choose File{" "}
+          <FaUpload className="upIcon" />
         </button>
         {img && (
           <button className="closeButton" onClick={reset}>
