@@ -72,10 +72,7 @@ header {
     transition: background-color 0.2s;
 }
 
-.registerButton:hover {
-    background-color: rgb(13, 172, 172);
-}
-
+transition: background-color 0.2s;
 .loginButton {
     margin-top: 30px;
     cursor: pointer;

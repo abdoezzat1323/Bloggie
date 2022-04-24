@@ -3,6 +3,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
+const morgan = require("morgan");
 
 const apiRouter = require("./routes/api");
 
@@ -13,7 +14,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(cors({}));
+
+//for uploaded images
+app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
+app.use(
+    cors({
+        origin: ["http://localhost:3000"],
+        credentials: true,
+    })
+);
+app.use(morgan("dev"));
 
 app.use("/api", apiRouter);
 
