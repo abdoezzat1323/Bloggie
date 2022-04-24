@@ -2,10 +2,8 @@ const JWT = require("jsonwebtoken");
 require("dotenv").config();
 
 const requireAuth = (req, res, next) => {
-    console.log(req.headers);
     req.body.userId = null;
-    const TOKEN = req.headers["x-auth-token"];
-    console.log(req.cookies);
+    const TOKEN = req.cookies.token;
     if (TOKEN) {
         JWT.verify(TOKEN, process.env.SECRET, (err, decodedToken) => {
             if (err) {

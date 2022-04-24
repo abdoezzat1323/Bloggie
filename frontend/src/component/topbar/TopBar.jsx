@@ -1,43 +1,28 @@
 import "./topbar.css";
 import { NotificationContainer } from "react-notifications";
 import "react-notifications/lib/notifications.css";
-import { FiLogOut, FiLogIn } from "react-icons/fi";
-import { logout, isLoggedIn } from "../../services/authService";
-
-import Navbar from "../sidebar/Navbar";
+import { FiLogOut } from "react-icons/fi";
+import { BiHomeHeart } from "react-icons/bi";
 
 export default function topBar() {
-  let AuthButton, AuthLabel, AuthHref, AuthOn;
-
-  if (isLoggedIn()) {
-    AuthButton = (
-      <a href="/" onClick={logout}>
-        <div className="headerItem">
-          <span className="headerLabel"> Logout </span>
-          <FiLogOut className="headerIcon"></FiLogOut>
-        </div>
-      </a>
-    );
-  } else {
-    AuthButton = (
-      <a href="/login">
-        <div className="headerItem">
-          <span className="headerLabel"> Login </span>
-          <FiLogIn className="headerIcon"></FiLogIn>
-        </div>
-      </a>
-    );
-  }
   return (
     <header>
       <NotificationContainer />
       <div className="left_section sizeleft">
-        <Navbar />
+        {/* <a className="headerLabel" href="/">
+          <BiHomeHeart className="headerIcon"></BiHomeHeart>
+        </a> */}
+        {/* <i className="material-icons logo sizeleft ">menu</i> */}
+        {/* <img className="image1" src="../../img/logo.jpg"  /> */}
       </div>
       <div className="center_section">
         <label className="logolable">Blog</label>
       </div>
-      <div className="right_section  sizeright ">{AuthButton}</div>
+      <div className="right_section  sizeright ">
+        <a className="headerLabel" href="/">
+          <FiLogOut className="headerIcon"></FiLogOut>
+        </a>
+      </div>
     </header>
   );
 }

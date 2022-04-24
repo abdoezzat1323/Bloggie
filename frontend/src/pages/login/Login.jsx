@@ -1,29 +1,53 @@
-import TopBar from "../../component/topbar/TopBar";
-import React from "react";
-import { useNavigate, Navigate } from "react-router-dom";
-import { login, isLoggedIn } from "../../services/authService";
 import "./Login.css";
+import TopBar from "../../component/topbar/TopBar";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { NotificationManager } from "react-notifications";
+import axios from "axios";
 
 export default function Login() {
+  const [errorMessages, setErrorMessages] = useState({});
   const navigate = useNavigate();
 
+  const errors = {
+    409: "Email already exist!",
+    pass: "invalid password",
+  };
+
   const handleSubmit = async (event) => {
+    //Prevent page reload
     event.preventDefault();
 
     let { email, pass } = document.forms[0];
 
+    // verify user
     let userData = {
       email: email.value,
       password: pass.value,
     };
 
-    let res = await login(userData);
-    if (res) navigate("/");
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/api/auth/login",
+        userData
+      );
+      navigate("/");
+      // NotificationManager.success(response.data.data, "Success", 3000);
+    } catch (err) {
+      if (err.response) {
+        NotificationManager.error(err.response.data.data, "Error", 3000);
+      } else {
+        NotificationManager.error("Server is down!", "Error", 3000);
+      }
+    }
   };
 
-  return isLoggedIn() ? (
-    <Navigate to="/" />
-  ) : (
+  // Generate JSX code for error message
+  const renderErrorMessage = (name) =>
+    name === errorMessages.name && (
+      <div className="error">{errorMessages.message}</div>
+    );
+  return (
     <>
       <TopBar />
       <div className="login">
@@ -46,7 +70,7 @@ export default function Login() {
           <button className="loginButton">Login</button>
         </form>
         <a href="/register">
-          <button className="secondAuthButton">Register</button>
+          <button className="loginRegisterButton">Register</button>
         </a>
       </div>
     </>
