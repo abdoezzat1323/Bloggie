@@ -25,12 +25,8 @@ module.exports = function(sequelize, DataTypes) {
                 type: DataTypes.STRING(512),
                 allowNull: true,
             },
-            timeCreated: {
-                type: DataTypes.DATE,
-                defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
-            },
             isPrivate: {
-                type: DataTypes.CHAR(1),
+                type: DataTypes.BOOLEAN,
                 allowNull: true,
             },
             body: {
@@ -40,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
         }, {
             sequelize,
             tableName: "posts",
-            timestamps: false,
+            timestamps: true,
             indexes: [{
                     name: "PRIMARY",
                     unique: true,
