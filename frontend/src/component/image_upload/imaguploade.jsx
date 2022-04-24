@@ -1,75 +1,112 @@
 import "./imaguploade.css";
-import React from "react";
-import ImageUploading from "react-images-uploading";
+import React, { useRef, useState } from "react";
 import { uploadImage } from "../../services/uploadService";
 
-export default function UploadImage() {
-  const [images, setImages] = React.useState(null);
+export default function UploadImage(props) {
+  const [img, setImg] = useState();
 
-  const onChange = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
+  const image = useRef();
+
+  const onChange = (event) => {
+    const [file] = event.target.files;
+    setImg(URL.createObjectURL(file));
+    uploadImage(file);
+  };
+
+  const reset = (event) => {
+    setImg(null);
+    image.current.value = null;
   };
 
   return (
-    <div className="App">
-      <ImageUploading value={images} onChange={onChange} dataURLKey="data_url">
-        {({
-          imageList,
-          onImageUpload,
-          onImageUpdate,
-          onImageRemove,
-          isDragging,
-          dragProps,
-        }) => (
-          <div className="upload__image-wrapper">
-            <select
-              className="dowenfromline inputimage "
-              type="file"
-              onClick={onImageUpload}
-              {...dragProps}
-            >
-              Chose your photo
-            </select>
-            &nbsp;
-            {imageList.map((image, index) => (
-              <div key={index} className="image-item">
-                <img src={image["data_url"]} alt="" width="100" />
-                <div className="image-item__btn-wrapper">
-                  <button
-                    className="inputimage"
-                    onClick={() => onImageUpdate(index)}
-                  >
-                    Update
-                  </button>
-                  <button
-                    className="inputimage"
-                    onClick={() => onImageRemove(index)}
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+    <div className="inputDiv">
+      <div>
+        <h1 className="sidebarTitle">{props.title}</h1>
+        <input
+          className="inputImage"
+          onChange={onChange}
+          ref={image}
+          type="file"
+          name="filename"
+        ></input>
+        {img && (
+          <button className="closeButton" onClick={reset}>
+            &#10006;
+          </button>
         )}
-      </ImageUploading>
-      <button
-        className="inputimage"
-        onClick={() => uploadImage(images[0].file)}
-      >
-        upload
-      </button>
-      <input
-        type="file"
-        name="myImage"
-        onChange={(event) => {
-          uploadImage(event.target.files[0]);
-        }}
-      />
+      </div>
+      <div>{img && <img className="inputimage" src={img} alt="" />}</div>
+      <div></div>
     </div>
   );
 }
+// export default function UploadImage() {
+//   const [images, setImages] = React.useState(null);
+
+//   const onChange = (imageList, addUpdateIndex) => {
+//     console.log(imageList, addUpdateIndex);
+//     setImages(imageList);
+//   };
+
+//   return (
+//     <div className="App">
+//       <ImageUploading value={images} onChange={onChange} dataURLKey="data_url">
+//         {({
+//           imageList,
+//           onImageUpload,
+//           onImageUpdate,
+//           onImageRemove,
+//           isDragging,
+//           dragProps,
+//         }) => (
+//           <div className="upload__image-wrapper">
+//             <select
+//               className="dowenfromline inputimage "
+//               type="file"
+//               onClick={onImageUpload}
+//               {...dragProps}
+//             >
+//               Chose your photo
+//             </select>
+//             &nbsp;
+//             {imageList.map((image, index) => (
+//               <div key={index} className="image-item">
+//                 <img src={image["data_url"]} alt="" width="100" />
+//                 <div className="image-item__btn-wrapper">
+//                   <button
+//                     className="inputimage"
+//                     onClick={() => onImageUpdate(index)}
+//                   >
+//                     Update
+//                   </button>
+//                   <button
+//                     className="inputimage"
+//                     onClick={() => onImageRemove(index)}
+//                   >
+//                     Remove
+//                   </button>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         )}
+//       </ImageUploading>
+//       <button
+//         className="inputimage"
+//         onClick={() => uploadImage(images[0].file)}
+//       >
+//         upload
+//       </button>
+//       <input
+//         type="file"
+//         name="myImage"
+//         onChange={(event) => {
+//           uploadImage(event.target.files[0]);
+//         }}
+//       />
+//     </div>
+//   );
+// }
 
 // import ImageUploading from 'react-images-uploading';
 // // import React, { useRef, useState } from "react";

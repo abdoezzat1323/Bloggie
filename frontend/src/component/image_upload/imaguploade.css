@@ -1,18 +1,56 @@
-.imageeddit{
+.imageeddit {
     width: 250px;
 }
-.dowenfromline{
+
+.dowenfromline {
     margin-top: 30px;
     align-items: center;
-    
 }
+
 .inputimage {
     background-color: #0c74db;
     transition: background-color 0.2s;
     color: white;
+    width: 200px;
+    height: 200px;
+}
 
-  }
-  
-  .inputimage:hover{
+.inputimage:hover {
     background-color: #4188ce;
-  }
+}
+
+.closeButton {
+    height: 35px;
+    margin: 12px;
+    background-color: #ce1d1d;
+    transition: background-color 0.2s;
+    color: white;
+    border-color: #ce1d1d;
+}
+
+.closeButton:hover {
+    background-color: #f04040;
+    transition: background-color 0.2s;
+}
+
+.inputImage {
+    margin: 0;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    font: 1rem/1.5 "PT Sans", Arial, sans-serif;
+    color: #5a5a5a;
+    width: 130px;
+}
+
+.inputDiv {
+    text-align: center;
+}
+
+.inputImage,
+.inputImage:before,
+.inputImage:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
