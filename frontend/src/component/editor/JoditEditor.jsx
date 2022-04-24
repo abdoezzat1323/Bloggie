@@ -13,6 +13,7 @@ class JoditEditor extends React.Component {
 
   handleChange(content, editor) {
     this.setState({ content });
+    this.props.setBody({ content });
   }
 
   handleSubmit(event) {
@@ -33,8 +34,8 @@ class JoditEditor extends React.Component {
             toolbar:
               "styleselect |fontsize |table wordcount | numlist bullist |emoticons  | spellchecker language spellcheckdialog | undo redo | bold italic | alignleft aligncenter alignright |fontsizeselect",
             selector: "textarea",
-            images_upload_url: "postAcceptor.php",
-            automatic_uploads: false,
+            images_upload_url: "http://127.0.0.1:5000/api/upload",
+            automatic_uploads: true,
             spellchecker_language: "en",
             font_size_formats:
               "8pt 10pt 12pt 14pt 18pt 24pt 36pt 46pt 56pt 66pt 76pt",

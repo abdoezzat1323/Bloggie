@@ -3,6 +3,7 @@ import TopBar from "../../component/topbar/TopBar";
 import WritePostSideBar from "../../component/WritePostSideBar/WritePostSideBar";
 import React, { useRef, useState } from "react";
 import JoditEditor from "../../component/editor/JoditEditor";
+import { createPost } from "../../services/postService";
 
 export default function Write() {
   const [postContent, setPostContent] = React.useState();
@@ -11,10 +12,28 @@ export default function Write() {
 
   const post_title = useRef(null);
   const post_description = useRef(null);
+
   const [postResult, setPostResult] = useState(null);
+  const [body, setBody] = useState({});
+  const [featuredImage, setFeaturedImage] = useState(null);
+  const [categories, setCategories] = useState({});
+
   const fortmatResponse = (res) => {
     return JSON.stringify(res, null, 2);
   };
+
+  const submit = (res) => {
+    console.log(categories);
+    console.log(featuredImage);
+    console.log(body);
+    createPost(
+      post_title.current.value,
+      body.content,
+      categories,
+      featuredImage
+    );
+  };
+
   async function postData() {
     console.log(postContent);
 
@@ -59,13 +78,21 @@ export default function Write() {
     <>
       <TopBar />
       <div className="writeWar">
-        <WritePostSideBar />
+        <WritePostSideBar
+          setCategories={setCategories}
+          setFeaturedImage={setFeaturedImage}
+          submit={submit}
+        />
         <div className="writeontent">
           <div>
-            <input></input>
+            <input
+              ref={post_title}
+              className="titlePostCreate"
+              placeholder="title..."
+            ></input>
           </div>
 
-          <JoditEditor />
+          <JoditEditor setBody={setBody} />
         </div>
       </div>
     </>

@@ -5,11 +5,15 @@ import "./TagSelector.css"; // basic styles for this demo
 
 const settings = {};
 
-function TagSelector() {
+function TagSelector(props) {
   const tagifyRef = useRef();
   let categories = ["Sports"];
   const onChange = useCallback((e) => {
-    console.log("CHANGED:", e.detail.value);
+    if (e.detail.value)
+      props.setCategories(
+        JSON.parse(e.detail.value).map((a) => a.value.toLowerCase())
+      );
+    else props.setCategories([]);
   }, []);
 
   return (

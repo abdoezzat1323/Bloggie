@@ -11,12 +11,14 @@ export default function UploadImage(props) {
   const onChange = (event) => {
     const [file] = event.target.files;
     setImg(URL.createObjectURL(file));
+    props.setFeaturedImage(file);
     uploadImage(file);
   };
 
   const reset = (event) => {
     setImg(null);
     image.current.value = null;
+    props.setFeaturedImage(null);
   };
 
   return (
@@ -31,12 +33,14 @@ export default function UploadImage(props) {
           name="filename"
           hidden
         ></input>
-        <button
-          className="inputImageButton"
-          onClick={() => image.current.click()}
-        >
-          <FaUpload className="upIcon" />
-        </button>
+        {!img && (
+          <button
+            className="inputImageButton"
+            onClick={() => image.current.click()}
+          >
+            <FaUpload className="upIcon" />
+          </button>
+        )}
         {img && (
           <button className="closeButton" onClick={reset}>
             &#10006;

@@ -5,22 +5,9 @@ import TagSelector from "../tagSelector/TagSelector";
 import Tagify from "@yaireo/tagify";
 import "@yaireo/tagify/dist/tagify.css";
 
-export default function WritePostSideBar() {
-  const sports = [
-    "Baseball",
-    "Basketball",
-    "Cricket",
-    "Field Hockey",
-    "Football",
-    "Table Tennis",
-    "Tennis",
-    "Volleyball",
-  ];
-
-  const tagInput = useRef("");
-
+export default function WritePostSideBar(props) {
   const [title, setTitle] = useState("");
-  const [featuredImage, setFeaturedImage] = React.useState(null);
+  // const [featuredImage, setFeaturedImage] = React.useState(null);
 
   return (
     <div className="MainWriteSideBar">
@@ -31,15 +18,18 @@ export default function WritePostSideBar() {
         </button>
       </div>
       <div className="sideDiv">
-        <UploadImage title={"Featured Image"} getImage={setFeaturedImage} />
+        <UploadImage
+          title={"Featured Image"}
+          setFeaturedImage={props.setFeaturedImage}
+        />
       </div>
 
       <div className="sideDiv">
         <label className="sideTitle ">Categories</label>
 
-        <TagSelector />
+        <TagSelector setCategories={props.setCategories} />
       </div>
-      <button type="button" onClick={() => alert(title)} className="input11">
+      <button type="button" onClick={props.submit} className="input11">
         Save
       </button>
     </div>
