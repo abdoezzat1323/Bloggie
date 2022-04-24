@@ -1,0 +1,12 @@
+body .tagify {
+    margin-top: 25px;
+    max-width: 100%;
+    margin-bottom: 3em;
+    --tag-bg: #6c0e42;
+    --tag-text-color: white;
+    --tag-text-color--edit: black;
+    --tag-hover: #a20838;
+    --tag-remove-btn-color: white;
+    font-family: "Varela Round", sans-serif;
+    text-align: left;
+}

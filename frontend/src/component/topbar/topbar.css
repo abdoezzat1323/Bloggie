@@ -62,25 +62,32 @@ header {
 .registerButton {
     margin-top: 30px;
     cursor: pointer;
-    background-color: teal;
+    background-color: rgb(0, 128, 128);
     color: white;
     padding: 15px;
     border: none;
     border-radius: 10px;
     text-align: center;
     font-size: 20px;
+    transition: background-color 0.2s;
 }
 
+transition: background-color 0.2s;
 .loginButton {
     margin-top: 30px;
     cursor: pointer;
-    background-color: lightcoral;
+    background-color: rgb(5, 135, 14);
     color: white;
     padding: 15px;
     border: none;
     border-radius: 10px;
     text-align: center;
     font-size: 20px;
+    transition: background-color 0.2s;
+}
+
+.loginButton:hover {
+    background-color: rgb(1, 179, 13);
 }
 
 .registerLoginButton {
@@ -95,16 +102,21 @@ header {
     border-radius: 10px;
 }
 
-.loginRegisterButton {
+.secondAuthButton {
     position: absolute;
     top: 90px;
     right: 20px;
-    background-color: teal;
+    background-color: rgb(151 112 159);
     cursor: pointer;
     padding: 15px;
     border: none;
     color: white;
     border-radius: 10px;
+    transition: background-color 0.2s;
+}
+
+.secondAuthButton:hover {
+    background-color: rgb(185, 136, 194);
 }
 
 .registerInput {
@@ -117,10 +129,23 @@ header {
     font-size: 18px;
 }
 
+.headerItem {
+    transition: color 0.2s;
+    padding-top: 30px;
+}
+
+.headerItem:hover {
+    color: #51a644;
+}
+
 .headerIcon {
-    /* margin-left: 15px; */
+    vertical-align: middle;
+    line-height: 1;
 }
 
 .headerLabel {
     margin-left: 15px;
+    font-family: "Anek Telugu";
+    font-size: 22px;
+    font-weight: 500;
 }

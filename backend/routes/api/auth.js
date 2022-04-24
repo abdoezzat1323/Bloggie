@@ -5,6 +5,4 @@ const requireAuth = require("../../middleware/auth.js");
 const router = express.Router();
 
 router.post("/login", userContoller.login);
-router.post("/verify", requireAuth);
-router.post("/logout", userContoller.logout);
 module.exports = router;

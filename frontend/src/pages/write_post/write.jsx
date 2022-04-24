@@ -1,6 +1,6 @@
 import "./write.css";
 import TopBar from "../../component/topbar/TopBar";
-import Write_PostSideBar from "../../component/write_postSidebar/write_postSideBar";
+import WritePostSideBar from "../../component/WritePostSideBar/WritePostSideBar";
 import React, { useRef, useState } from "react";
 import JoditEditor from "../../component/editor/TextEditor";
 import { createPost } from "../../services/postService";
@@ -12,18 +12,30 @@ export default function Write() {
 
   const post_title = useRef(null);
   const post_description = useRef(null);
+
   const [postResult, setPostResult] = useState(null);
+  const [body, setBody] = useState({});
+  const [featuredImage, setFeaturedImage] = useState(null);
+  const [categories, setCategories] = useState({});
+
   const fortmatResponse = (res) => {
     return JSON.stringify(res, null, 2);
   };
-  async function postData() {
-    console.log(postContent);
 
+  const submit = (res) => {
+    createPost(
+      post_title.current.value,
+      body.content,
+      categories,
+      featuredImage
+    );
+  };
+
+  async function postData() {
     const postData = {
       title: post_title.current.value,
       post: post_description.current.value,
     };
-    console.log(postData);
     try {
       const res = await fetch("http://127.0.0.1:5000/api/auth/posts", {
         method: "post",
@@ -60,9 +72,21 @@ export default function Write() {
     <>
       <TopBar />
       <div className="writeWar">
-        <Write_PostSideBar />
+        <WritePostSideBar
+          setCategories={setCategories}
+          setFeaturedImage={setFeaturedImage}
+          submit={submit}
+        />
         <div className="writeontent">
-          <JoditEditor />
+          <div>
+            <input
+              ref={post_title}
+              className="titlePostCreate"
+              placeholder="title..."
+            ></input>
+          </div>
+
+          <JoditEditor setBody={setBody} />
         </div>
       </div>
     </>

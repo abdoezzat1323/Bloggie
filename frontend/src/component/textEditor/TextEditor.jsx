@@ -25,7 +25,7 @@ class JoditEditor extends React.Component {
     return (
       <form className="body11" onSubmit={this.handleSubmit}>
         <Editor
-          apiKey="3xx0snovf5pxf0uhbvy1b63ipgb3nur333gshnd02y680lja"
+          apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
           value={this.state.content}
           onEditorChange={this.handleChange}
           init={{

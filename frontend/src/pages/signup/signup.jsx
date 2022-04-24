@@ -1,17 +1,15 @@
 import TopBar from "../../component/topbar/TopBar";
+import React from "react";
+import { useNavigate, Navigate } from "react-router-dom";
+import { signup } from "../../services/userService";
+import { isLoggedIn } from "../../services/authService";
 import "./signup.css";
-import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { NotificationManager } from "react-notifications";
-import Cookies from "universal-cookie";
 
 function Register() {
-  const cookies = new Cookies();
   const navigate = useNavigate();
-  console.log(cookies.get("token"));
+  if (isLoggedIn()) navigate("/");
+
   const handleSubmit = async (event) => {
-    //Prevent page reload
     event.preventDefault();
 
     let { email, firstName, lastName, password } = document.forms[0];
@@ -23,25 +21,15 @@ function Register() {
       lastName: lastName.value,
       password: password.value,
     };
-
-    try {
-      const response = await axios.post(
-        "http://127.0.0.1:5000/api/user/",
-        userData
-      );
-      NotificationManager.success(response.data.data, "Success", 3000);
-      cookies.set("token", response.data.token, { path: "/" });
+    let res = await signup(userData);
+    if (res) {
       navigate("/");
-    } catch (err) {
-      if (err.response) {
-        NotificationManager.error(err.response.data.data, "Error", 3000);
-      } else {
-        NotificationManager.error("Server is down!", "Error", 3000);
-      }
     }
   };
 
-  return (
+  return isLoggedIn() ? (
+    <Navigate to="/" />
+  ) : (
     <>
       <TopBar />
       <div className="register">
@@ -83,7 +71,7 @@ function Register() {
         </form>
         <a href="/login">
           {" "}
-          <button className="registerLoginButton ">Login</button>
+          <button className="secondAuthButton ">Login</button>
         </a>
       </div>
     </>
