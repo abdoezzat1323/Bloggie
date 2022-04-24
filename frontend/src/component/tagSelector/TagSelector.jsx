@@ -1,62 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useRef } from "react";
+import Tags from "@yaireo/tagify/dist/react.tagify";
 
-import "./TagSelector.css";
+import "./TagSelector.css"; // basic styles for this demo
 
-export default function TagSelector() {
-  const [input, setInput] = useState("");
-  const [tags, setTags] = useState([]);
-  const [isKeyReleased, setIsKeyReleased] = useState(false);
+const settings = {};
 
-  const onChange = (e) => {
-    const { value } = e.target;
-    setInput(value);
-  };
+function TagSelector() {
+  const tagifyRef = useRef();
+  let categories = ["Sports"];
+  const onChange = useCallback((e) => {
+    console.log("CHANGED:", e.detail.value);
+  }, []);
 
-  const onKeyDown = (e) => {
-    const { key } = e;
-    const trimmedInput = input.trim();
-
-    if (key === "," && trimmedInput.length && !tags.includes(trimmedInput)) {
-      e.preventDefault();
-      setTags((prevState) => [...prevState, trimmedInput]);
-      setInput("");
-    }
-
-    if (key === "Backspace" && !input.length && tags.length && isKeyReleased) {
-      const tagsCopy = [...tags];
-      const poppedTag = tagsCopy.pop();
-      e.preventDefault();
-      setTags(tagsCopy);
-      setInput(poppedTag);
-    }
-
-    setIsKeyReleased(false);
-  };
-
-  const onKeyUp = () => {
-    setIsKeyReleased(true);
-  };
-
-  const deleteTag = (index) => {
-    setTags((prevState) => prevState.filter((tag, i) => i !== index));
-  };
   return (
     <>
-      <input
-        value={input}
-        placeholder="Enter a tag"
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
+      <Tags
+        tagifyRef={tagifyRef}
+        settings={settings}
+        autoFocus={true}
+        {...{
+          whitelist: categories,
+          placeholder: "type categories",
+          maxLength: 3,
+        }}
         onChange={onChange}
       />
-      <div className="tagSelectorContainer">
-        {tags.map((tag, index) => (
-          <div className="tagSelectorTag">
-            {tag}
-            <button onClick={() => deleteTag(index)}>x</button>
-          </div>
-        ))}
-      </div>
     </>
   );
 }
+
+export default TagSelector;

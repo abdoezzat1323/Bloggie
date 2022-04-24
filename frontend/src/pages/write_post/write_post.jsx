@@ -61,6 +61,10 @@ export default function Write() {
       <div className="writeWar">
         <WritePostSideBar />
         <div className="writeontent">
+          <div>
+            <input></input>
+          </div>
+
           <JoditEditor />
         </div>
       </div>

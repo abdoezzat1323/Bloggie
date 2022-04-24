@@ -22,7 +22,7 @@ export default function UploadImage(props) {
   return (
     <div className="inputDiv">
       <div>
-        <h1 className="sidebarTitle">{props.title}</h1>
+        <h1 className="sideTitle">{props.title}</h1>
         <input
           className="inputImage"
           onChange={onChange}
