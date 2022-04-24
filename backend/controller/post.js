@@ -6,6 +6,20 @@ exports.createPost = async(req, res) => {
     try {
         let postData = {};
         postData.userId = req.body.userId;
+
+        if (!postData.userId)
+            return res
+                .status(404)
+                .json({ success: false, data: "userId was not specified." });
+
+        let user = await User.findOne({
+            where: {id: postData.userId}
+        });
+        if (!user)
+            return res
+                .status(404)
+                .json({ success: false, data: "user does not exist." });
+        
         let isAdmin = User.count({
             where: {
                 id: req.body.userId,
