@@ -27,39 +27,43 @@
     border-bottom: 1px solid gray;
 }
 
-.mails{
-    
-    flex: 9;
-    
+.mails{ 
+    flex: 9;   
 }
+
 .photo{
     flex: 4;
+    
 }
 .photoshow{
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin: 15px;
     width: 90%;
     height: 90%;
     border-radius: 15px;
-    margin: 20px;
+    background-color: rgb(200, 196, 196);
+    position: relative;
+}
+
+.photoshow:hover .editPhoto{
+    display: block;
 }
 
 .photoIcon{
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     color: teal;
 }
 
-.hide{
+.editPhoto{
     display: none;
-    
-    
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    cursor: pointer;
 }
 
-.photoshow:hover .hide{
-    display:flex;
-}
 
 /* .photoshow:hover {
     box-shadow:5px 5px 5px 5px rgb(193, 191, 191);
@@ -88,9 +92,39 @@
     display: inline; 
 }
 
+.mails input:focus {
+    border-bottom: 2px solid goldenrod; 
+  
+}
+
 .mails hr{
     border: none;
 }
+
+.verfiy {
+    margin-left: 15px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+}
+
+.deletemail{
+    margin-left: 15px;
+    /* border: 1px solid gray; */
+    border-radius: 50%;
+    color: red;
+    /* background-color: red; */
+    cursor: pointer;
+}
+
+
+
+
+
+
+
 
 
 
