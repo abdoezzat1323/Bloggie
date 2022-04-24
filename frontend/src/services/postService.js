@@ -13,7 +13,8 @@ export async function createPost(title, body, categories, imageFile = null) {
         if (imageFile) {
             console.log(imageFile);
             let upload = await uploadImage(imageFile);
-            if (upload) postData.featured = upload.data.data.file;
+
+            if (upload) postData.featured = upload.data.file;
         }
 
         postData.title = title;

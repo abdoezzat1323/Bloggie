@@ -23,9 +23,6 @@ export default function Write() {
   };
 
   const submit = (res) => {
-    console.log(categories);
-    console.log(featuredImage);
-    console.log(body);
     createPost(
       post_title.current.value,
       body.content,
@@ -35,13 +32,10 @@ export default function Write() {
   };
 
   async function postData() {
-    console.log(postContent);
-
     const postData = {
       title: post_title.current.value,
       post: post_description.current.value,
     };
-    console.log(postData);
     try {
       const res = await fetch("http://127.0.0.1:5000/api/auth/posts", {
         method: "post",

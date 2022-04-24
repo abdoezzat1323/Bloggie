@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
             },
             userId: {
                 type: DataTypes.INTEGER,
-                onDelete: 'CASCADE',
+                onDelete: "CASCADE",
                 allowNull: false,
                 references: {
                     model: "users",
@@ -19,6 +19,10 @@ module.exports = function(sequelize, DataTypes) {
             },
             title: {
                 type: DataTypes.STRING(2048),
+                allowNull: true,
+            },
+            featured: {
+                type: DataTypes.STRING(512),
                 allowNull: true,
             },
             timeCreated: {

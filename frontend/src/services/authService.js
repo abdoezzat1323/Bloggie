@@ -30,6 +30,5 @@ export function logout() {
 }
 
 export function isLoggedIn() {
-    console.log(getTokenCookie());
     return getTokenCookie();
 }

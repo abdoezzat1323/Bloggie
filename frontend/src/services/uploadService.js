@@ -10,7 +10,6 @@ export async function uploadImage(image) {
 
     try {
         const response = await axios.post(endPoint, form, {
-            withCredentials: true,
             headers: {
                 "Content-Type": "multipart/form-data",
             },
