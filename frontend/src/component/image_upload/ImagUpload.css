@@ -33,14 +33,24 @@
     transition: background-color 0.2s;
 }
 
-.inputImage {
+.inputImage>input {
+    display: none;
+}
+
+.inputImageButton {
     margin: 0;
     padding-top: 2rem;
     padding-bottom: 1rem;
     padding-left: 1rem;
     font: 1rem/1.5 "PT Sans", Arial, sans-serif;
-    color: #5a5a5a;
-    width: 130px;
+    color: #ffffff;
+    background-color: #05667a;
+    width: 120px;
+    height: 35px;
+    border: 1px solid #05667a;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
 }
 
 .inputDiv {

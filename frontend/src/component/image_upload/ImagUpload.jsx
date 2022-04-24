@@ -1,4 +1,4 @@
-import "./imaguploade.css";
+import "./ImagUpload.css";
 import React, { useRef, useState } from "react";
 import { uploadImage } from "../../services/uploadService";
 
@@ -28,7 +28,14 @@ export default function UploadImage(props) {
           ref={image}
           type="file"
           name="filename"
+          hidden
         ></input>
+        <button
+          className="inputImageButton"
+          onClick={() => image.current.click()}
+        >
+          Choose File{" "}
+        </button>
         {img && (
           <button className="closeButton" onClick={reset}>
             &#10006;
