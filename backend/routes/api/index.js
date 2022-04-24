@@ -4,6 +4,10 @@ const userRouter = require("./user");
 const authRouter = require("./auth");
 const postRouter = require("./post");
 const commentRouter = require("./comment");
+<<<<<<< HEAD
+=======
+const categoriesRouter = require("./categories");
+>>>>>>> parent of d34f692 (.)
 const uploadRouter = require("./upload");
 
 /* GET home page. */
@@ -11,6 +15,10 @@ router.use("/user", userRouter);
 router.use("/auth", authRouter);
 router.use("/post", postRouter);
 router.use("/comment", commentRouter);
+<<<<<<< HEAD
+=======
+router.use("/category", categoriesRouter);
+>>>>>>> parent of d34f692 (.)
 router.use("/upload", uploadRouter);
 
 router.get("/", (req, res) => {

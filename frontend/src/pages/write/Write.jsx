@@ -2,7 +2,7 @@ import "./write.css";
 import TopBar from "../../component/topbar/TopBar";
 import WritePostSideBar from "../../component/WritePostSideBar/WritePostSideBar";
 import React, { useRef, useState } from "react";
-import JoditEditor from "../../component/editor/TextEditor";
+import JoditEditor from "../../component/textEditor/TextEditor";
 import { createPost } from "../../services/postService";
 
 export default function Write() {
