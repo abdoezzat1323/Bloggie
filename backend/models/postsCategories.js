@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
         "postsCategories", {
             postId: {
                 type: DataTypes.INTEGER,
+                onDelete: 'CASCADE',
                 primaryKey: true,
                 allowNull: false,
                 references: {
@@ -13,6 +14,7 @@ module.exports = function(sequelize, DataTypes) {
             },
             categoryId: {
                 type: DataTypes.INTEGER,
+                onDelete: 'CASCADE',
                 primaryKey: true,
                 allowNull: false,
                 references: {

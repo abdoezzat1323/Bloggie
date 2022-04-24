@@ -15,6 +15,7 @@ const connection = mysql.createConnection({
     password: process.env.DB_PASSWORD,
     database: "",
 });
+connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`);
 
 const sequelize = new Sequelize(
     process.env.DB_NAME,
@@ -22,7 +23,6 @@ const sequelize = new Sequelize(
     process.env.DB_PASSWORD, {
         host: process.env.DB_HOST,
         dialect: "mysql",
-        engine: "MYISAM ",
         pool: {
             max: 5,
             min: 0,
@@ -32,7 +32,6 @@ const sequelize = new Sequelize(
     }
 );
 
-connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`);
 fs.readdirSync(__dirname)
     .filter((file) => {
         return (

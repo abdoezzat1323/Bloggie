@@ -50,11 +50,23 @@ exports.createPost = async(req, res) => {
 exports.editPost = async(req , res) => {
     try {
         // check if post exist
-        let post = await Post.count({ where: { id: parseInt(req.params.id) } });
+        let post = await Post.findOne({ where: { id: parseInt(req.params.id) } });
         if (!post)
             return res
                 .status(404)
                 .json({ success: false, data: "post does not exist." });
+
+        //checking for data.
+        if (!req.body.body)
+            return res
+                .status(409)
+                .json({ success: false, data: "Please type your post!" });
+
+        if (req.body.body.length < 1)
+            return res
+                .status(409)
+                .json({ success: false, data: "post can't be empty!." });
+
         
         if (req.body.userId)
             {
@@ -77,11 +89,18 @@ exports.editPost = async(req , res) => {
                     .status(404)
                     .json({ success: false, data: "user does not exist." });
                     
-                // checking if not admin .
+            // checking if not admin .
             if (!isAdmin)
                 return res
                     .status(400)
                     .json({ success: false, data: "You are not allowed to edit posts." });
+            
+            if (post.userId !== req.body.userId)
+                return res.status(402).json({
+                    success: false,
+                    data: "You aren't allowed to edit this post!",
+            });
+
         }
         
         let result = await Post.update(req.body, {
@@ -100,7 +119,7 @@ exports.editPost = async(req , res) => {
 };
 
 
-// delete post (POST)
+// delete post (DELETE)
 exports.deletePost = async(req , res) => {
     try {
         // check if post exist
