@@ -26,7 +26,7 @@ export default function UploadImage() {
           isDragging,
           dragProps,
         }) => (
-          <div className="upload__image-wrapper">
+          <div >
             <button
               className='dowenfromline inputimage '
               onClick={onImageUpload}
