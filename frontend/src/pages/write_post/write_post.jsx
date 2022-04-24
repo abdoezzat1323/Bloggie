@@ -64,10 +64,6 @@ export default function Write() {
     }
   }
 
-  const clearPostOutput = () => {
-    setPostResult(null);
-  };
-
   return (
     <>
       <TopBar />
