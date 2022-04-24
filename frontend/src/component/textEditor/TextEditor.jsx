@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./styles.css";
+import "./TextEditor.css";
 import { Editor } from "@tinymce/tinymce-react";
 
 class JoditEditor extends React.Component {
