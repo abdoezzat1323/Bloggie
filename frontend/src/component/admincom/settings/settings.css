@@ -1,131 +1,116 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;1,300;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;1,300;1,400&display=swap");
 
-.settingswar{
-    overflow: auto;
-    height: 90vh;
-    align-items: center;
-    justify-content: center;
+.settingswar {
+  overflow: auto;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
 }
 .settingswar::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .settingswar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
-
-.profileedit{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 40px;
-    padding-bottom: 20px;
-    padding-top: 30px;
-    width: 90%;
-    display: flex;
-    border-bottom: 1px solid gray;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-.mails{ 
-    flex: 9;   
+.profileedit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40px;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  width: 90%;
+  display: flex;
+  border-bottom: 1px solid gray;
 }
 
-.photo{
-    flex: 4;
-    
-}
-.photoshow{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    height: 90%;
-    border-radius: 15px;
-    background-color: rgb(200, 196, 196);
-    position: relative;
+.mails {
+  flex: 9;
 }
 
-.photoshow:hover .editPhoto{
-    display: block;
+.photo {
+  flex: 4;
+}
+.photoshow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 90%;
+  border-radius: 15px;
+  background-color: rgb(200, 196, 196);
+  position: relative;
 }
 
-.photoIcon{
-    width: 90%;
-    height: 90%;
-    color: teal;
+.photoshow:hover .editPhoto {
+  display: block;
 }
 
-.editPhoto{
-    display: none;
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
-    cursor: pointer;
+.photoIcon {
+  width: 90%;
+  height: 90%;
+  color: teal;
 }
 
+.editPhoto {
+  display: none;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  cursor: pointer;
+}
 
 /* .photoshow:hover {
     box-shadow:5px 5px 5px 5px rgb(193, 191, 191);
 } */
 
-.mails h2{
-    padding: 15px 15px;
-    font-family: 'Mulish', sans-serif;
+.mails h2 {
+  padding: 15px 15px;
+  font-family: "Mulish", sans-serif;
 }
 
-.mails label{
-    display: inline-block;
-    margin: 0 20px ;
-    font-family: 'Mulish', sans-serif;
+.mails label {
+  display: inline-block;
+  margin: 0 20px;
+  font-family: "Mulish", sans-serif;
 }
 
-.mails input{
-    
-    width: 60%;
-    background: inherit;
-    border: none;
-    border-bottom: 1px solid rgb(193, 191, 191);
-    font-size: 20px;
-    margin: 15px 5px; 
-    outline: none;
-    display: inline; 
+.mails input {
+  width: 60%;
+  background: inherit;
+  border: none;
+  border-bottom: 1px solid rgb(193, 191, 191);
+  font-size: 20px;
+  margin: 15px 5px;
+  outline: none;
+  display: inline;
 }
 
 .mails input:focus {
-    border-bottom: 2px solid goldenrod; 
-  
+  border-bottom: 2px solid goldenrod;
 }
 
-.mails hr{
-    border: none;
+.mails hr {
+  border: none;
 }
 
 .verfiy {
-    margin-left: 15px;
-    border: 1px solid gray;
-    border-radius: 50%;
-    color: white;
-    background-color: green;
-    cursor: pointer;
+  margin-left: 15px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  color: white;
+  background-color: green;
+  cursor: pointer;
 }
 
-.deletemail{
-    margin-left: 15px;
-    /* border: 1px solid gray; */
-    border-radius: 50%;
-    color: red;
-    /* background-color: red; */
-    cursor: pointer;
+.deletemail {
+  margin-left: 15px;
+  /* border: 1px solid gray; */
+  border-radius: 50%;
+  color: red;
+  /* background-color: red; */
+  cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
