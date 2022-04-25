@@ -44,9 +44,24 @@ exports.getUserPublicData = async(req, res) => {
 // get user by id (GET)
 exports.getUser = async(req, res) => {
     try {
+        if (!req.body.userId)
+            return res
+                .status(402)
+                .json({ success: false, data: "Please login first" });
+
+        let isAdmin = await User.findOne({
+            where: { id: parseInt(req.body.userId) },
+            attributes: ["isAdmin"],
+        });
+
+        if (req.body.userId !== req.params.userId && !isAdmin)
+            return res
+                .status(402)
+                .json({ success: false, data: "You are not allowed to see this" });
+
         let user = await User.findOne({
             where: { id: parseInt(req.params.id) },
-            attributes: { exclude: ["password"] },
+            attributes: { exclude: "password" },
         });
         if (!user)
             return res

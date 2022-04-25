@@ -24,7 +24,7 @@ exports.uploadFile = (req, res) => {
         return res.status(200).send({
             success: true,
             file: res.req.file.path,
-            location: "http://127.0.0.1:5000/" + res.req.file.path,
+            location: req.protocol + "://" + req.get("host") + "/" + res.req.file.path,
         });
     }
 };

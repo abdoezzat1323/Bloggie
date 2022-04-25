@@ -17,8 +17,7 @@ function App() {
         <Route path="/login" element={user ? <Home /> : <Login />} />{" "}
         <Route path="/Register" element={user ? <Home /> : <Register />} />{" "}
         <Route path="/grid" element={<Grid />} />{" "}
-        <Route path="/write_post" element={<Write />} />{" "}
-        <Route path="/write" element={<Writen />} />{" "}
+        <Route path="/write" element={<Write />} />{" "}
         <Route path="/admin/*" element={<Admin />} />{" "}
         {/* <Route path="/write" element={< JoditEditor />} /> */}{" "}
         {/* <Route path="/test" element={< Ass />} /> */}{" "}

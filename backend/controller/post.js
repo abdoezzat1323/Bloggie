@@ -6,6 +6,13 @@ exports.createPost = async(req, res) => {
     try {
         let postData = {};
         postData.userId = req.body.userId;
+
+        // checking if not admin .
+        if (!postData.userId)
+            return res
+                .status(400)
+                .json({ success: false, data: "UserId was not specified!" });
+
         let isAdmin = User.count({
             where: {
                 id: req.body.userId,
@@ -47,7 +54,7 @@ exports.createPost = async(req, res) => {
 };
 
 // edit post (PATCH)
-exports.editPost = async(req , res) => {
+exports.editPost = async(req, res) => {
     try {
         // check if post exist
         let post = await Post.findOne({ where: { id: parseInt(req.params.id) } });
@@ -67,46 +74,43 @@ exports.editPost = async(req , res) => {
                 .status(409)
                 .json({ success: false, data: "post can't be empty!." });
 
-        
-        if (req.body.userId)
-            {
+        if (req.body.userId) {
             let user = await User.count({
                 where: {
                     id: req.body.userId,
                 },
             });
-            
+
             let isAdmin = User.count({
                 where: {
                     id: req.body.userId,
                     isAdmin: true,
                 },
             });
-            
+
             console.log(user);
             if (!user)
                 return res
                     .status(404)
                     .json({ success: false, data: "user does not exist." });
-                    
+
             // checking if not admin .
             if (!isAdmin)
                 return res
                     .status(400)
                     .json({ success: false, data: "You are not allowed to edit posts." });
-            
+
             if (post.userId !== req.body.userId)
                 return res.status(402).json({
                     success: false,
                     data: "You aren't allowed to edit this post!",
-            });
-
+                });
         }
-        
+
         let result = await Post.update(req.body, {
             where: { id: parseInt(req.params.id) },
         });
-        
+
         if (!result[0])
             return res
                 .status(400)
@@ -118,9 +122,8 @@ exports.editPost = async(req , res) => {
     }
 };
 
-
 // delete post (DELETE)
-exports.deletePost = async(req , res) => {
+exports.deletePost = async(req, res) => {
     try {
         // check if post exist
         let post = await Post.count({ where: { id: parseInt(req.params.id) } });
@@ -128,10 +131,9 @@ exports.deletePost = async(req , res) => {
             return res
                 .status(404)
                 .json({ success: false, data: "post does not exist." });
-        
-        let result = await Post.destroy({ where: { id: parseInt(req.params.id) }
-        });
-        
+
+        let result = await Post.destroy({ where: { id: parseInt(req.params.id) } });
+
         if (!result)
             return res
                 .status(400)
@@ -167,6 +169,8 @@ exports.getPosts = async(req, res) => {
                 .json({ success: false, data: "could not get data." });
         res.status(200).json({ success: true, data: posts });
     } catch (err) {
-        res.status(500).json({ success: false, data: { success: false, data: err } });
+        res
+            .status(500)
+            .json({ success: false, data: { success: false, data: err } });
     }
 };

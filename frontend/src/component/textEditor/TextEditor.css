@@ -1,30 +1,39 @@
-
 .input11 {
-  background-color: #0c74db;
-  transition: background-color 0.2s;
-  border: none;
-  color: white;
-  padding: 12px 28px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 4px;
-  margin: 0rem 0rem 0rem 0rem;
+    background-color: #0c74db;
+    transition: background-color 0.2s;
+    border: none;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    margin: 0rem 0rem 0rem 0rem;
 }
 
-.input11:hover{
-  background-color: #4188ce;
+.input11:hover {
+    background-color: #4188ce;
 }
 
 .editable p {
-  color: #0C74DB;
+    color: #0c74db;
 }
 
 table {
-  width: 100%; max-width: 600px; padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
 }
 
 td {
-  background-color: #eeeeee; font-size: 14px; padding: 16px; font-family: Verdana, Geneva, sans-serif; border-radius: 25px;
+    background-color: #eeeeee;
+    font-size: 14px;
+    padding: 16px;
+    font-family: Verdana, Geneva, sans-serif;
+    border-radius: 25px;
+}
+
+.tox-statusbar__branding {
+    display: none;
 }

@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
             },
             isAdmin: {
                 type: DataTypes.CHAR(1),
-                allowNull: true,
+                defaultValue: false,
             },
             avatar: {
                 type: DataTypes.TEXT,
