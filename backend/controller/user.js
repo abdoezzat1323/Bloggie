@@ -49,12 +49,14 @@ exports.getUser = async(req, res) => {
                 .status(402)
                 .json({ success: false, data: "Please login first" });
 
-        let isAdmin = await User.findOne({
+        let reqUser = await User.findOne({
             where: { id: parseInt(req.body.userId) },
             attributes: ["isAdmin"],
         });
 
-        if (req.body.userId !== req.params.userId && !isAdmin)
+        console.log(req.body.userId, req.params.id, reqUser.isAdmin);
+
+        if (req.body.userId !== req.params.id && !reqUser.isAdmin)
             return res
                 .status(402)
                 .json({ success: false, data: "You are not allowed to see this" });
