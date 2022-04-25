@@ -10,20 +10,28 @@ export default function Settings() {
       <div className="profileedit">
         <div className="mails">
           <h2>Profile</h2>
+          <div className="mailB">
           <label htmlFor="">Email</label>
           <input type="text" />
           <MdDone className="verfiy"/>
           <AiFillDelete className="deletemail"/>
+          </div>
           <hr />
+          <div className="faceB">
           <label htmlFor="">Facebook</label>
           <input type="text" />
           <MdDone className="verfiy"/>
           <AiFillDelete className="deletemail"/>
+          </div>
+          
           <hr/>
+          <div className="twitB">
           <label htmlFor="">Twitter</label>
           <input type="text" />
           <MdDone className="verfiy"/>
           <AiFillDelete className="deletemail"/>
+          </div>
+          
         </div>
         <div className="photo">
           <div className="photoshow">
@@ -32,6 +40,15 @@ export default function Settings() {
           </div>
           
         </div>
+      </div>
+      <div className="Title">
+        {/* <h2>Blog Title</h2> */}
+          <div className="titleedit">
+              {/* <label htmlFor="">Title</label>
+              <input type="text" />
+              <MdDone className="verfiy"/>
+              <AiFillDelete className="deletemail"/> */}
+          </div>
       </div>
     </div>
   )
