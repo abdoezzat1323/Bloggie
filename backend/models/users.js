@@ -33,11 +33,16 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: true,
             },
             gender: {
-                type: DataTypes.CHAR(1),
+                type: DataTypes.ENUM(["m", "f"]),
                 allowNull: true,
             },
             isAdmin: {
                 type: DataTypes.CHAR(1),
+                defaultValue: false,
+                type: DataTypes.BOOLEAN,
+            },
+            isPremium: {
+                type: DataTypes.BOOLEAN,
                 defaultValue: false,
             },
             avatar: {
@@ -55,7 +60,7 @@ module.exports = function(sequelize, DataTypes) {
         }, {
             sequelize,
             tableName: "users",
-            timestamps: false,
+            timestamps: true,
             indexes: [{
                 name: "PRIMARY",
                 unique: true,

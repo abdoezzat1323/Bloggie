@@ -23,8 +23,9 @@
   padding-bottom: 20px;
   padding-top: 30px;
   width: 90%;
-  display: flex;
+  
   border-bottom: 1px solid gray;
+
 }
 
 .mails {
@@ -63,9 +64,6 @@
   cursor: pointer;
 }
 
-/* .photoshow:hover {
-    box-shadow:5px 5px 5px 5px rgb(193, 191, 191);
-} */
 
 .mails h2 {
   padding: 15px 15px;
@@ -93,24 +91,67 @@
   border-bottom: 2px solid goldenrod;
 }
 
+
+
 .mails hr {
   border: none;
 }
 
-.verfiy {
-  margin-left: 15px;
-  border: 1px solid gray;
-  border-radius: 50%;
-  color: white;
-  background-color: green;
-  cursor: pointer;
+
+.verfiy{
+cursor: pointer;
+display: none;
+position: absolute;
+top: 20px;
+right: 120px;
+margin-left: 15px;
+border: 1px solid gray;
+border-radius: 50%;
+color: white;
+background-color: green;
+cursor: pointer;}
+
+
+.deletemail{
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    margin-left: 15px;
+    border-radius: 50%;
+    color: red;
+    cursor: pointer;
+}
+.mailB{
+    position: relative;
 }
 
-.deletemail {
-  margin-left: 15px;
-  /* border: 1px solid gray; */
-  border-radius: 50%;
-  color: red;
-  /* background-color: red; */
-  cursor: pointer;
+.mailB:hover  .deletemail{
+    display: block;
 }
+.mailB:hover  .verfiy{
+    display: block;
+}
+
+.faceB{
+    position: relative;
+}
+
+.faceB:hover  .deletemail{
+    display: block;
+}
+.faceB:hover  .verfiy{
+    display: block;
+}
+
+.twitB{
+    position: relative;
+}
+
+.twitB:hover  .deletemail{
+    display: block;
+}
+.twitB:hover  .verfiy{
+    display: block;
+}
+

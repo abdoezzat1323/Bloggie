@@ -30,10 +30,6 @@ module.exports = function(sequelize, DataTypes) {
                 type: DataTypes.TEXT,
                 allowNull: true,
             },
-            timeCreated: {
-                type: DataTypes.DATE,
-                defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
-            },
             parentId: {
                 type: DataTypes.INTEGER,
                 onDelete: 'CASCADE',
@@ -47,7 +43,7 @@ module.exports = function(sequelize, DataTypes) {
         }, {
             sequelize,
             tableName: "comments",
-            timestamps: false,
+            timestamps: true,
             indexes: [{
                     name: "PRIMARY",
                     unique: true,

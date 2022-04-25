@@ -2,48 +2,25 @@ const Sequelize = require("sequelize");
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define(
         "reacts", {
-            category: {      // like , love .....
-                type: DataTypes.STRING(15),
-                allowNull: true,
-            },
-            timeCreated: {
-                type: DataTypes.DATE,
-                allowNull: true,
-            },
-            userId: {
+            id: {
+                autoIncrement: true,
                 type: DataTypes.INTEGER,
-                onDelete: 'CASCADE',
                 allowNull: false,
                 primaryKey: true,
-                references: {
-                    model: "users",
-                    key: "id",
-                },
             },
-            postId: {
-                type: DataTypes.INTEGER,
-                onDelete: 'CASCADE',
-                allowNull: false,
-                primaryKey: true,
-                references: {
-                    model: "posts",
-                    key: "id",
-                },
+            react: {
+                type: DataTypes.STRING(30),
+                allowNull: true,
             },
         }, {
             sequelize,
             tableName: "reacts",
             timestamps: false,
-            indexes: [
-            {
-                name: "reacts_users_fk_idx",
+            indexes: [{
+                name: "PRIMARY",
+                unique: true,
                 using: "BTREE",
-                fields: [{ name: "userId" }],
-            },
-            {
-                name: "reacts_posts_fk_idx",
-                using: "BTREE",
-                fields: [{ name: "postId" }],
+                fields: [{ name: "id" }],
             }, ],
         }
     );
