@@ -3,17 +3,49 @@ import {FaUserCircle} from 'react-icons/fa';
 import {FaEdit} from 'react-icons/fa';
 import {MdDone,MdDeleteForever} from 'react-icons/md';
 import {AiFillDelete} from 'react-icons/ai';
+import { useEffect, useState } from "react";
+
+
+
 
 export default function Settings() {
+  let data ="myEmail@gmail.com"
+  const[value,setValue] =useState(data)
+  
+  const handleClick=()=>{
+    data=value
+    console.log(data);
+  }
+
+  useEffect(()=>{
+    fetch("http://localhost:8000/admin")
+      .then(res =>{
+        return res.json()
+      })
+      .then(()=>{})
+  },[])
+  
+
   return (
     <div className="settingswar">
       <div className="profileedit">
+        <div className="photo">
+          <div className="photoshow">
+            <FaUserCircle className="photoIcon"/>
+            <FaEdit className="editPhoto"/>
+          </div>
+        </div>
         <div className="mails">
           <h2>Profile</h2>
           <div className="mailB">
           <label htmlFor="">Email</label>
-          <input type="text" />
-          <MdDone className="verfiy"/>
+          <input
+           placeholder="Enter Your mail"
+           type="text" 
+           value={value}
+           onChange={(e)=>setValue(e.target.value)}
+           />
+          <MdDone className="verfiy" onClick={handleClick}/>
           <AiFillDelete className="deletemail"/>
           </div>
           <hr />
@@ -31,15 +63,11 @@ export default function Settings() {
           <MdDone className="verfiy"/>
           <AiFillDelete className="deletemail"/>
           </div>
+  
+         
           
         </div>
-        <div className="photo">
-          <div className="photoshow">
-            <FaUserCircle className="photoIcon"/>
-            <FaEdit className="editPhoto"/>
-          </div>
-          
-        </div>
+        
       </div>
       <div className="Title">
         {/* <h2>Blog Title</h2> */}

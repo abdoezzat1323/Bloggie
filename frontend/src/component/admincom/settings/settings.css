@@ -17,7 +17,7 @@
 
 .profileedit {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   margin-left: 40px;
   padding-bottom: 20px;
@@ -33,9 +33,11 @@
 }
 
 .photo {
+  margin-bottom: 20px;
   flex: 4;
 }
 .photoshow {
+  top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
