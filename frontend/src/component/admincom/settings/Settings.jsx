@@ -9,12 +9,10 @@ import { useEffect, useState } from "react";
 
 
 export default function Settings() {
-  let data ="myEmail@gmail.com"
-  const[value,setValue] =useState(data)
-  
+  const[value,setValue] =useState("Loading")
+
   const handleClick=()=>{
-    data=value
-    console.log(data);
+   
   }
 
   useEffect(()=>{
@@ -22,7 +20,10 @@ export default function Settings() {
       .then(res =>{
         return res.json()
       })
-      .then(()=>{})
+      .then(data=>{
+        console.log(data)
+        setValue(data.mail)
+      })
   },[])
   
 
