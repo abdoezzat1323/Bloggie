@@ -16,7 +16,7 @@ export const SidebarData = [
   },
   {
     title: 'Write Post',
-    path: '/write_post',
+    path: '/write',
     icon: <IoIosAddCircleOutline />,
     cName: 'nav-text'
   },
