@@ -14,5 +14,7 @@ router.get("/:id/online", userContoller.isOnline);
 router.post("/:id/online", userContoller.setOnline);
 router.get("/:id/activated", userContoller.isActivated);
 router.post("/:id/activate", userContoller.activate);
+router.get("/:id/isadmin", userContoller.isAdmin);
+router.get("/:id/ispremium", userContoller.isPremium);
 
 module.exports = router;

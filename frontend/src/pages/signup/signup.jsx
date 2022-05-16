@@ -1,14 +1,22 @@
-import TopBar from "../../component/topbar/TopBar";
-import React from "react";
+import Auth_TopBar from "../../component/topbar/Auth_TopBar";
+import React, { useRef, useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { signup } from "../../services/userService";
 import { isLoggedIn } from "../../services/authService";
 import "./signup.css";
+import UploadImage from "../../component/imageUpload/ImageUpload";
+import { uploadImage } from "../../services/uploadService";
+import TopBar from "../../component/topbar/TopBar";
 
 function Register() {
   const navigate = useNavigate();
+  const [featuredImage, setFeaturedImage] = useState(null);
+
   if (isLoggedIn()) navigate("/");
 
+  const oSubmit = async (event) => {
+    event.preventDefault();
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -21,6 +29,14 @@ function Register() {
       lastName: lastName.value,
       password: password.value,
     };
+
+    if (featuredImage) {
+      let upload = await uploadImage(featuredImage);
+      console.log(upload);
+      if (upload) userData.avatar = upload.data.file;
+      console.log(userData);
+    }
+
     let res = await signup(userData);
     if (res) {
       navigate("/");
@@ -32,9 +48,10 @@ function Register() {
   ) : (
     <>
       <TopBar />
+
       <div className="register">
         <span className="registerTitle customfont1 ">Register</span>
-        <form onSubmit={handleSubmit} className="registerForm">
+        <form onSubmit={oSubmit} className="registerForm">
           <label className="customfont1 lablesize">FirstName</label>
           <input
             className="registerInput"
@@ -67,12 +84,17 @@ function Register() {
             id="password"
             placeholder="Enter your password..."
           />
-          <button className="registerButton">Register</button>
+          <div>
+            <UploadImage
+              title={"Avatar"}
+              min={1}
+              setFeaturedImage={setFeaturedImage}
+            />
+          </div>
+          <button onClick={handleSubmit} className="registerButton">
+            Register
+          </button>
         </form>
-        <a href="/login">
-          {" "}
-          <button className="secondAuthButton ">Login</button>
-        </a>
       </div>
     </>
   );

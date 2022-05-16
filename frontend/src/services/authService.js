@@ -5,6 +5,9 @@ import {
     setTokenCookie,
     getTokenCookie,
     removeTokenCookie,
+    setIdCookie,
+    removeIdCookie,
+    setIsAdminCookie,
 } from "./helperService";
 
 const endPoint = config.API_URL + "/auth/login";
@@ -13,6 +16,8 @@ export async function login(loginData) {
     try {
         const response = await axios.post(endPoint, loginData);
         setTokenCookie(response.data.data.token);
+        setIdCookie(response.data.id);
+        setIsAdminCookie(response.data.isAdmin);
         return true;
     } catch (err) {
         if (err.response) {
@@ -27,6 +32,7 @@ export async function login(loginData) {
 
 export function logout() {
     removeTokenCookie();
+    removeIdCookie();
 }
 
 export function isLoggedIn() {

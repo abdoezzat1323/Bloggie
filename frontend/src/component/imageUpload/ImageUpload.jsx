@@ -33,7 +33,7 @@ export default function UploadImage(props) {
           name="filename"
           hidden
         ></input>
-        {!img && (
+        {(!img || props.min) && (
           <button
             className="inputImageButton"
             onClick={() => image.current.click()}
@@ -41,13 +41,15 @@ export default function UploadImage(props) {
             <FaUpload className="upIcon" />
           </button>
         )}
-        {img && (
+        {img && !props.min && (
           <button className="closeButton" onClick={reset}>
             &#10006;
           </button>
         )}
       </div>
-      <div>{img && <img className="inputimage" src={img} alt="" />}</div>
+      <div>
+        {img && !props.min && <img className="inputimage" src={img} alt="" />}
+      </div>
       <div></div>
     </div>
   );

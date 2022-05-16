@@ -135,6 +135,8 @@ exports.createUser = async (req, res) => {
 
     userData.lastName = req.body.lastName;
 
+    userData.avatar = req.body.avatar;
+
     userData.password = req.body.password;
     if (!userData.password)
       return res
@@ -166,7 +168,15 @@ exports.createUser = async (req, res) => {
 
     const token = createToken(user.id);
 
-    res.status(200).json({ success: true, data: { token: token } });
+    res.status(200).json({
+      success: true,
+      data: {
+        token: token,
+        id: user.id,
+        isAdmin: user.isAdmin,
+        isPremium: user.isPremium,
+      },
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json({ success: false, data: err });
@@ -300,19 +310,23 @@ exports.login = async (req, res) => {
 
   let user = await User.findOne({ where: { email: req.body.email } });
 
+  let user = await User.create(userData);
   if (!user)
     return res
-      .status(404)
-      .json({ success: false, data: "User does not exist." });
-
-  let passMatches = await bcrypt.compare(req.body.password, user.password);
-
-  if (!passMatches)
-    return res.status(401).json({ success: false, data: "Worng password!" });
+      .status(500)
+      .json({ success: false, data: "could not create user" });
 
   const token = createToken(user.id);
 
-  res.status(200).json({ success: true, data: { token: token } });
+  res.status(200).json({
+    success: true,
+    data: {
+      token: token,
+      id: user.id,
+      isAdmin: user.isAdmin,
+      isPremium: user.isPremium,
+    },
+  });
 };
 
 // set user activated (SET by id)
@@ -347,6 +361,32 @@ exports.isActivated = async (req, res) => {
         .status(404)
         .json({ success: false, data: "User does not exist." });
     res.status(200).json({ success: true, data: user.activated });
+  } catch (err) {
+    res.status(500).json({ success: false, data: err });
+  }
+};
+
+exports.isAdmin = async (req, res) => {
+  try {
+    let user = await User.findOne({ where: { id: parseInt(req.params.id) } });
+    if (!user)
+      return res
+        .status(404)
+        .json({ success: false, data: "User does not exist." });
+    res.status(200).json({ success: true, data: user.isAdmin });
+  } catch (err) {
+    res.status(500).json({ success: false, data: err });
+  }
+};
+
+exports.isPremium = async (req, res) => {
+  try {
+    let user = await User.findOne({ where: { id: parseInt(req.params.id) } });
+    if (!user)
+      return res
+        .status(404)
+        .json({ success: false, data: "User does not exist." });
+    res.status(200).json({ success: true, data: user.isPremium });
   } catch (err) {
     res.status(500).json({ success: false, data: err });
   }

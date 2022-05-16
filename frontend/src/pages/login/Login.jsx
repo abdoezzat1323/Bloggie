@@ -1,8 +1,10 @@
-import TopBar from "../../component/topbar/TopBar";
+import Auth_TopBar from "../../component/topbar/Auth_TopBar";
 import React from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { login, isLoggedIn } from "../../services/authService";
 import "./Login.css";
+import "../../component/topbar/topbar.css";
+import TopBar from "../../component/topbar/TopBar";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -26,6 +28,7 @@ export default function Login() {
   ) : (
     <>
       <TopBar />
+
       <div className="login">
         <span className="loginTitle customfont1">Login</span>
         <form onSubmit={handleSubmit} className="loginForm">
@@ -43,6 +46,7 @@ export default function Login() {
             type="password"
             placeholder="Enter your password..."
           />
+          <br></br>
           <button className="loginButton">Login</button>
         </form>
         <a href="/register">

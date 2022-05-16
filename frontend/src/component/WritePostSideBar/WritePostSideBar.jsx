@@ -1,6 +1,8 @@
 import "./WritePostSideBar.css";
 import React, { useState, useRef } from "react";
 import UploadImage from "../imageUpload/ImageUpload";
+import { uploadImage } from "../../services/uploadService";
+
 import TagSelector from "../tagSelector/TagSelector";
 import Tagify from "@yaireo/tagify";
 import "@yaireo/tagify/dist/tagify.css";
@@ -13,7 +15,12 @@ export default function WritePostSideBar(props) {
     <div className="MainWriteSideBar">
       <div className="sideDiv">
         {" "}
-        <button className="publishButton" type="button">
+        <button
+          className="publishButton"
+          onClick={props.submit}
+          ل
+          type="button"
+        >
           Publish
         </button>
       </div>
@@ -29,9 +36,6 @@ export default function WritePostSideBar(props) {
 
         <TagSelector setCategories={props.setCategories} />
       </div>
-      <button type="button" onClick={props.submit} className="input11">
-        Save
-      </button>
     </div>
   );
 }

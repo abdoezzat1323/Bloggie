@@ -3,11 +3,13 @@ import axios from "axios";
 import { showError, setTokenCookie } from "./helperService";
 import { uploadImage } from "./uploadService";
 import { getTokenCookie } from "./helperService"; // axios.defaults.withCredentials = true;
+
 axios.defaults.headers.common["x-auth-token"] = getTokenCookie();
 
 const endPoint = config.API_URL + "/post";
 
 export async function createPost(title, body, categories, imageFile = null) {
+    axios.defaults.headers.common["x-auth-token"] = getTokenCookie();
     try {
         let postData = {};
         if (imageFile) {

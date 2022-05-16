@@ -1,0 +1,16 @@
+.cardContainer{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 7rem;
+    border-radius: 0.7rem;
+    color: white;
+    position: relative;
+    cursor: pointer;
+    padding: 1rem;
+    /* backGround: linear-gradient(180deg, #FF919D 0%, #FC929D 100%); */ 
+}
+
+.cardContainer>h3{
+    flex: 2;
+}
