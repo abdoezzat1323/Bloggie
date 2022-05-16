@@ -10,6 +10,7 @@
     margin-left: 2rem;
     font-size: 2rem;
     background: none;
+    
 }
 
 .nav-menu {
@@ -22,6 +23,7 @@
     top: 0;
     left: -100%;
     transition: 850ms;
+    font-family: 'Anek Telugu', sans-serif;
 }
 
 .nav-menu.active {

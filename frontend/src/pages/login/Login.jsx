@@ -1,4 +1,4 @@
-import TopBar from "../../component/topbar/TopBar";
+import Auth_TopBar from "../../component/topbar/Auth_TopBar";
 import React from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { login, isLoggedIn } from "../../services/authService";
@@ -25,7 +25,7 @@ export default function Login() {
     <Navigate to="/" />
   ) : (
     <>
-      <TopBar />
+      <Auth_TopBar />
       <div className="login">
         <span className="loginTitle customfont1">Login</span>
         <form onSubmit={handleSubmit} className="loginForm">

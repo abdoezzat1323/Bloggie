@@ -1,4 +1,4 @@
-import TopBar from "../../component/topbar/TopBar";
+import Auth_TopBar from "../../component/topbar/Auth_TopBar";
 import React from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { signup } from "../../services/userService";
@@ -31,7 +31,7 @@ function Register() {
     <Navigate to="/" />
   ) : (
     <>
-      <TopBar />
+      <Auth_TopBar />
       <div className="register">
         <span className="registerTitle customfont1 ">Register</span>
         <form onSubmit={handleSubmit} className="registerForm">
@@ -69,10 +69,7 @@ function Register() {
           />
           <button className="registerButton">Register</button>
         </form>
-        <a href="/login">
-          {" "}
-          <button className="secondAuthButton ">Login</button>
-        </a>
+
       </div>
     </>
   );

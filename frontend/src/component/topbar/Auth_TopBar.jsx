@@ -32,13 +32,10 @@ export default function topBar() {
     <header>
       <NotificationContainer />
       <div className="left_section sizeleft">
-        <Navbar />
+      <label className="logolable">Blog</label>
       </div>
       <div className="center_section">
-        <a href="/">
 
-        <label className="logolable" >Blog</label>
-        </a>
       </div>
       <div className="right_section  sizeright ">{AuthButton}</div>
     </header>

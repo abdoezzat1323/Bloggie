@@ -26,6 +26,7 @@ function Navbar() {
               <Link to='#' className='menu-bars'>
                 <AiIcons.AiOutlineClose />
               </Link>
+
             </li>
             {SidebarData.map((item, index) => {
               return (
