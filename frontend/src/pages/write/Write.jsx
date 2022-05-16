@@ -8,8 +8,6 @@ import { createPost } from "../../services/postService";
 export default function Write() {
   const [postContent, setPostContent] = React.useState();
 
-  const maxNumber = 69;
-
   const post_title = useRef(null);
   const post_description = useRef(null);
 

@@ -103,6 +103,8 @@ exports.createUser = async(req, res) => {
 
         userData.lastName = req.body.lastName;
 
+        userData.avatar = req.body.avatar;
+
         userData.password = req.body.password;
         if (!userData.password)
             return res
@@ -285,17 +287,15 @@ exports.login = async(req, res) => {
 
     const token = createToken(user.id);
 
-    res
-        .status(200)
-        .json({
-            success: true,
-            data: {
-                token: token,
-                id: user.id,
-                isAdmin: user.isAdmin,
-                isPremium: user.isPremium,
-            },
-        });
+    res.status(200).json({
+        success: true,
+        data: {
+            token: token,
+            id: user.id,
+            isAdmin: user.isAdmin,
+            isPremium: user.isPremium,
+        },
+    });
 };
 
 // set user activated (SET by id)

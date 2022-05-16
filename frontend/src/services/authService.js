@@ -6,9 +6,7 @@ import {
     getTokenCookie,
     removeTokenCookie,
     setIdCookie,
-    getIdCookie,
     removeIdCookie,
-    getIsAdminCookie,
     setIsAdminCookie,
 } from "./helperService";
 

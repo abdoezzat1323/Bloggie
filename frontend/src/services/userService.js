@@ -8,7 +8,7 @@ import {
     setIsAdminCookie,
 } from "./helperService";
 
-const endPoint = config.API_URL + "/user/" + 1;
+const endPoint = config.API_URL + "/user/";
 
 export async function signup(userData) {
     try {

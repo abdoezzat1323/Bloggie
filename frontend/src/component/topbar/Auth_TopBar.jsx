@@ -3,6 +3,7 @@ import { NotificationContainer } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import { FiLogOut, FiLogIn } from "react-icons/fi";
 import { logout, isLoggedIn } from "../../services/authService";
+import { getTitle } from "../../services/blogServices";
 
 import Navbar from "../sidebar/Navbar";
 
@@ -30,13 +31,13 @@ export default function topBar() {
   }
   return (
     <header>
-      <NotificationContainer />
       <div className="left_section sizeleft">
-      <label className="logolable">Blog</label>
+        <Navbar />
       </div>
-      <div className="center_section">
 
-      </div>
+      <NotificationContainer />
+      <div className="left_section sizeleft"></div>
+      <div className="center_section">{getTitle()}</div>
       <div className="right_section  sizeright ">{AuthButton}</div>
     </header>
   );

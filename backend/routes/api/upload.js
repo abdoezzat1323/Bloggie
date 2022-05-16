@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.post(
     "/",
-    // requireAuth,
     uploadContoller.upload.single("file"),
     uploadContoller.uploadFile
 );

@@ -18,10 +18,12 @@ header {
 }
 
 .sizeright {
+    align-items: center;
     font-size: 30px;
 }
 
 .right_section a {
+    align-items: center;
     padding-right: 18px;
     text-decoration: none;
     color: black;
@@ -72,16 +74,16 @@ header {
     transition: background-color 0.2s;
 }
 
-transition: background-color 0.2s;
 .loginButton {
     margin-top: 30px;
     cursor: pointer;
     background-color: rgb(5, 135, 14);
     color: white;
-    padding: 15px;
+    padding: 0;
     border: none;
     border-radius: 10px;
     text-align: center;
+    height: 44px;
     font-size: 20px;
     transition: background-color 0.2s;
 }
@@ -148,4 +150,23 @@ transition: background-color 0.2s;
     font-family: "Anek Telugu";
     font-size: 22px;
     font-weight: 500;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 60px;
+    padding-top: 5px;
+}
+
+.dropdown {
+    width: 100px;
+    text-align: right;
+}
+
+.dropdown .item {
+    display: none;
+}
+
+.dropdown:hover .item {
+    display: block;
 }
