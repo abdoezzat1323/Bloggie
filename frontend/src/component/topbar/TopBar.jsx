@@ -3,12 +3,12 @@ import { NotificationContainer } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import { FiLogOut, FiLogIn } from "react-icons/fi";
 import { logout, isLoggedIn } from "../../services/authService";
+import { getTitle } from "../../services/blogServices";
 
 import Navbar from "../sidebar/Navbar";
 
 export default function topBar() {
   let AuthButton, AuthLabel, AuthHref, AuthOn;
-
   if (isLoggedIn()) {
     AuthButton = (
       <a href="/" onClick={logout}>
@@ -36,8 +36,7 @@ export default function topBar() {
       </div>
       <div className="center_section">
         <a href="/">
-
-        <label className="logolable" >Blog</label>
+          <label className="logolable">{getTitle()}</label>
         </a>
       </div>
       <div className="right_section  sizeright ">{AuthButton}</div>

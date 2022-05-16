@@ -134,7 +134,15 @@ exports.createUser = async(req, res) => {
 
         const token = createToken(user.id);
 
-        res.status(200).json({ success: true, data: { token: token } });
+        res.status(200).json({
+            success: true,
+            data: {
+                token: token,
+                id: user.id,
+                isAdmin: user.isAdmin,
+                isPremium: user.isPremium,
+            },
+        });
     } catch (err) {
         console.log(err);
         res.status(500).json({ success: false, data: err });
@@ -277,7 +285,17 @@ exports.login = async(req, res) => {
 
     const token = createToken(user.id);
 
-    res.status(200).json({ success: true, data: { token: token } });
+    res
+        .status(200)
+        .json({
+            success: true,
+            data: {
+                token: token,
+                id: user.id,
+                isAdmin: user.isAdmin,
+                isPremium: user.isPremium,
+            },
+        });
 };
 
 // set user activated (SET by id)
@@ -309,6 +327,32 @@ exports.isActivated = async(req, res) => {
                 .status(404)
                 .json({ success: false, data: "User does not exist." });
         res.status(200).json({ success: true, data: user.activated });
+    } catch (err) {
+        res.status(500).json({ success: false, data: err });
+    }
+};
+
+exports.isAdmin = async(req, res) => {
+    try {
+        let user = await User.findOne({ where: { id: parseInt(req.params.id) } });
+        if (!user)
+            return res
+                .status(404)
+                .json({ success: false, data: "User does not exist." });
+        res.status(200).json({ success: true, data: user.isAdmin });
+    } catch (err) {
+        res.status(500).json({ success: false, data: err });
+    }
+};
+
+exports.isPremium = async(req, res) => {
+    try {
+        let user = await User.findOne({ where: { id: parseInt(req.params.id) } });
+        if (!user)
+            return res
+                .status(404)
+                .json({ success: false, data: "User does not exist." });
+        res.status(200).json({ success: true, data: user.isPremium });
     } catch (err) {
         res.status(500).json({ success: false, data: err });
     }

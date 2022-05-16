@@ -13,7 +13,7 @@ export default function WritePostSideBar(props) {
     <div className="MainWriteSideBar">
       <div className="sideDiv">
         {" "}
-        <button className="publishButton" type="button">
+        <button className="publishButton" onClick={props.submit} type="button">
           Publish
         </button>
       </div>
@@ -29,9 +29,6 @@ export default function WritePostSideBar(props) {
 
         <TagSelector setCategories={props.setCategories} />
       </div>
-      <button type="button" onClick={props.submit} className="input11">
-        Save
-      </button>
     </div>
   );
 }
