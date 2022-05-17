@@ -1,13 +1,21 @@
 import React from 'react';
-import TopBar from "../../component/topbar/TopBar";
-function Comments() {
+import Comments from "../../component/Comments/Comments";
+import "./Comments.css";
+function commentSection() {
   return (
     
     <div className='Comments'>
-      <TopBar/>
-      <h1>what the fuck</h1>
+      <div>
+
+      <Comments
+        commentsUrl="http://localhost:3000/comments"
+        currentUserId="1"
+      />
+     </div>
+
     </div>
   );
 }
 
-export default Comments;
+export default commentSection;
+

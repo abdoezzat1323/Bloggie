@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
+import { Avatar } from "@material-ui/core";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -13,6 +14,7 @@ function Navbar() {
 
   return (
     <>
+
       <div className="navbar">
         <Link to="#" className="menu-bars">
           <FaIcons.FaBars value={{ color: "#111" }} onClick={showSidebar} />
@@ -26,6 +28,23 @@ function Navbar() {
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
+            <div >  
+               <a href="/profile">
+               <Avatar sizes="2x"
+            className="user"
+            alt="UserName"
+            // src={userData?.imageUrl}
+            // alt={userData?.name}
+                style={{
+                    display:'flex',
+                  flexDirection:'row',
+                  alignItems:'center',
+                  justifyContent:'center' }}
+                     />
+                   </a>    
+              </div>
+
+
             {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>

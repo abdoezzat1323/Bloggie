@@ -6,7 +6,7 @@ import Write from "./pages/write/Write";
 import Writen from "./pages/test";
 import Admin from "./pages/admin/Admin";
 import Grid from "./component/grid/Grid";
-import Comments from "./component/admincom/comments/Comments";
+import Comments from "./pages/Comments/Comments";
 
 function App() {
   const user = false;
