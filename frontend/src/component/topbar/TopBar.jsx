@@ -4,8 +4,11 @@ import "react-notifications/lib/notifications.css";
 import { FiLogOut, FiLogIn } from "react-icons/fi";
 import { logout, isLoggedIn } from "../../services/authService";
 import { getTitle } from "../../services/blogServices";
-
+import { getAvatarCookie } from "../../services/helperService";
 import Navbar from "../sidebar/Navbar";
+import config from "../../config.json";
+
+const BASE_URL = config.BASE_URL;
 
 export default function topBar(props) {
   let AuthButton, AuthLabel, AuthHref, AuthOn;
@@ -37,7 +40,7 @@ export default function topBar(props) {
         {(!props.auth && <Navbar />) || <span></span>}
       </div>
       <div className="center_section">
-        <a href="/"  className="logolable">
+        <a href="/" className="logolable">
           {getTitle()}
         </a>
       </div>
@@ -45,7 +48,10 @@ export default function topBar(props) {
         <div className="dropdown">
           <img
             className="right_section  sizeright avatar"
-            src="https://www.w3schools.com/howto/img_avatar2.png"
+            src={
+              BASE_URL + "/" + getAvatarCookie() ||
+              "https://www.w3schools.com/howto/img_avatar2.png"
+            }
             alt="Avatar"
           ></img>
           <div className=" item ">{AuthButton}</div>

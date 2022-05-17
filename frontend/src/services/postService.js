@@ -36,3 +36,37 @@ export async function createPost(title, body, categories, imageFile = null) {
         }
     }
 }
+
+export async function getPosts() {
+    try {
+        const response = await axios.get(endPoint);
+        console.log(response);
+        return response;
+    } catch (err) {
+        if (err.response) {
+            console.log(err);
+            showError(err.response.data.data);
+            return false;
+        } else {
+            showError("Server is down!");
+            return false;
+        }
+    }
+}
+
+export async function getPinnedPosts() {
+    try {
+        const response = await axios.get(endPoint + "?pinned=1");
+        console.log(response);
+        return response;
+    } catch (err) {
+        if (err.response) {
+            console.log(err);
+            showError(err.response.data.data);
+            return false;
+        } else {
+            showError("Server is down!");
+            return false;
+        }
+    }
+}

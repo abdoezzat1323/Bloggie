@@ -4,10 +4,11 @@ import {
     showError,
     setTokenCookie,
     getTokenCookie,
-    removeTokenCookie,
     setIdCookie,
-    removeIdCookie,
     setIsAdminCookie,
+    setIsPremiumCookie,
+    setAvatarCookie,
+    removeUserCookies,
 } from "./helperService";
 
 const endPoint = config.API_URL + "/auth/login";
@@ -15,9 +16,12 @@ const endPoint = config.API_URL + "/auth/login";
 export async function login(loginData) {
     try {
         const response = await axios.post(endPoint, loginData);
+
         setTokenCookie(response.data.data.token);
-        setIdCookie(response.data.id);
-        setIsAdminCookie(response.data.isAdmin);
+        setIdCookie(response.data.data.id);
+        setIsAdminCookie(response.data.data.isAdmin);
+        setIsPremiumCookie(response.data.data.isPremium);
+        setAvatarCookie(response.data.data.avatar);
         return true;
     } catch (err) {
         if (err.response) {
@@ -31,8 +35,7 @@ export async function login(loginData) {
 }
 
 export function logout() {
-    removeTokenCookie();
-    removeIdCookie();
+    removeUserCookies();
 }
 
 export function isLoggedIn() {

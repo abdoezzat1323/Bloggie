@@ -9,5 +9,7 @@ router.patch("/:id", requireAuth, postContoller.editPost);
 router.delete("/delete/:id", requireAuth, postContoller.deletePost);
 router.get("/:id", postContoller.getPost);
 router.get("/", postContoller.getPosts);
+router.post("/:id/pin", postContoller.pinPost);
+router.post("/:id/unpin", postContoller.unPinPost);
 
 module.exports = router;

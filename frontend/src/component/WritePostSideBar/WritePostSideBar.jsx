@@ -15,12 +15,7 @@ export default function WritePostSideBar(props) {
     <div className="MainWriteSideBar">
       <div className="sideDiv">
         {" "}
-        <button
-          className="publishButton"
-          onClick={props.submit}
-          ل
-          type="button"
-        >
+        <button className="publishButton" onClick={props.submit} type="button">
           Publish
         </button>
       </div>
