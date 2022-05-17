@@ -5,7 +5,7 @@ function Comments() {
     
     <div className='Comments'>
       <TopBar/>
-      <h1>Comments</h1>
+      <h1>what the fuck</h1>
     </div>
   );
 }

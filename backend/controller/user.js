@@ -310,7 +310,6 @@ exports.login = async (req, res) => {
 
   let user = await User.findOne({ where: { email: req.body.email } });
 
-  let user = await User.create(userData);
   if (!user)
     return res
       .status(500)
