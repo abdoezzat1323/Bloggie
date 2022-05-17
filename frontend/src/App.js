@@ -7,6 +7,7 @@ import Writen from "./pages/test";
 import Admin from "./pages/admin/Admin";
 import Grid from "./component/grid/Grid";
 import Comments from "./pages/Comments/Comments";
+import View_post from "./pages/view_post/view_post";
 
 function App() {
   const user = false;
@@ -20,6 +21,8 @@ function App() {
         <Route path="/write" element={<Write />} />{" "}
         <Route path="/admin/*" element={<Admin />} />{" "}
         <Route path="/Comments" element={<Comments />} />{" "}
+        <Route path="/View_post" element={<View_post />} />{" "}
+
         {/* <Route path="/write" element={< JoditEditor />} /> */}{" "}
         {/* <Route path="/test" element={< Admin1 />} />{" "} */}
       </Routes>{" "}

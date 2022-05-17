@@ -1,5 +1,5 @@
 import React from 'react';
-import Comments from "../../component/Comments/Comments";
+import Comments from "../../component/comments/Comments.jsx";
 import "./Comments.css";
 function commentSection() {
   return (

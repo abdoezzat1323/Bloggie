@@ -6,7 +6,7 @@ import { getIsAdminCookie } from "../../services/helperService";
 
 let data = [{
         title: "  Posts",
-        path: "/",
+        path: "/View_post",
         icon: ( <
             RiFilePaperLine size = { 30 }
             style = {
