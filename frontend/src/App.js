@@ -1,12 +1,12 @@
 import Login from "./pages/login/Login";
 import Register from "./pages/signup/signup";
 import Home from "./pages/home2/Home";
-
 import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 import Write from "./pages/write/Write";
 import Writen from "./pages/test";
 import Admin from "./pages/admin/Admin";
 import Grid from "./component/grid/Grid";
+import Comments from "./component/admincom/comments/Comments";
 
 function App() {
   const user = false;
@@ -19,8 +19,9 @@ function App() {
         <Route path="/grid" element={<Grid />} />{" "}
         <Route path="/write" element={<Write />} />{" "}
         <Route path="/admin/*" element={<Admin />} />{" "}
+        <Route path="/Comments" element={<Comments />} />{" "}
         {/* <Route path="/write" element={< JoditEditor />} /> */}{" "}
-        {/* <Route path="/test" element={< Ass />} /> */}{" "}
+        {/* <Route path="/test" element={< Admin1 />} />{" "} */}
       </Routes>{" "}
     </BrowserRouter>
   );

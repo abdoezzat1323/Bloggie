@@ -37,8 +37,8 @@ export default function topBar(props) {
         {(!props.auth && <Navbar />) || <span></span>}
       </div>
       <div className="center_section">
-        <a href="/">
-          <label className="logolable">{getTitle()}</label>
+        <a href="/"  className="logolable">
+          {getTitle()}
         </a>
       </div>
       {(isLoggedIn() && (
