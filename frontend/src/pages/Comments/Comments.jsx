@@ -6,12 +6,12 @@ function commentSection() {
     
     <div className='Comments'>
       <div>
-      <h1>commentSection</h1>
+
       <Comments
         commentsUrl="http://localhost:3000/comments"
         currentUserId="1"
       />
-    </div>
+     </div>
 
     </div>
   );
