@@ -1,12 +1,10 @@
 import React from 'react';
-import TopBar from "../../component/topbar/TopBar";
 import Comments from "../../component/Comments/Comments";
 import "./Comments.css";
 function commentSection() {
   return (
     
     <div className='Comments'>
-      <TopBar/>
       <div>
       <h1>commentSection</h1>
       <Comments
@@ -19,5 +17,5 @@ function commentSection() {
   );
 }
 
-export default Comments;
+export default commentSection;
 

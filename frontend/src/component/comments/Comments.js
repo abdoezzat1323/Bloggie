@@ -3,6 +3,7 @@ import React, { Component }  from 'react';
 import { useState, useEffect } from "react";
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
+import TopBar from "../topbar/TopBar";
 import {
   getComments as getCommentsApi,
   createComment as createCommentApi,
@@ -60,7 +61,9 @@ const Comments = ({ commentsUrl, currentUserId }) => {
   }, []);
 
   return (
+    
     <div className="comments">
+      <TopBar/>
       <h3 className="comments-title">Comments</h3>
       <div className="comment-form-title">Write comment</div>
       <CommentForm submitLabel="Write" handleSubmit={addComment} />
