@@ -34,7 +34,7 @@ class TextEditor extends React.Component {
             toolbar:
               "table wordcount | numlist bullist | emoticons | image | spellchecker language spellcheckdialog | undo redo | bold italic | alignleft aligncenter alignright | fontsizeselect",
             selector: "textarea",
-            images_upload_url: "http://127.0.0.1:5000/api/upload",
+            images_upload_url: "http://bloggie.social:5000/api/upload",
             automatic_uploads: true,
             spellchecker_language: "en",
             font_size_formats:

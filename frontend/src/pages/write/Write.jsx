@@ -35,7 +35,7 @@ export default function Write() {
       post: post_description.current.value,
     };
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/auth/posts", {
+      const res = await fetch("http://bloggie.social:5000/api/auth/posts", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
