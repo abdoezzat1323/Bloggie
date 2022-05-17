@@ -1,8 +1,8 @@
 import React from 'react';
 import TopBar from "../../component/topbar/TopBar";
-import Comments from "./comments/Comments";
+import Comments from "../../component/Comments/Comments";
 import "./Comments.css";
-function Comments() {
+function commentSection() {
   return (
     
     <div className='Comments'>
