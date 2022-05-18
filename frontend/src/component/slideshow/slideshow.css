@@ -6,6 +6,7 @@
 
 .slider_div {
     align-items: center;
+   position: relative;
 }
 
 .slider_item {
