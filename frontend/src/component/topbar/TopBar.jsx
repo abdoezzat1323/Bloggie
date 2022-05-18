@@ -7,10 +7,12 @@ import { getTitle } from "../../services/blogServices";
 import { getAvatarCookie } from "../../services/helperService";
 import Navbar from "../sidebar/Navbar";
 import config from "../../config.json";
+import Search from "../search/Search";
 
 const BASE_URL = config.BASE_URL;
 
 export default function topBar(props) {
+  let posts =["trip","game","syber","holiday"]
   let AuthButton, AuthLabel, AuthHref, AuthOn;
   if (isLoggedIn()) {
     AuthButton = (
@@ -36,6 +38,7 @@ export default function topBar(props) {
   return (
     <header>
       <NotificationContainer />
+      <Search placeholder="Enter a post name" data={posts}/>
       <div className="left_section sizeleft" auth={1}>
         {(!props.auth && <Navbar />) || <span></span>}
       </div>
