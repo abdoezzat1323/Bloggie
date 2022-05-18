@@ -17,12 +17,11 @@ module.exports = function(sequelize, DataTypes) {
             tableName: "categories",
             timestamps: false,
             indexes: [{
-                    name: "PRIMARY",
-                    unique: true,
-                    using: "BTREE",
-                    fields: [{ name: "id" }],
-                },
-            ],
+                name: "PRIMARY",
+                unique: true,
+                using: "BTREE",
+                fields: [{ name: "id" }],
+            }, ],
         }
     );
 };

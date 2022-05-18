@@ -18,12 +18,14 @@ export default function Post(props) {
       />
       <div className="postInfo">
         <div className="postCats">
-          <span className="postCat">Music</span>
+          {props.post.categories.map((p, i) => (
+            <span className="postCat">{p.category}</span>
+          ))}
         </div>
         <span className="postTitle">{props.post.title}</span>
         <hr />
         <span className="postDate">
-          {moment(props.post.updatedAt).format("YYYY-MM-DD")}
+          {moment(props.post.createdAt).format("YYYY-MM-DD")}
         </span>
       </div>
       <p className="postDesc">

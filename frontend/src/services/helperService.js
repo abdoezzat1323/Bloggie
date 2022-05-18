@@ -30,6 +30,12 @@ export function setIsAdminCookie(isAdmin) {
     cookies.set("isAdmin", isAdmin, { path: "/" });
 }
 
+export function setVisited() {
+    cookies.set("visited", 1, { path: "/" });
+}
+export function getVisited() {
+    cookies.get("visited");
+}
 export function setAvatarCookie(avatar) {
     cookies.set("avatar", avatar, { path: "/" });
 }

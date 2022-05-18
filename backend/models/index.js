@@ -54,8 +54,16 @@ Object.keys(db).forEach((modelName) => {
         db[modelName].associate(db);
     }
 });
+
+async function init() {
+    let c = await db.blog.count();
+    if (!c) {
+        let b = await db.blog.create({ title: "Bloggie" });
+    }
+}
+
+init();
 sequelize.sync();
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
 module.exports = db;
