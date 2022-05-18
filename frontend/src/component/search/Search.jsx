@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import './search.css'
-import SearchIcon from '@mui/icons-material/Search';
-import CloseIcon from '@mui/icons-material/Close';
+import {BiSearch} from 'react-icons/bi';
 import {NavLink,useNavigate,Link} from 'react-router-dom';
 
 
@@ -25,7 +24,7 @@ export default function Search({placeholder, data}) {
         <div className="searchInputs">
             <input type="text" placeholder={placeholder} onChange={handleFilter}/>
             <div className="searchIcon">
-                {filteredData.length === 0? <SearchIcon/>:<></>}
+               <BiSearch/>
             </div>
         </div>
         {filteredData.length !=0 && (<div className="dataResult">
