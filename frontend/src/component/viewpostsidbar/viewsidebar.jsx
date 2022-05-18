@@ -9,9 +9,6 @@ export default function ViewPostSideBar() {
         {" "}
       </div>
       <div className="sideDiv">
-      </div>
-
-      <div className="sideDiv">
         <label className="sideTitle ">Categories</label>
 
       </div>

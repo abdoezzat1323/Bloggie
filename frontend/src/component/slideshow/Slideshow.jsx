@@ -22,7 +22,7 @@ export default function Slideshow() {
     <div className="slider_div ">
       <AwesomeSlider className="silder_mod">
         {posts.map((post, i) => (
-          <div>
+          <div >
             <div
               className="slider_item"
               style={{
