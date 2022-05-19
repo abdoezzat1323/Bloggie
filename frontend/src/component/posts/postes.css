@@ -1,6 +1,20 @@
-.posts{
+.posts {
     flex: 9;
     display: flex;
     flex-wrap: wrap;
     margin: 20px;
+    min-height: 700px;
+    width: 100%;
+}
+
+.posts-main-div {
+    width: 100%;
+}
+
+.no-posts {
+    font-family: monospace;
+    font-size: 29px;
+    font-weight: 700;
+    color: rgb(226, 165, 11);
+    text-shadow: 2px 2px black;
 }

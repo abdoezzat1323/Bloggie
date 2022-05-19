@@ -32,9 +32,7 @@ function Register() {
 
     if (featuredImage) {
       let upload = await uploadImage(featuredImage);
-      console.log(upload);
       if (upload) userData.avatar = upload.data.file;
-      console.log(userData);
     }
 
     let res = await signup(userData);

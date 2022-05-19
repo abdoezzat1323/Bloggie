@@ -1,0 +1,54 @@
+.subscribe {
+    width: 200px;
+    color: brown;
+    font-size: 28px;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    background-color: gold;
+    border-color: gray;
+    transition: all 0.2s;
+}
+
+.subscribe:hover {
+    width: 200px;
+    color: brown;
+    font-size: 28px;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    background-color: rgb(255, 234, 112);
+    border-color: gray;
+}
+
+.subtitle {
+    color: maroon;
+    font-size: 48px;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    text-shadow: 2px 2px teal;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.subtitle-2 {
+    color: rgb(80, 39, 39);
+    font-size: 48px;
+    font-family: Cochin, Georgia, Times, "Times New Roman", serif;
+    text-shadow: 3px 2px rgb(231, 189, 22);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.subcard {
+    color: maroon;
+    font-size: 48px;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    text-shadow: 2px 2px teal;
+    font-weight: 700;
+}
+
+.subscribe-bg {
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient( rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("../../../public/img/subscribe.jpg");
+    background-size: cover;
+}

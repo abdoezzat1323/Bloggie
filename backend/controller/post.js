@@ -1,7 +1,7 @@
 const db = require("../models");
 const User = db.users;
 const Post = db.posts;
-exports.canPost = async(req, res) => {};
+
 exports.createPost = async(req, res) => {
     try {
         let postData = {};
@@ -179,13 +179,14 @@ exports.getPosts = async(req, res) => {
                 .status(404)
                 .json({ success: false, data: "could not get data." });
         let final = [];
-                for (let i=0 ; i<posts.length ; i++){
-            let categories = await db.sequelize.query(`SELECT category , id FROM categories\
+        for (let i = 0; i < posts.length; i++) {
+            let categories = await db.sequelize
+                .query(`SELECT category , id FROM categories\
             JOIN postscategories ON categories.id = postscategories.categoryId\
             where postscategories.postId = ${posts[i].id} `);
-            final.push({...posts[i].dataValues, categories: categories[0]}) 
+            final.push({...posts[i].dataValues, categories: categories[0] });
         }
-        
+
         res.status(200).json({ success: true, data: final });
     } catch (err) {
         console.log(err);

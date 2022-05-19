@@ -13,7 +13,6 @@ export async function createPost(title, body, categories, imageFile = null) {
     try {
         let postData = {};
         if (imageFile) {
-            console.log(imageFile);
             let upload = await uploadImage(imageFile);
 
             if (upload) postData.featured = upload.data.file;
@@ -23,11 +22,9 @@ export async function createPost(title, body, categories, imageFile = null) {
         postData.body = body;
 
         const response = await axios.post(endPoint, postData);
-        console.log(response);
         return response;
     } catch (err) {
         if (err.response) {
-            console.log(err);
             showError(err.response.data.data);
             return false;
         } else {
@@ -40,11 +37,9 @@ export async function createPost(title, body, categories, imageFile = null) {
 export async function getPosts() {
     try {
         const response = await axios.get(endPoint);
-        console.log(response);
         return response;
     } catch (err) {
         if (err.response) {
-            console.log(err);
             showError(err.response.data.data);
             return false;
         } else {
@@ -57,11 +52,9 @@ export async function getPosts() {
 export async function getPinnedPosts() {
     try {
         const response = await axios.get(endPoint + "?pinned=1");
-        console.log(response);
         return response;
     } catch (err) {
         if (err.response) {
-            console.log(err);
             showError(err.response.data.data);
             return false;
         } else {

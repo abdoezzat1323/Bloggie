@@ -6,60 +6,86 @@ import { SidebarData } from "./SidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
 import { Avatar } from "@material-ui/core";
+import {
+    getIsPremiumCookie,
+    getIsAdminCookie,
+} from "../../services/helperService";
 
 function Navbar() {
-  const [sidebar, setSidebar] = useState(false);
+    const [sidebar, setSidebar] = useState(false);
 
-  const showSidebar = () => setSidebar(!sidebar);
+    const showSidebar = () => setSidebar(!sidebar);
 
-  return (
-    <>
+    return ( <
+        >
+        <
+        div className = "navbar" >
+        <
+        Link to = "#"
+        className = "menu-bars" >
+        <
+        FaIcons.FaBars value = {
+            { color: "#111" } }
+        onClick = { showSidebar }
+        /> <
+        /Link> <
+        /div> <
+        IconContext.Provider value = {
+            { color: "#fff" } } >
+        <
+        nav className = { sidebar ? "nav-menu active" : "nav-menu" } >
+        <
+        ul className = "nav-menu-items"
+        onClick = { showSidebar } >
+        <
+        li className = "navbar-toggle" >
+        <
+        Link to = "#"
+        className = "menu-bars" >
+        <
+        AiIcons.AiOutlineClose / >
+        <
+        /Link> <
+        /li> <
+        div >
+        <
+        a href = "/profile" >
+        <
+        Avatar sizes = "2x"
+        className = "user"
+        alt = "UserName"
+        // src={userData?.imageUrl}
+        // alt={userData?.name}
+        style = {
+            {
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+            }
+        }
+        /> <
+        /a> <
+        /div>
 
-      <div className="navbar">
-        <Link to="#" className="menu-bars">
-          <FaIcons.FaBars value={{ color: "#111" }} onClick={showSidebar} />
-        </Link>
-      </div>
-      <IconContext.Provider value={{ color: "#fff" }}>
-        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-          <ul className="nav-menu-items" onClick={showSidebar}>
-            <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
-            <div >  
-               <a href="/profile">
-               <Avatar sizes="2x"
-            className="user"
-            alt="UserName"
-            // src={userData?.imageUrl}
-            // alt={userData?.name}
-                style={{
-                    display:'flex',
-                  flexDirection:'row',
-                  alignItems:'center',
-                  justifyContent:'center' }}
-                     />
-                   </a>    
-              </div>
-
-
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span className={item.cName}>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      </IconContext.Provider>
-    </>
-  );
+        {
+            SidebarData.map((item, index) => {
+                return ( <
+                    li key = { index }
+                    className = { item.cName } >
+                    <
+                    Link to = { item.path } > { item.icon } <
+                    span className = { item.cName } > { item.title } < /span> <
+                    /Link> <
+                    /li>
+                );
+            })
+        } <
+        /ul> <
+        /nav> <
+        /IconContext.Provider> <
+        />
+    );
 }
 
 export default Navbar;

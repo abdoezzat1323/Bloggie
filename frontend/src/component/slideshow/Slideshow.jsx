@@ -13,7 +13,6 @@ export default function Slideshow() {
     const fetchData = async () => {
       let x = await getPinnedPosts();
       setPosts(x.data.data);
-      x.data.data.map((row, i) => console.log(row));
     };
     fetchData().catch(console.error);
   }, []);
@@ -22,7 +21,7 @@ export default function Slideshow() {
     <div className="slider_div ">
       <AwesomeSlider className="silder_mod">
         {posts.map((post, i) => (
-          <div >
+          <div>
             <div
               className="slider_item"
               style={{

@@ -86,8 +86,6 @@ exports.getUser = async(req, res) => {
             attributes: ["isAdmin"],
         });
 
-        console.log(req.body.userId, req.params.id, reqUser.isAdmin);
-
         if (req.body.userId !== req.params.id && !reqUser.isAdmin)
             return res
                 .status(402)
@@ -257,7 +255,6 @@ exports.updateUser = async(req, res) => {
                 .json({ success: false, data: "could not update user data" });
         res.status(200).json({ success: true, data: "user updated!" });
     } catch (err) {
-        console.log(err);
         res.status(500).json({ success: false, data: err });
     }
 };
@@ -382,6 +379,26 @@ exports.isPremium = async(req, res) => {
                 .status(404)
                 .json({ success: false, data: "User does not exist." });
         res.status(200).json({ success: true, data: user.isPremium });
+    } catch (err) {
+        res.status(500).json({ success: false, data: err });
+    }
+};
+
+exports.setPremium = async(req, res) => {
+    try {
+        let user = await User.findOne({ where: { id: parseInt(req.params.id) } });
+        if (!user)
+            return res
+                .status(404)
+                .json({ success: false, data: "User does not exist." });
+        let re = await User.update({ isPremium: 1 }, { where: { id: user.id } });
+        console.log(re);
+        if (!re[0])
+            return res
+                .status(404)
+                .json({ success: false, data: "User already premium." });
+
+        res.status(200).json({ success: true, data: 1 });
     } catch (err) {
         res.status(500).json({ success: false, data: err });
     }

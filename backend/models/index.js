@@ -44,9 +44,7 @@ fs.readdirSync(__dirname)
         try {
             const model = f(sequelize, Sequelize.DataTypes);
             db[model.name] = model;
-        } catch (e) {
-            console.log(path.join(__dirname, file));
-        }
+        } catch (e) {}
     });
 
 Object.keys(db).forEach((modelName) => {

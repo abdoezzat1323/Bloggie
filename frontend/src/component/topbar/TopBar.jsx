@@ -4,7 +4,8 @@ import "react-notifications/lib/notifications.css";
 import { FiLogOut, FiLogIn } from "react-icons/fi";
 import { logout, isLoggedIn } from "../../services/authService";
 import { getTitle } from "../../services/blogServices";
-import { getAvatarCookie } from "../../services/helperService";
+import { getAvatarCookie, getVisited } from "../../services/helperService";
+import { incVisitors } from "../../services/blogServices";
 import Navbar from "../sidebar/Navbar";
 import config from "../../config.json";
 import Search from "../search/Search";
@@ -12,8 +13,10 @@ import Search from "../search/Search";
 const BASE_URL = config.BASE_URL;
 
 export default function topBar(props) {
-  let posts =["aheed",'holiday',"game"]
   let AuthButton, AuthLabel, AuthHref, AuthOn;
+
+  if (!getVisited()) incVisitors();
+
   if (isLoggedIn()) {
     AuthButton = (
       <a href="/" onClick={logout}>
@@ -38,7 +41,6 @@ export default function topBar(props) {
   return (
     <header>
       <NotificationContainer />
-      <Search placeholder= "Enter a post name" data={posts}/>
       <div className="left_section sizeleft" auth={1}>
         {(!props.auth && <Navbar />) || <span></span>}
       </div>

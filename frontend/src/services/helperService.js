@@ -34,7 +34,7 @@ export function setVisited() {
     cookies.set("visited", 1, { path: "/" });
 }
 export function getVisited() {
-    cookies.get("visited");
+    return cookies.get("visited");
 }
 export function setAvatarCookie(avatar) {
     cookies.set("avatar", avatar, { path: "/" });

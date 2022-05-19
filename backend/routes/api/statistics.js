@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.get("/", statisticsContoller.getStatistics);
 router.get("/visitors", blogContoller.getVisitors);
+router.post("/visitors", blogContoller.incVisitors);
 
 module.exports = router;

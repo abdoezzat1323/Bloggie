@@ -15,6 +15,7 @@ const endPoint = config.API_URL + "/auth/login";
 
 export async function login(loginData) {
     try {
+        removeUserCookies();
         const response = await axios.post(endPoint, loginData);
 
         setTokenCookie(response.data.data.token);
