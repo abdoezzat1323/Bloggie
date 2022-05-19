@@ -58,7 +58,7 @@ let y = `<p style="text-align: center;"><span style="font-size: 36pt;">my name i
                   </button>
                 </div>
                 <div className="commentfield">
-                  <h2 class="post-title-alt"></h2>
+                  <h2 class="post-titlee-alt"></h2>
                   <div className="text" dangerouslySetInnerHTML={{__html: y}} /> 
                 </div>
 
