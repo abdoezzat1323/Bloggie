@@ -1,10 +1,17 @@
 import "./post.css";
 import config from "../../config.json";
 import moment from "moment";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+} from "react-router-dom";
 
 const BASE_URL = config.BASE_URL;
 
 export default function Post(props) {
+
   return (
     <div className="post">
       <img
@@ -22,7 +29,11 @@ export default function Post(props) {
             <span className="postCat">{p.category}</span>
           ))}
         </div>
-        <span className="postTitle">{props.post.title}</span>
+        <a><span className="postTitle">{props.post.title}</span> 
+        <li key={props.post.id}>
+              <Link to={`post/${props.post.id}`}>{props.post.title}</Link>
+        </li>
+        </a>
         <hr />
         <span className="postDate">
           {moment(props.post.createdAt).format("YYYY-MM-DD")}

@@ -70,3 +70,19 @@ export async function getPinnedPosts() {
         }
     }
 }
+export async function getPost(id) {
+    try {
+        const response = await axios.get(endPoint+"/"+id);
+        console.log(response);
+        return response.data.data;
+    } catch (err) {
+        if (err.response) {
+            console.log(err);
+            showError(err.response.data.data);
+            return false;
+        } else {
+            showError("Server is down!");
+            return false;
+        }
+    }
+}
