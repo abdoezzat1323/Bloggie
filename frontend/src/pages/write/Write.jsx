@@ -69,13 +69,13 @@ export default function Write() {
   return (
     <>
       <TopBar />
-      <div className="writeWar">
+      <div className="writeWare">
         <WritePostSideBar
           setCategories={setCategories}
           setFeaturedImage={setFeaturedImage}
           submit={submit}
         />
-        <div className="writeontent">
+        <div className="writecontent">
           <div>
             <input
               ref={post_title}

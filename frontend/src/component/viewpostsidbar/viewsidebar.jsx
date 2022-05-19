@@ -4,12 +4,12 @@ import React from "react";
 export default function ViewPostSideBar() {
 
   return (
-    <div className="MainWriteSideBar">
-      <div className="sideDiv">
+    <div className="MainnWriteSideBar">
+      <div className="sidediv">
         {" "}
       </div>
-      <div className="sideDiv">
-        <label className="sideTitle ">Categories</label>
+      <div className="sidediv">
+        <label className="sidetitle ">Categories</label>
 
       </div>
     </div>

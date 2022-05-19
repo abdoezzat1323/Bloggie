@@ -22,8 +22,8 @@ function App() {
         <Route path="/write" element={<Write />} />{" "}
         <Route path="/admin/*" element={<Admin />} />{" "}
         <Route path="/Comments" element={<Comments />} />{" "}
-        <Route path="/View_post" element={<View_post />} />{" "}
         <Route path="/subscribe" element={<Subscribe />} />{" "}
+        <Route path="/post/:id" element={<View_post />} />{" "}
         {/* <Route path="/write" element={< JoditEditor />} /> */}{" "}
         {/* <Route path="/test" element={< Admin1 />} />{" "} */}
       </Routes>{" "}
