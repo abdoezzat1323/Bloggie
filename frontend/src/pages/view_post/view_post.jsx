@@ -72,8 +72,8 @@ export default function View_post() {
             </button>
           </div>
           <div className="commentfield">
-            <h2 class="post-titlee-alt"></h2>
-            <div className="text" dangerouslySetInnerHTML={{ __html: y }} />
+            <h2 class="comment-titlee-alt"></h2>
+            <div className="textcomment" ><p>nice post</p></div>
           </div>
         </div>
       </div>

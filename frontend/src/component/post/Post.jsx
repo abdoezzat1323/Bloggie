@@ -14,7 +14,7 @@ export default function Post(props) {
 
   return (
     <div className="post">
-      <img
+      <a href={`post/${props.post.id}`}><img 
         src={
           (Boolean(props.post.featured) &&
             BASE_URL + "/" + props.post.featured) ||
@@ -23,16 +23,14 @@ export default function Post(props) {
         alt=""
         className="postImg"
       />
+      </a>
       <div className="postInfo">
         <div className="postCats">
           {props.post.categories.map((p, i) => (
             <span className="postCat">{p.category}</span>
           ))}
         </div>
-        <a><span className="postTitle">{props.post.title}</span> 
-        <li key={props.post.id}>
-              <Link to={`post/${props.post.id}`}>{props.post.title}</Link>
-        </li>
+        <a href={`post/${props.post.id}`} className="postTitle" >{props.post.title}
         </a>
         <hr />
         <span className="postDate">
