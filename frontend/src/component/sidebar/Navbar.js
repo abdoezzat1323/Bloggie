@@ -46,27 +46,7 @@ function Navbar() {
         AiIcons.AiOutlineClose / >
         <
         /Link> <
-        /li> <
-        div >
-        <
-        a href = "/profile" >
-        <
-        Avatar sizes = "2x"
-        className = "user"
-        alt = "UserName"
-        // src={userData?.imageUrl}
-        // alt={userData?.name}
-        style = {
-            {
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-            }
-        }
-        /> <
-        /a> <
-        /div>
+        /li> 
 
         {
             SidebarData.map((item, index) => {
