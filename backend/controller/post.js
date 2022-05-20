@@ -182,8 +182,8 @@ exports.getPosts = async(req, res) => {
         for (let i = 0; i < posts.length; i++) {
             let categories = await db.sequelize
                 .query(`SELECT category , id FROM categories\
-            JOIN postscategories ON categories.id = postscategories.categoryId\
-            where postscategories.postId = ${posts[i].id} `);
+            JOIN postsCategories ON categories.id = postsCategories.categoryId\
+            where postsCategories.postId = ${posts[i].id} `);
             final.push({...posts[i].dataValues, categories: categories[0] });
         }
 
