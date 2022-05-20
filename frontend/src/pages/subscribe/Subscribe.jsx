@@ -14,21 +14,13 @@ export default function Subscribe() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    let { email, pass } = document.forms[0];
-
-    let userData = {
-      email: email.value,
-      password: pass.value,
-    };
-
     let res = await setPremium();
     if (res) {
       navigate("/");
     }
   };
-  console.log(getIsAdminCookie(), getIsPremiumCookie());
-  return !(getIsAdminCookie() || getIsPremiumCookie()) ? (
+
+  return getIsAdminCookie() || getIsPremiumCookie() ? (
     <Navigate to="/" />
   ) : (
     <>
@@ -39,7 +31,7 @@ export default function Subscribe() {
         <span className="subtitle-2">Only 2000$</span>
         <form onSubmit={handleSubmit} className="loginForm">
           <br></br>
-          <button onClick={setPremium} className="subscribe">
+          <button onClick={handleSubmit} className="subscribe">
             Subscribe
           </button>
         </form>

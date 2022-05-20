@@ -23,11 +23,12 @@ export function getIdCookie() {
 }
 
 export function getIsAdminCookie() {
-    return cookies.get("isAdmin");
+    return parseInt(cookies.get("isAdmin"));
 }
 
 export function setIsAdminCookie(isAdmin) {
-    cookies.set("isAdmin", isAdmin, { path: "/" });
+    console.log(Number(isAdmin), "dddddd");
+    cookies.set("isAdmin", Number(isAdmin), { path: "/" });
 }
 
 export function setVisited() {
@@ -41,7 +42,7 @@ export function setAvatarCookie(avatar) {
 }
 
 export function getIsPremiumCookie() {
-    return cookies.get("isPremium");
+    return parseInt(cookies.get("isPremium"));
 }
 
 export function getAvatarCookie() {
@@ -49,7 +50,7 @@ export function getAvatarCookie() {
 }
 
 export function setIsPremiumCookie(isPremium) {
-    cookies.set("isPremium", isPremium, { path: "/" });
+    cookies.set("isPremium", Number(isPremium), { path: "/" });
 }
 
 export function removeTokenCookie() {
