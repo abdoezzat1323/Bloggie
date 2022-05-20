@@ -33,6 +33,10 @@ module.exports = function(sequelize, DataTypes) {
                 type: DataTypes.TEXT,
                 allowNull: true,
             },
+            pinned: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false,
+            },
         }, {
             sequelize,
             tableName: "posts",

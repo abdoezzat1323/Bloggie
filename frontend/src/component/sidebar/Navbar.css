@@ -1,6 +1,7 @@
 .navbar {
     background-color: rgba(245, 240, 234, 0.658);
     height: 70px;
+    position: absolute;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -23,6 +24,7 @@
     left: -100%;
     transition: 850ms;
     font-family: "Anek Telugu", sans-serif;
+    z-index: 1000;
 }
 
 .nav-menu.active {
@@ -71,10 +73,9 @@
 }
 
 .navbar-toggle {
-    background-color: #2f4050;
     width: 100%;
     height: 70px;
     display: flex;
-    justify-content: start;
     align-items: center;
+    z-index: 20000;
 }

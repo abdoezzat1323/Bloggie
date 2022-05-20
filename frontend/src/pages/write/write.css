@@ -117,13 +117,13 @@
     transform: translateY(0);
 }
 
-.writeontent {
+.writecontent {
     flex: 9;
     margin: 20px 20px;
     border-radius: 10px;
 }
 
-.writeWar {
+.writeWare {
     display: flex;
     height: calc(100vh - 50px);
     flex-direction: row;

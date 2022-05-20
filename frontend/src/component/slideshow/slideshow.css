@@ -1,0 +1,56 @@
+.silder_mod {
+    height: 450px;
+    margin-top: -455px;
+    margin-bottom: 50px;
+}
+
+.slider_div {
+    align-items: center;
+   position: relative;
+}
+
+.slider_item {
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    margin-top: -224px;
+    margin-left: -50%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    filter: blur(6px);
+}
+
+.slider_p {
+    color: rgb(221, 211, 104);
+    text-shadow: 5px 4px rgb(14, 53, 171);
+    font-size: 88px;
+    font-weight: bold;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+.slider_item img {
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+    width: 100%;
+    filter: blur(5px);
+}
+
+.enableBlur>* {
+    filter: blur(1.2px);
+}
+
+.disableBlur {
+    filter: blur(0);
+}

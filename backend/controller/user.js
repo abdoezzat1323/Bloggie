@@ -6,6 +6,38 @@ const { isString, createToken } = require("./utils");
 const db = require(dirname(require.main.filename) + "/models");
 const User = db.users;
 
+const Post = db.posts;
+exports.canPost = async(req, res) => {
+    try {
+        if (!req.body.userId)
+            return res
+                .status(402)
+                .json({ success: false, data: "Please login first" });
+
+        let reqUser = await User.findOne({
+            where: { id: parseInt(req.body.userId) },
+            attributes: ["isAdmin"],
+        });
+
+        if (req.body.userId !== req.params.id && !reqUser.isAdmin)
+            return res
+                .status(402)
+                .json({ success: false, data: "You are not allowed to see this" });
+
+        let user = await User.findOne({
+            where: { id: parseInt(req.params.id) },
+            attributes: { exclude: "password" },
+        });
+        if (!user)
+            return res
+                .status(404)
+                .json({ success: false, data: "user does not exist." });
+        res.status(200).json({ allowed: user.isPremium || user.isAdmin });
+    } catch (err) {
+        res.status(500).json({ success: false, data: err });
+    }
+};
+
 // get all users
 exports.getUsers = async(req, res) => {
     try {
@@ -53,8 +85,6 @@ exports.getUser = async(req, res) => {
             where: { id: parseInt(req.body.userId) },
             attributes: ["isAdmin"],
         });
-
-        console.log(req.body.userId, req.params.id, reqUser.isAdmin);
 
         if (req.body.userId !== req.params.id && !reqUser.isAdmin)
             return res
@@ -143,6 +173,7 @@ exports.createUser = async(req, res) => {
                 id: user.id,
                 isAdmin: user.isAdmin,
                 isPremium: user.isPremium,
+                avatar: user.avatar,
             },
         });
     } catch (err) {
@@ -224,7 +255,6 @@ exports.updateUser = async(req, res) => {
                 .json({ success: false, data: "could not update user data" });
         res.status(200).json({ success: true, data: "user updated!" });
     } catch (err) {
-        console.log(err);
         res.status(500).json({ success: false, data: err });
     }
 };
@@ -278,12 +308,7 @@ exports.login = async(req, res) => {
     if (!user)
         return res
             .status(404)
-            .json({ success: false, data: "User does not exist." });
-
-    let passMatches = await bcrypt.compare(req.body.password, user.password);
-
-    if (!passMatches)
-        return res.status(401).json({ success: false, data: "Worng password!" });
+            .json({ success: false, data: "could not find user" });
 
     const token = createToken(user.id);
 
@@ -294,6 +319,7 @@ exports.login = async(req, res) => {
             id: user.id,
             isAdmin: user.isAdmin,
             isPremium: user.isPremium,
+            avatar: user.avatar,
         },
     });
 };
@@ -353,6 +379,26 @@ exports.isPremium = async(req, res) => {
                 .status(404)
                 .json({ success: false, data: "User does not exist." });
         res.status(200).json({ success: true, data: user.isPremium });
+    } catch (err) {
+        res.status(500).json({ success: false, data: err });
+    }
+};
+
+exports.setPremium = async(req, res) => {
+    try {
+        let user = await User.findOne({ where: { id: parseInt(req.params.id) } });
+        if (!user)
+            return res
+                .status(404)
+                .json({ success: false, data: "User does not exist." });
+        let re = await User.update({ isPremium: 1 }, { where: { id: user.id } });
+        console.log(re);
+        if (!re[0])
+            return res
+                .status(404)
+                .json({ success: false, data: "User already premium." });
+
+        res.status(200).json({ success: true, data: 1 });
     } catch (err) {
         res.status(500).json({ success: false, data: err });
     }

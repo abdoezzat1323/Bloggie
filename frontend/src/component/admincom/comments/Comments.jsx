@@ -2,6 +2,6 @@ import "./comments.css"
 
 export default function Comments() {
   return (
-    <div>Comments</div>
+    <div>what the fuck</div>
   )
 }

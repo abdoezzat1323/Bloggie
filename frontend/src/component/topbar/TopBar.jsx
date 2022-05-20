@@ -4,11 +4,19 @@ import "react-notifications/lib/notifications.css";
 import { FiLogOut, FiLogIn } from "react-icons/fi";
 import { logout, isLoggedIn } from "../../services/authService";
 import { getTitle } from "../../services/blogServices";
-
+import { getAvatarCookie, getVisited } from "../../services/helperService";
+import { incVisitors } from "../../services/blogServices";
 import Navbar from "../sidebar/Navbar";
+import config from "../../config.json";
+import Search from "../search/Search";
+
+const BASE_URL = config.BASE_URL;
 
 export default function topBar(props) {
   let AuthButton, AuthLabel, AuthHref, AuthOn;
+
+  if (!getVisited()) incVisitors();
+
   if (isLoggedIn()) {
     AuthButton = (
       <a href="/" onClick={logout}>
@@ -37,15 +45,18 @@ export default function topBar(props) {
         {(!props.auth && <Navbar />) || <span></span>}
       </div>
       <div className="center_section">
-        <a href="/">
-          <label className="logolable">{getTitle()}</label>
+        <a href="/" className="logolable">
+          {getTitle()}
         </a>
       </div>
       {(isLoggedIn() && (
         <div className="dropdown">
           <img
             className="right_section  sizeright avatar"
-            src="https://www.w3schools.com/howto/img_avatar2.png"
+            src={
+              BASE_URL + "/" + getAvatarCookie() ||
+              "https://www.w3schools.com/howto/img_avatar2.png"
+            }
             alt="Avatar"
           ></img>
           <div className=" item ">{AuthButton}</div>

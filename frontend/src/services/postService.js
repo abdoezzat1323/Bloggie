@@ -13,7 +13,6 @@ export async function createPost(title, body, categories, imageFile = null) {
     try {
         let postData = {};
         if (imageFile) {
-            console.log(imageFile);
             let upload = await uploadImage(imageFile);
 
             if (upload) postData.featured = upload.data.file;
@@ -23,8 +22,52 @@ export async function createPost(title, body, categories, imageFile = null) {
         postData.body = body;
 
         const response = await axios.post(endPoint, postData);
-        console.log(response);
         return response;
+    } catch (err) {
+        if (err.response) {
+            showError(err.response.data.data);
+            return false;
+        } else {
+            showError("Server is down!");
+            return false;
+        }
+    }
+}
+
+export async function getPosts() {
+    try {
+        const response = await axios.get(endPoint);
+        return response;
+    } catch (err) {
+        if (err.response) {
+            showError(err.response.data.data);
+            return false;
+        } else {
+            showError("Server is down!");
+            return false;
+        }
+    }
+}
+
+export async function getPinnedPosts() {
+    try {
+        const response = await axios.get(endPoint + "?pinned=1");
+        return response;
+    } catch (err) {
+        if (err.response) {
+            showError(err.response.data.data);
+            return false;
+        } else {
+            showError("Server is down!");
+            return false;
+        }
+    }
+}
+export async function getPost(id) {
+    try {
+        const response = await axios.get(endPoint+"/"+id);
+        console.log(response);
+        return response.data.data;
     } catch (err) {
         if (err.response) {
             console.log(err);

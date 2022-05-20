@@ -23,25 +23,57 @@ export function getIdCookie() {
 }
 
 export function getIsAdminCookie() {
-    return cookies.get("isAdmin");
+    return parseInt(cookies.get("isAdmin"));
 }
 
 export function setIsAdminCookie(isAdmin) {
-    cookies.set("isAdmin", isAdmin, { path: "/" });
+    console.log(Number(isAdmin), "dddddd");
+    cookies.set("isAdmin", Number(isAdmin), { path: "/" });
+}
+
+export function setVisited() {
+    cookies.set("visited", 1, { path: "/" });
+}
+export function getVisited() {
+    return cookies.get("visited");
+}
+export function setAvatarCookie(avatar) {
+    cookies.set("avatar", avatar, { path: "/" });
 }
 
 export function getIsPremiumCookie() {
-    return cookies.get("isPremium");
+    return parseInt(cookies.get("isPremium"));
+}
+
+export function getAvatarCookie() {
+    return cookies.get("avatar");
 }
 
 export function setIsPremiumCookie(isPremium) {
-    cookies.set("isPremium", isPremium, { path: "/" });
+    cookies.set("isPremium", Number(isPremium), { path: "/" });
 }
 
-export function removeTokenCookie(token) {
+export function removeTokenCookie() {
     cookies.remove("token");
 }
 
-export function removeIdCookie(token) {
+export function removeIdCookie() {
     cookies.remove("id");
+}
+export function removeAvatarCookie() {
+    cookies.remove("avatar");
+}
+export function removeIsAdminCookie() {
+    cookies.remove("isAdmin");
+}
+export function removeIsPremiumCookie() {
+    cookies.remove("isPremium");
+}
+
+export function removeUserCookies() {
+    removeTokenCookie();
+    removeIdCookie();
+    removeIsAdminCookie();
+    removeIsPremiumCookie();
+    removeAvatarCookie();
 }

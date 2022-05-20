@@ -5,7 +5,6 @@ import { login, isLoggedIn } from "../../services/authService";
 import "./card.css";
 
 export default function Card(props) {
-  console.log(props);
   return (
     <div className="card">
       <div className="bg-img"></div>

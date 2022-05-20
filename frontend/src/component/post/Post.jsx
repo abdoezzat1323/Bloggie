@@ -1,19 +1,45 @@
-import './post.css'
+import "./post.css";
+import config from "../../config.json";
+import moment from "moment";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+} from "react-router-dom";
 
-export default function Post() {
+const BASE_URL = config.BASE_URL;
+
+export default function Post(props) {
+
   return (
-    <div className='post'>
-        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHRlY2h8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="" className="postImg" />
-        <div className="postInfo">
-            <div className="postCats">
-                <span className="postCat">Music</span>
-                <span className="postCat">Life</span>
-            </div>
-            <span className="postTitle">Iam title XD ^^</span>
-            <hr />
-            <span className="postDate">1 hour ago</span>
+    <div className="post">
+      <a href={`post/${props.post.id}`}><img 
+        src={
+          (Boolean(props.post.featured) &&
+            BASE_URL + "/" + props.post.featured) ||
+          "/img/placeholder.png"
+        }
+        alt=""
+        className="postImg"
+      />
+      </a>
+      <div className="postInfo">
+        <div className="postCats">
+          {props.post.categories.map((p, i) => (
+            <span className="postCat">{p.category}</span>
+          ))}
         </div>
-        <p className='postDesc'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus illo, quas aliquam magnam alias accusamus magni ipsam culpa non consectetur voluptates eligendi eos, unde accusantium repellendus, vitae voluptatum laborum quasi.Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus illo, quas aliquam magnam alias accusamus magni ipsam culpa non consectetur voluptates eligendi eos, unde accusantium repellendus, vitae voluptatum laborum quasi.Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus illo, quas aliquam magnam alias accusamus magni ipsam culpa non consectetur voluptates eligendi eos, unde accusantium repellendus, vitae voluptatum laborum quasi.Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus illo, quas aliquam magnam alias accusamus magni ipsam culpa non consectetur voluptates eligendi eos, unde accusantium repellendus, vitae voluptatum laborum quasi.</p>
+        <a href={`post/${props.post.id}`} className="postTitle" >{props.post.title}
+        </a>
+        <hr />
+        <span className="postDate">
+          {moment(props.post.createdAt).format("YYYY-MM-DD")}
+        </span>
+      </div>
+      <p className="postDesc">
+        {props.post.body.replace(/<[^>]+>/g, "").replace(/.&nbsp;/g, "")}
+      </p>
     </div>
-  )
+  );
 }
