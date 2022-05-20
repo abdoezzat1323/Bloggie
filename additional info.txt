@@ -1,0 +1,6 @@
+AI docs:
+https://documenter.getpostman.com/view/10967795/Uyxohisa
+
+Depoyed on AWS servers with domain name:
+http://bloggie.social/
+
