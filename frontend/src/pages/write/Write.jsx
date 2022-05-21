@@ -4,9 +4,11 @@ import WritePostSideBar from "../../component/WritePostSideBar/WritePostSideBar"
 import React, { useRef, useState } from "react";
 import JoditEditor from "../../component/textEditor/TextEditor";
 import { createPost } from "../../services/postService";
+import { useNavigate, Navigate } from "react-router-dom";
 
 export default function Write() {
   const [postContent, setPostContent] = React.useState();
+  const navigate = useNavigate();
 
   const post_title = useRef(null);
   const post_description = useRef(null);
@@ -20,47 +22,17 @@ export default function Write() {
     return JSON.stringify(res, null, 2);
   };
 
-  const submit = (res) => {
-    createPost(
+  const submit = async (res) => {
+    let a = await createPost(
       post_title.current.value,
       body.content,
       categories,
       featuredImage
     );
-  };
-
-  async function postData() {
-    const postData = {
-      title: post_title.current.value,
-      post: post_description.current.value,
-    };
-    try {
-      const res = await fetch("http://bloggie.social:5000/api/auth/posts", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": "token-value",
-        },
-        body: JSON.stringify(postData),
-      });
-      if (!res.ok) {
-        const message = `An error has occured: ${res.status} - ${res.statusText}`;
-        throw new Error(message);
-      }
-      const data = await res.json();
-      const result = {
-        status: res.status + "-" + res.statusText,
-        headers: {
-          "Content-Type": res.headers.get("Content-Type"),
-          "Content-Length": res.headers.get("Content-Length"),
-        },
-        data: data,
-      };
-      setPostResult(fortmatResponse(result));
-    } catch (err) {
-      setPostResult(err.message);
+    if (a) {
+      navigate("/post/" + a.data.data.id);
     }
-  }
+  };
 
   const clearPostOutput = () => {
     setPostResult(null);

@@ -38,7 +38,9 @@ export default function Slideshow() {
                 backgroundRepeat: "no-repeat",
               }}
             ></div>
-            <p className="slider_p">{post.title}</p>
+            <a href={`post/${post.id}`} className="slider_p">
+              {post.title}
+            </a>
           </div>
         ))}
       </AwesomeSlider>

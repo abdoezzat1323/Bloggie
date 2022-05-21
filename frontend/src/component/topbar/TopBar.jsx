@@ -51,14 +51,20 @@ export default function topBar(props) {
       </div>
       {(isLoggedIn() && (
         <div className="dropdown">
-          <img
-            className="right_section  sizeright avatar"
-            src={
-              BASE_URL + "/" + getAvatarCookie() ||
-              "https://www.w3schools.com/howto/img_avatar2.png"
-            }
-            alt="Avatar"
-          ></img>
+          {getAvatarCookie() !== "undefined" && (
+            <img
+              className="right_section  sizeright avatar"
+              src={BASE_URL + "/" + getAvatarCookie()}
+              alt="Avatar"
+            ></img>
+          )}
+          {getAvatarCookie() === "undefined" && (
+            <img
+              className="right_section  sizeright avatar"
+              src={"https://www.w3schools.com/howto/img_avatar2.png"}
+              alt="Avatar"
+            ></img>
+          )}
           <div className=" item ">{AuthButton}</div>
         </div>
       )) || <div className=" right_section  sizeright ">{AuthButton}</div>}

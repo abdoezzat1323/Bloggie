@@ -4,11 +4,14 @@ import TopBar from "../../component/topbar/TopBar";
 import ViewPostSideBar from "../../component/viewpostsidbar/viewsidebar";
 import { BrowserRouter as Router, useParams } from "react-router-dom";
 import { getPost } from "../../services/postService";
+import { isLoggedIn } from "../../services/authService";
 import config from "../../config.json";
+import moment from "moment";
+import { useNavigate, Navigate } from "react-router-dom";
 
 export default function View_post() {
   const { id } = useParams();
-  console.log(id);
+  const navigate = useNavigate();
 
   const [post, setPost] = useState([]);
 
@@ -23,57 +26,63 @@ export default function View_post() {
   }, []);
 
   const [Comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
   const handleCommentChange = (event) => {
-    setComment({ Commentval: event.target.value });
-    console.log(Comment);
+    setComment(event.target.value);
   };
   const submit = (e) => {
     e.preventDefault();
-    console.log(Comment);
+    setComments([...comments, Comment]);
   };
   const BASE_URL = config.BASE_URL;
 
-  let x = `<p style="text-align: center;"><span style="font-size: 36pt;">my name is abdelrhman ezzat that is my name fo r you</span></p>
-<p style="text-align: center;"><span style="font-size: 36pt;"><img src="http://127.0.0.1:5000/uploads/file-1652824358819.jpeg" alt="" width="256" height="197"></span></p>`;
-
-  let y = `<p style="text-align: center;"><span style="font-size: 36pt;">my name is abdelrhman eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeezzat that is my name fo r you</span></p>
-<p style="text-align: center;"><span style="font-size: 36pt;"><img src="http://127.0.0.1:5000/uploads/file-1652824358819.jpeg" alt="" width="256" height="197"></span></p>`;
-
-  return (
+  return !isLoggedIn() ? (
+    <Navigate to="/" />
+  ) : (
     <>
       <div>
         <TopBar />
       </div>
-      <div className="writeWar">
+      <div className="writeWar1">
         <ViewPostSideBar />
-        <div className="writeontent">
-          <div className="imgdiv">
-            <img src={post.featured} alt="" className="img" />
+        <div className="writeontent1">
+          <div className="imgdiv1">
+            <img src={post.featured} alt="" className="img1" />
           </div>
-          <div className="postfield">
-            <h2 class="post-titlee-alt">{post.title}</h2>
+          <div className="postfield1">
+            <h2 class="post-titlee-alt1">{post.title}</h2>
+            <center>
+              <span className="postDate">
+                {moment(post.createdAt).format("YYYY-MM-DD")}
+              </span>{" "}
+            </center>
+
             <div
-              className="text"
+              className="text1"
               dangerouslySetInnerHTML={{ __html: post.body }}
             />
           </div>
+          {comments.map((p, i) => (
+            <div className="commentfield1">
+              <h2 class="comment-titlee-alt1"></h2>
+              <div className="textcomment1">
+                <p>{p}</p>
+              </div>
+            </div>
+          ))}
           <div>
             <textarea
-              name="Comment"
+              name="Comment1"
               onChange={handleCommentChange}
-              className="commentfiledinput"
+              className="commentfiledinput1"
               placeholder="Enter The Comment here"
               required
             />
           </div>
           <div>
-            <button type="button" onClick={submit} className="button-55">
+            <button type="button1" onClick={submit} className="button-551">
               Add Comment
             </button>
-          </div>
-          <div className="commentfield">
-            <h2 class="comment-titlee-alt"></h2>
-            <div className="textcomment" ><p>nice post</p></div>
           </div>
         </div>
       </div>

@@ -51,7 +51,7 @@ export async function isAdmin() {
 export async function setPremium() {
     try {
         const response = await axios.post(
-            endPoint + "/" + getIdCookie() + "/premium"
+            endPoint + "" + getIdCookie() + "/premium"
         );
         console.log(response);
         if (response.data.data) {

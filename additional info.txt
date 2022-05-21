@@ -4,3 +4,7 @@ https://documenter.getpostman.com/view/10967795/Uyxohisa
 Depoyed on AWS servers with domain name:
 http://bloggie.social/
 
+Github repo:
+https://github.com/m-agour/Bloggie
+
+Github repo has two branches one for development and one for production
