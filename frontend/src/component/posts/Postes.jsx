@@ -29,7 +29,7 @@ export default function Postes() {
         {finalPosts.map((p, i) => (
           <Post post={p} />
         ))}
-        {!finalPosts[0] && (
+        {!finalPosts[0] && posts[0] && (
           <p className="no-posts">
             There is no posts that matches your search!
           </p>
