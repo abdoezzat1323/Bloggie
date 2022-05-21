@@ -1,7 +1,11 @@
 import React from "react";
 import { FaComments } from "react-icons/fa";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import { RiAdminLine, RiFilePaperLine } from "react-icons/ri";
+import {
+    RiMoneyDollarCircleFill,
+    RiAdminLine,
+    RiFilePaperLine,
+} from "react-icons/ri";
 import {
     getIsAdminCookie,
     getIsPremiumCookie,
@@ -36,8 +40,6 @@ let data = [{
     },
 ];
 if (getIsAdminCookie() || getIsPremiumCookie()) {
-    console.log(getIsAdminCookie() || getIsPremiumCookie(), "fff");
-
     data.push({
         title: "  Write Post",
         admin: 1,
@@ -69,4 +71,19 @@ if (getIsAdminCookie()) {
     });
 }
 
+if (!getIsPremiumCookie()) {
+    data.push({
+        title: "  Subscribe",
+        admin: 1,
+        premium: 0,
+        path: "/subscribe",
+        icon: ( <
+            RiMoneyDollarCircleFill size = { 30 }
+            style = {
+                { margin: 12, display: "flex", justifyContent: "space-between" } }
+            />
+        ),
+        cName: "nav-text",
+    });
+}
 export const SidebarData = data;
