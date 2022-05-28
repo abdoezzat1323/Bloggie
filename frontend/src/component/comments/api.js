@@ -10,7 +10,7 @@ export const getComments = async () => {
     },
     {
       id: "2",
-      body: "first replay",
+      body: " second comment",
       username: "user2",
       userId: "2",
       parentId: null,
@@ -18,7 +18,7 @@ export const getComments = async () => {
     },
     {
       id: "3",
-      body: "second comment",
+      body: "first replay",
       username: "user2",
       userId: "2",
       parentId: "1",
